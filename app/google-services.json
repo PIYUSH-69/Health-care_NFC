@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "524721915814",
+    "project_id": "nfc0-a12c6",
+    "storage_bucket": "nfc0-a12c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:524721915814:android:3e71b18be8ae8c3e187167",
+        "android_client_info": {
+          "package_name": "com.example.nfc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZYSlwC1RHSjAW5QSW7tMnWskwtDVjdIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
