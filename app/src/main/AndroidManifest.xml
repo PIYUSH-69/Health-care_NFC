@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher_background"
         android:label="Health Connect"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -22,13 +22,15 @@
             android:name=".patient.patient_signin"
             android:exported="false" />
         <activity
+            android:name=".hospital.hospital_signin"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
             android:name=".hospital.HOSPITAL"
             android:exported="false"
-            android:label="@string/title_activity_hospital"
-            android:theme="@style/Theme.NFC"/>
+            android:label="@string/title_activity_hospital" />
         <activity
             android:name=".patient.MainActivity"
             android:exported="true"
