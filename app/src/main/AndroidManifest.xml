@@ -27,8 +27,7 @@
         <activity
             android:name=".hospital.HOSPITAL"
             android:exported="false"
-            android:label="@string/title_activity_hospital"
-            android:theme="@style/Theme.NFC"/>
+            android:label="@string/title_activity_hospital" />
         <activity
             android:name=".patient.MainActivity"
             android:exported="true"
