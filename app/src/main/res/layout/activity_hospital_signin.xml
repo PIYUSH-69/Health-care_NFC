@@ -37,6 +37,7 @@
                 android:id="@+id/name2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/alata"
                 android:hint="EMAIL ID"
                 android:inputType="text"
                 android:textColor="@color/blue" />
