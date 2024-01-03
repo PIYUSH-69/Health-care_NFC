@@ -30,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Height(in cms)"
-            android:inputType="number" />
+            android:inputType="number"
+            android:singleLine="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -42,7 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Weight(in Kgs)"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:singleLine="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -55,7 +57,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Blood group"
-            android:inputType="text" />
+            android:inputType="text"
+            android:singleLine="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -128,7 +131,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Aayushman Bharat ID(ABHA NUMBER)"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="14"
+            android:singleLine="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
