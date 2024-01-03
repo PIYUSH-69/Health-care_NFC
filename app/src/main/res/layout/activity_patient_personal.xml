@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="20dp"
+    android:background="@color/offwhite2"
     tools:context=".patient.patient_personal">
 
 
@@ -80,7 +81,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:inputType="none"
-                    android:textColor="@color/blue" />
+                    android:textColor="@color/blue"
+                    app:dropDownBackgroundTint="@color/blue" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
