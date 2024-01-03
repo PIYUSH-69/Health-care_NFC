@@ -39,22 +39,25 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alata"
                 android:hint="EMAIL ID"
-                android:inputType="text"
-                android:textColor="@color/blue" />
+                android:inputType="textEmailAddress"
+                android:textColor="@color/blue"
+                android:singleLine="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="20dp">
+            android:paddingBottom="20dp"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pass2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Passwword"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:singleLine="true"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
