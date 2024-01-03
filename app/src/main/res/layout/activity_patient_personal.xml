@@ -29,8 +29,11 @@
                 android:textSize="20sp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fnamecon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark"
                 android:paddingBottom="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -44,6 +47,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/mnamecon"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark"
                 android:paddingBottom="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -57,6 +63,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/lnamecon"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark"
                 android:paddingBottom="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -71,6 +80,9 @@
                 style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/gendercon"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark"
                 android:hint="GENDER"
                 android:background="@color/offwhite2"
                 android:paddingBottom="20dp"
@@ -90,7 +102,9 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutDate"
+                android:id="@+id/dobcon"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Date of Birth"
@@ -116,6 +130,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/pnumcon"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark"
+                app:prefixText="+91"
+                app:startIconDrawable="@android:drawable/stat_sys_phone_call"
+                app:prefixTextColor="@color/blue"
                 android:paddingBottom="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -123,29 +143,34 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Phone Number"
-                    android:inputType="number"
                     android:maxLength="10"
-                    android:singleLine="true"/>
+                    android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark"
+                android:id="@+id/anumcon"
                 android:paddingBottom="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/anum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="AdharCard Number"
-                    android:inputType="number"
                     android:maxLength="12"
-                    android:singleLine="true"/>
+                    android:hint="AdharCard Number"
+                    android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:id="@+id/emailcon"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark"
                 android:layout_height="match_parent"
+                app:startIconDrawable="@android:drawable/ic_dialog_email"
                 android:paddingBottom="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -153,38 +178,43 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email ID"
-                    android:inputType="textEmailAddress"
-                    android:singleLine="true"/>
+                    android:inputType="textEmailAddress"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="20dp"
-                app:passwordToggleEnabled="true">
+                android:id="@+id/passcon"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark"
+                app:endIconMode="password_toggle"
+                app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
+                android:paddingBottom="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"
-                    android:inputType="textPassword"
-                    android:singleLine="true"/>
+                    android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="20dp"
-                app:passwordToggleEnabled="true">
+                app:endIconMode="password_toggle"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark"
+                android:id="@+id/cpasscon"
+                app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
+                android:paddingBottom="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/cpass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Confirm Password"
-                    android:inputType="textPassword"
-                    android:singleLine="true"/>
+                    android:hint="Confrim Password"
+                    android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
