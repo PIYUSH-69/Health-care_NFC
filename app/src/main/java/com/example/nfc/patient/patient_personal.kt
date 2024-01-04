@@ -325,7 +325,6 @@ class patient_personal : AppCompatActivity() {
         binding.fname.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
                 binding.fnamecon.helperText = validatefname()
-
             }
         }
     }

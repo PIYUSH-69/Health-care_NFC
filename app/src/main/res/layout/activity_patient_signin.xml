@@ -44,6 +44,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/namecon"
+                app:helperTextTextColor="@android:color/holo_red_dark"
                 android:paddingBottom="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -58,7 +60,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:id="@+id/passcon"
                 android:layout_height="match_parent"
+                app:helperTextTextColor="@android:color/holo_red_dark"
+                app:endIconMode="password_toggle"
                 android:paddingBottom="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
