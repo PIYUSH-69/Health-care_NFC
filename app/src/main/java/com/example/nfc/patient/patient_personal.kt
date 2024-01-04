@@ -2,20 +2,17 @@ package com.example.nfc.patient
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Button
-import com.example.nfc.R
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doBeforeTextChanged
+import com.example.nfc.databinding.ActivityPatientPersonalBinding
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.textfield.TextInputEditText
 import java.util.Date
 import java.util.Locale
-import android.icu.text.SimpleDateFormat
-import android.util.Patterns
-import com.example.nfc.databinding.ActivityHospitalBinding
-import com.example.nfc.databinding.ActivityPatientPersonalBinding
 
 
 class patient_personal : AppCompatActivity() {
@@ -26,46 +23,17 @@ class patient_personal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding=ActivityPatientPersonalBinding.inflate(layoutInflater)
+        binding = ActivityPatientPersonalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-   //     val reg = findViewById<Button>(R.id.button3)
-//        val firstn = findViewById<TextInputEditText>(R.id.fname)
-//        val midn = findViewById<TextInputEditText>(R.id.mname)
-//        val lname = findViewById<TextInputEditText>(R.id.lname)
-// val gender = findViewById<AutoCompleteTextView>(R.id.gender)
-  //      var dob = findViewById<TextInputEditText>(R.id.dob)
-//        val phonenum = findViewById<TextInputEditText>(R.id.pnum)
-//        val adharnum = findViewById<TextInputEditText>(R.id.anum)
-//        val email = findViewById<TextInputEditText>(R.id.email)
-//        val pass = findViewById<TextInputEditText>(R.id.pass)
-//        val cpass = findViewById<TextInputEditText>(R.id.cpass)
-
+        //spinner
         val array = arrayListOf("Male", "Female", "Transgender")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, array)
         binding.gender.setAdapter(adapter)
 
-        fname()
-        mname()
-        lname()
-        gender()
-        dob()
-        pnum()
-        email()
-        anum()
-        pass()
-        cpass()
-
-
-
-        binding.button3.setOnClickListener {
-            startActivity(Intent(this, patient_medical::class.java))
-        }
-
+        //datepicker
         val datePickerBuilder = MaterialDatePicker.Builder.datePicker()
         val datePicker = datePickerBuilder.build()
-
 
         binding.dob.setOnClickListener {
             datePicker.show(supportFragmentManager, "DatePicker")
@@ -77,19 +45,55 @@ class patient_personal : AppCompatActivity() {
             val formattedDate = formatDate(selectedDateInMillis)
             binding.dob.setText(formattedDate)
         }
+
+
+        //validation
+        fname()
+        mname()
+        lname()
+        gender()
+        pnum()
+        email()
+        anum()
+        pass()
+        cpass()
+
+
+
+        //submitform
+        binding.button3.setOnClickListener {
+
+            val a=binding.dob.text.toString()
+            Toast.makeText(this, a, Toast.LENGTH_SHORT).show()
+            if(submitform())
+            {
+                startActivity(Intent(this,patient_medical::class.java))
+            }
+            else{
+
+
+            }
+        }
     }
+
+    //functions----->
 
     private fun cpass() {
         binding.cpass.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                if (binding.cpass.text.toString().isEmpty()) {
-                    binding.cpasscon.error = "THIS FIELD IS REQUIRED"
-                } else {
-                    if (binding.cpass.text.toString()!=binding.pass.text.toString()){
-                        binding.cpasscon.helperText = "Password dont match"
-                    }
-                    else {binding.cpasscon.helperText = null}
-                }
+                binding.cpasscon.helperText = validatecpass()
+            }
+        }
+    }
+
+    private fun validatecpass(): String? {
+        if (binding.cpass.text.toString().isEmpty()) {
+            return "THIS FIELD IS REQUIRED"
+        } else {
+            if (binding.cpass.text.toString() != binding.pass.text.toString()) {
+                return "Password dont match"
+            } else {
+                return null
             }
         }
     }
@@ -98,41 +102,45 @@ class patient_personal : AppCompatActivity() {
     private fun pass() {
         binding.pass.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                if (binding.pass.text.toString().isEmpty()) {
-                    binding.passcon.helperText = "THIS FIELD IS REQUIRED"
-                }
-                else if (binding.pass.text.toString().length<8){
-                        binding.passcon.helperText = "PASSWORD TOO SHORT"
-                    }
-                else if (!binding.pass.text.toString().matches(".*[A-Z].*".toRegex())){
-                        binding.passcon.helperText = "MUST CONTAIN 1 UPPER-CASE CHARACTER"
-                    }
-                else if (!binding.pass.text.toString().matches(".*[a-z].*".toRegex())){
-                    binding.passcon.helperText = "MUST CONTAIN 1 LOWER-CASE CHARACTER"
-                }
-                else if (!binding.pass.text.toString().matches(".*[@#\$%^&=+_].*".toRegex())){
-                    binding.passcon.helperText = "MUST CONTAIN 1 SPECIAL CHARACTER (@#\$%^&=+_)"
-                }
-                else if (!binding.pass.text.toString().matches(".*[0-9].*".toRegex())){
-                    binding.passcon.helperText = "MUST CONTAIN 1 NUMBER CHARACTER"
-                }
-                else   binding.passcon.helperText = null
+                binding.passcon.helperText = validatepass()
             }
         }
+    }
+
+    private fun validatepass(): String? {
+        if (binding.pass.text.toString().isEmpty()) {
+            return "THIS FIELD IS REQUIRED"
+        } else if (binding.pass.text.toString().length < 8) {
+            return "PASSWORD TOO SHORT"
+        } else if (!binding.pass.text.toString().matches(".*[A-Z].*".toRegex())) {
+            return "MUST CONTAIN 1 UPPER-CASE CHARACTER"
+        } else if (!binding.pass.text.toString().matches(".*[a-z].*".toRegex())) {
+            return "MUST CONTAIN 1 LOWER-CASE CHARACTER"
+        } else if (!binding.pass.text.toString().matches(".*[@#/&_].*".toRegex())) {
+            return "MUST CONTAIN 1 SPECIAL CHARACTER (@#/&_)"
+        } else if (!binding.pass.text.toString().matches(".*[0-9].*".toRegex())) {
+            return "MUST CONTAIN 1 NUMBER CHARACTER"
+        } else return null
     }
 
     private fun anum() {
         binding.anum.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                if (binding.anum.text.toString().isEmpty()) {
-                    binding.anumcon.helperText= "THIS FIELD IS REQUIRED"
-                } else {
-                    if (binding.anum.text.toString().length!=12){
-                        binding.anumcon.helperText = "ADHAR NUMBER TOO SHORT"
+                binding.anumcon.helperText = validateanum()
+            }
+        }
+    }
 
-                    }
-                    else {binding.anumcon.helperText = null}
-                }
+    private fun validateanum(): String? {
+
+        if (binding.anum.text.toString().isEmpty()) {
+            return "THIS FIELD IS REQUIRED"
+        } else {
+            if (binding.anum.text.toString().length != 12) {
+                return "ADHAR NUMBER TOO SHORT"
+
+            } else {
+                return null
             }
         }
     }
@@ -140,97 +148,132 @@ class patient_personal : AppCompatActivity() {
     private fun email() {
         binding.email.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                var text=binding.email.text.toString()
-                if (binding.email.text.toString().isEmpty()) {
-                    binding.emailcon.helperText = "THIS FIELD IS REQUIRED"
-                } else {
-                    if (!Patterns.EMAIL_ADDRESS.matcher(text).matches()){
-                        binding.emailcon.helperText = "INVALID EMAIL"
-                    }
-                    else {binding.emailcon.helperText = null}
-                }
+                binding.emailcon.helperText = validateemail()
             }
         }
+    }
 
+    private fun validateemail(): String? {
+        var text = binding.email.text.toString()
+        if (binding.email.text.toString().isEmpty()) {
+            return "THIS FIELD IS REQUIRED"
+        } else {
+            if (!Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
+                return "INVALID EMAIL"
+            } else {
+                return null
+            }
+        }
     }
 
     private fun pnum() {
         binding.pnum.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                if (binding.pnum.text.toString().isEmpty()) {
-                    binding.pnumcon.helperText = "THIS FIELD IS REQUIRED"
-                } else {
-                    if (binding.pnum.text.toString().length!=10){
-                        binding.pnumcon.helperText = "PHONE NUMBER TOO SHORT"
-                    }
-                    else {binding.pnumcon.helperText = null}
-                }
+                binding.pnumcon.helperText = validatepnum()
             }
         }
     }
 
-    private fun dob() {
-        binding.dob.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus){
-                if (binding.dob.text.toString().isEmpty()){
-                    binding.dobcon.helperText="THIS FIELD IS REQUIRED"
-                }
-                else{
-                    binding.dobcon.helperText=null
-                }
+    private fun validatepnum(): String? {
+
+        if (binding.pnum.text.toString().isEmpty()) {
+            return "THIS FIELD IS REQUIRED"
+        } else {
+            if (binding.pnum.text.toString().length != 10) {
+                return "PHONE NUMBER TOO SHORT"
+            } else {
+                return null
             }
         }
+    }
+
+//    private fun dob() {
+//        binding.dob.setOnFocusChangeListener { _, hasFocus ->
+//            if (!hasFocus){
+//                if (binding.dob.text.toString().isEmpty()){
+//                    binding.dobcon.helperText="THIS FIELD IS REQUIRED"
+//                }
+//                else{
+//                    binding.dobcon.helperText=null
+//                }
+//            }
+//        }
+//    }
+
+    private fun dob() {
+            if (binding.dob.text.toString().isEmpty()) {
+                binding.dobcon.helperText = "REQUIRED FIELD"
+            }
+            else {
+            binding.dobcon.helperText = null}
+
+
     }
 
     private fun gender() {
         binding.gender.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus){
-                if (binding.gender.text.toString().isEmpty()){
-                    binding.gendercon.helperText="THIS FIELD IS REQUIRED"
-                }
-                else{
-                    binding.gendercon.helperText=null
-                }
+            if (!hasFocus) {
+                binding.gendercon.helperText = validategender()
             }
+        }
+    }
+
+    private fun validategender(): String? {
+        if (binding.gender.text.toString().isEmpty()) {
+            return "THIS FIELD IS REQUIRED"
+        } else {
+            return null
         }
     }
 
     private fun lname() {
         binding.lname.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus){
-                if (binding.lname.text.toString().isEmpty()){
-                    binding.lnamecon.helperText="THIS FIELD IS REQUIRED"
-                }
-                else{
-                    binding.lnamecon.helperText=null
-                }
+            if (!hasFocus) {
+                binding.lnamecon.helperText = validatelname()
             }
+        }
+    }
+
+    private fun validatelname(): String? {
+        if (binding.lname.text.toString().isEmpty()) {
+            return "THIS FIELD IS REQUIRED"
+        } else {
+            return null
         }
     }
 
     private fun mname() {
         binding.mname.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus){
-                if (binding.mname.text.toString().isEmpty()){
-                    binding.mnamecon.helperText="THIS FIELD IS REQUIRED"
-                }
-                else{
-                    binding.mnamecon.helperText=null
-                }
+            if (!hasFocus) {
+                binding.mnamecon.helperText = validatemname()
+
             }
         }
     }
 
+    private fun validatemname(): String? {
+        if (binding.mname.text.toString().isEmpty()) {
+            return "THIS FIELD IS REQUIRED"
+        } else {
+            return null
+        }
+
+    }
+
     private fun fname() {
         binding.fname.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus){
-                if (binding.fname.text.toString().isEmpty()){
-                    binding.fnamecon.helperText="THIS FIELD IS REQUIRED"
-                }
-                else{
-                    binding.fnamecon.helperText=null
-                }
+            if (!hasFocus) {
+                binding.fnamecon.helperText = validatefname()
+
             }
+        }
+    }
+
+    private fun validatefname(): String? {
+        if (binding.fname.text.toString().isEmpty()) {
+            return "THIS FIELD IS REQUIRED"
+        } else {
+            return null
         }
     }
 
@@ -240,15 +283,30 @@ class patient_personal : AppCompatActivity() {
         return sdf.format(Date(timestampInMillis))
     }
 
-    private fun submitform(){
+    private fun submitform(): Boolean {
 
-        binding.button3.setOnClickListener {
+        binding.passcon.helperText = validatepass()
+        binding.cpasscon.helperText = validatepass()
+        binding.fnamecon.helperText = validatefname()
+        binding.mnamecon.helperText = validatemname()
+        binding.lnamecon.helperText = validatelname()
+        binding.pnumcon.helperText = validatepnum()
+        binding.anumcon.helperText = validateanum()
+        binding.emailcon.helperText = validateemail()
+        binding.gendercon.helperText = validategender()
+        dob()
 
+        val validfname = binding.fnamecon.helperText == null
+        val validmname = binding.mnamecon.helperText == null
+        val validlname = binding.lnamecon.helperText == null
+        val validpnum = binding.pnumcon.helperText == null
+        val validanum = binding.anumcon.helperText == null
+        val validemail = binding.emailcon.helperText == null
+        val validgender = binding.gendercon.helperText == null
+        val validpass = binding.passcon.helperText == null
+        val validcpass = binding.cpasscon.helperText == null
+        val validatedob=binding.dobcon.helperText==null
 
-        }
+        return validfname && validmname && validlname && validpnum && validanum && validemail && validgender && validpass && validcpass && validatedob
     }
-
-
-
-
 }
