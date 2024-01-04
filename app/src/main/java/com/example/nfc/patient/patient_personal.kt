@@ -1,15 +1,22 @@
 package com.example.nfc.patient
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.example.nfc.databinding.ActivityPatientPersonalBinding
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 import java.util.Date
@@ -19,6 +26,7 @@ import java.util.Locale
 class patient_personal : AppCompatActivity() {
 
     private lateinit var binding: ActivityPatientPersonalBinding
+    private lateinit var auth: FirebaseAuth
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +55,6 @@ class patient_personal : AppCompatActivity() {
             binding.dob.setText(formattedDate)
         }
 
-
         //validation
         fname()
         mname()
@@ -59,12 +66,68 @@ class patient_personal : AppCompatActivity() {
         pass()
         cpass()
 
-
-
         //submitform
+        auth=Firebase.auth
+
         binding.button3.setOnClickListener {
             if(submitform())
             {
+                val fname=binding.fname.text.toString()
+                val mname=binding.mname.text.toString()
+                val lname=binding.lname.text.toString()
+                val anum=binding.anum.text.toString()
+                val pnum=binding.pnum.text.toString()
+                val dob=binding.dob.text.toString()
+                val gender=binding.gender.text.toString()
+                val emailid=binding.email.text.toString()
+                val pass=binding.pass.text.toString()
+
+                auth.createUserWithEmailAndPassword(emailid, pass)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(ContentValues.TAG, "createUserWithEmail:success")
+                            val user = auth.currentUser.toString()
+                            val db=Firebase.firestore
+                            var details= HashMap<String,String>()
+                            details.put("FIRST NAME",fname)
+                            details.put("MIDDLE NAME",mname)
+                            details.put("LAST NAME",lname)
+                            details.put("GENDER",gender)
+                            details.put("DOB", dob)
+                            details.put("PHONE NUMBER",pnum)
+                            details.put("ADHARCARD NUMBER",anum)
+                            details.put("EMAIL",emailid)
+                            details.put("PASSWORD",pass)
+
+                            db.collection("Patient")
+                                .document(user)
+                                .set(details)
+                                .addOnSuccessListener { documentReference ->
+                                Log.d(ContentValues.TAG, "DocumentSnapshot added ")
+                                Toast.makeText(this, "ADDED VALUEs", Toast.LENGTH_SHORT).show()
+
+                            }
+                                .addOnFailureListener { e ->
+                                    Log.w(ContentValues.TAG, "Error adding document", e)
+                                }
+
+
+
+
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
+                            MotionToast.darkColorToast(this,"Authentication Failed!",
+                                "JINKLAS BHAVA",
+                                MotionToastStyle.SUCCESS,
+                                MotionToast.GRAVITY_BOTTOM,
+                                MotionToast.LONG_DURATION,
+                                ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
+                        }
+                    }
+
                 MotionToast.darkColorToast(this,"Form submitted!",
                     "JINKLAS BHAVA",
                     MotionToastStyle.SUCCESS,
@@ -85,7 +148,6 @@ class patient_personal : AppCompatActivity() {
     }
 
     //functions----->
-
     private fun cpass() {
         binding.cpass.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
@@ -93,6 +155,7 @@ class patient_personal : AppCompatActivity() {
             }
         }
     }
+
 
     private fun validatecpass(): String? {
         if (binding.cpass.text.toString().isEmpty()) {
@@ -173,6 +236,7 @@ class patient_personal : AppCompatActivity() {
             }
         }
     }
+
 
 
     private fun pnum() {
