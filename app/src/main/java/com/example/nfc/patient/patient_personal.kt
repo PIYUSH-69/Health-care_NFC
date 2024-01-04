@@ -6,11 +6,8 @@ import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.widget.doBeforeTextChanged
-import com.example.nfc.R
 import com.example.nfc.databinding.ActivityPatientPersonalBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import www.sanju.motiontoast.MotionToast
@@ -66,7 +63,6 @@ class patient_personal : AppCompatActivity() {
 
         //submitform
         binding.button3.setOnClickListener {
-
             if(submitform())
             {
                 MotionToast.darkColorToast(this,"Form submitted!",
@@ -84,8 +80,6 @@ class patient_personal : AppCompatActivity() {
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,
                     ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
-
-
             }
         }
     }
@@ -180,6 +174,7 @@ class patient_personal : AppCompatActivity() {
         }
     }
 
+
     private fun pnum() {
         binding.pnum.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
@@ -201,27 +196,12 @@ class patient_personal : AppCompatActivity() {
         }
     }
 
-//    private fun dob() {
-//        binding.dob.setOnFocusChangeListener { _, hasFocus ->
-//            if (!hasFocus){
-//                if (binding.dob.text.toString().isEmpty()){
-//                    binding.dobcon.helperText="THIS FIELD IS REQUIRED"
-//                }
-//                else{
-//                    binding.dobcon.helperText=null
-//                }
-//            }
-//        }
-//    }
-
     private fun dob() {
             if (binding.dob.text.toString().isEmpty()) {
                 binding.dobcon.helperText = "REQUIRED FIELD"
             }
             else {
             binding.dobcon.helperText = null}
-
-
     }
 
     private fun gender() {
