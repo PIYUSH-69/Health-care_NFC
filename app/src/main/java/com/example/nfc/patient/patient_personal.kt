@@ -21,6 +21,7 @@ import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 import java.util.Date
 import java.util.Locale
+import java.util.Objects
 
 
 class patient_personal : AppCompatActivity() {
@@ -87,7 +88,7 @@ class patient_personal : AppCompatActivity() {
                         if (task.isSuccessful) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(ContentValues.TAG, "createUserWithEmail:success")
-                            val user = auth.currentUser.toString()
+                            val user = auth.uid.toString()
                             val db=Firebase.firestore
                             var details= HashMap<String,String>()
                             details.put("FIRST NAME",fname)
@@ -99,10 +100,12 @@ class patient_personal : AppCompatActivity() {
                             details.put("ADHARCARD NUMBER",anum)
                             details.put("EMAIL",emailid)
                             details.put("PASSWORD",pass)
+                            var personal_details= HashMap<String,HashMap<String,String>>()
+                            personal_details.put("Personal details",details)
 
                             db.collection("Patient")
                                 .document(user)
-                                .set(details)
+                                .set(personal_details)
                                 .addOnSuccessListener { documentReference ->
                                 Log.d(ContentValues.TAG, "DocumentSnapshot added ")
                                 Toast.makeText(this, "ADDED VALUEs", Toast.LENGTH_SHORT).show()
