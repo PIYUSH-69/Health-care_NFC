@@ -168,7 +168,7 @@ class patient_personal : AppCompatActivity() {
     }
 
     private fun validateemail(): String? {
-        var text = binding.email.text.toString()
+        val text = binding.email.text.toString()
         if (binding.email.text.toString().isEmpty()) {
             return "THIS FIELD IS REQUIRED"
         } else {
