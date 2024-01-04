@@ -8,9 +8,13 @@ import android.util.Patterns
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doBeforeTextChanged
+import com.example.nfc.R
 import com.example.nfc.databinding.ActivityPatientPersonalBinding
 import com.google.android.material.datepicker.MaterialDatePicker
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 import java.util.Date
 import java.util.Locale
 
@@ -63,13 +67,23 @@ class patient_personal : AppCompatActivity() {
         //submitform
         binding.button3.setOnClickListener {
 
-            val a=binding.dob.text.toString()
-            Toast.makeText(this, a, Toast.LENGTH_SHORT).show()
             if(submitform())
             {
+                MotionToast.darkColorToast(this,"Form submitted!",
+                    "JINKLAS BHAVA",
+                    MotionToastStyle.SUCCESS,
+                    MotionToast.GRAVITY_BOTTOM,
+                    MotionToast.LONG_DURATION,
+                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
                 startActivity(Intent(this,patient_medical::class.java))
             }
             else{
+                MotionToast.darkColorToast(this,"Enter All Details!",
+                    "HAGLAS BHAVA",
+                    MotionToastStyle.ERROR,
+                    MotionToast.GRAVITY_BOTTOM,
+                    MotionToast.LONG_DURATION,
+                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
 
 
             }
