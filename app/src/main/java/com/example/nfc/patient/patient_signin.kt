@@ -5,10 +5,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.core.content.res.ResourcesCompat
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityPatientSigninBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 
 class patient_signin : AppCompatActivity() {
 
@@ -20,8 +23,6 @@ class patient_signin : AppCompatActivity() {
         binding= ActivityPatientSigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val name=binding.name.text.toString()
-        val pass=binding.pass.text.toString()
         val auth=Firebase.auth
 
         valname()
@@ -54,6 +55,14 @@ class patient_signin : AppCompatActivity() {
 
 
                 }
+            }
+            else{
+                MotionToast.darkColorToast(this,"Enter All Details!",
+                    "HAGLAS BHAVA",
+                    MotionToastStyle.ERROR,
+                    MotionToast.GRAVITY_BOTTOM,
+                    MotionToast.LONG_DURATION,
+                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
             }
         }
     }
