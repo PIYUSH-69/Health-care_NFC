@@ -46,7 +46,10 @@ class patient_personal : AppCompatActivity() {
         val datePicker = datePickerBuilder.build()
 
         binding.dob.setOnClickListener {
-            datePicker.show(supportFragmentManager, "DatePicker")
+            if (!datePicker.isAdded)
+            {
+                datePicker.show(supportFragmentManager, "DatePicker")
+            }
         }
 
         datePicker.addOnPositiveButtonClickListener { selection ->
@@ -100,12 +103,12 @@ class patient_personal : AppCompatActivity() {
                             details.put("ADHARCARD NUMBER",anum)
                             details.put("EMAIL",emailid)
                             details.put("PASSWORD",pass)
-                            var personal_details= HashMap<String,HashMap<String,String>>()
-                            personal_details.put("Personal details",details)
+
+
 
                             db.collection("Patient")
                                 .document(user)
-                                .set(personal_details)
+                                .set(details)
                                 .addOnSuccessListener { documentReference ->
                                 Log.d(ContentValues.TAG, "DocumentSnapshot added ")
                                 Toast.makeText(this, "ADDED VALUEs", Toast.LENGTH_SHORT).show()
@@ -114,10 +117,6 @@ class patient_personal : AppCompatActivity() {
                                 .addOnFailureListener { e ->
                                     Log.w(ContentValues.TAG, "Error adding document", e)
                                 }
-
-
-
-
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -346,7 +345,7 @@ class patient_personal : AppCompatActivity() {
     private fun submitform(): Boolean {
 
         binding.passcon.helperText = validatepass()
-        binding.cpasscon.helperText = validatepass()
+        binding.cpasscon.helperText = validatecpass()
         binding.fnamecon.helperText = validatefname()
         binding.mnamecon.helperText = validatemname()
         binding.lnamecon.helperText = validatelname()
