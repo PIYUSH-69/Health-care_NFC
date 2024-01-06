@@ -25,6 +25,7 @@ class patient_medical : AppCompatActivity() {
 
         height()
         weight()
+        bldgrp()
         ayush()
 
 
