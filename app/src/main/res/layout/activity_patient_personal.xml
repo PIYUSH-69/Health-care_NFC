@@ -77,23 +77,24 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/gendercon"
                 style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/gendercon"
-                app:helperTextEnabled="true"
-                app:helperTextTextColor="@android:color/holo_red_dark"
-                android:hint="GENDER"
                 android:background="@color/offwhite2"
+                android:hint="GENDER"
                 android:paddingBottom="20dp"
-                app:boxBackgroundMode="filled">
+                app:boxBackgroundMode="filled"
+                app:endIconMode="dropdown_menu"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark">
 
                 <AutoCompleteTextView
                     android:id="@+id/gender"
-                    android:background="@color/offwhite2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@color/offwhite2"
                     android:dropDownSelector="@color/offwhite2"
                     android:inputType="none"
                     android:textColor="@color/blue"

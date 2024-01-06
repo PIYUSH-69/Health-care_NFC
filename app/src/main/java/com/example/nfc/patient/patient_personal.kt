@@ -51,7 +51,6 @@ class patient_personal : AppCompatActivity() {
                 datePicker.show(supportFragmentManager, "DatePicker")
             }
         }
-
         datePicker.addOnPositiveButtonClickListener { selection ->
             // Format the selected date from the Unix timestamp
             val selectedDateInMillis = selection as Long

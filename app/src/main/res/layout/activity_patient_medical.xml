@@ -34,7 +34,9 @@
                 android:id="@+id/heightcon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="20dp">
+                android:paddingBottom="20dp"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/height"
@@ -49,7 +51,9 @@
                 android:id="@+id/weightcon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="20dp">
+                android:paddingBottom="20dp"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/weight"
@@ -145,7 +149,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingBottom="20dp">
+                android:paddingBottom="20dp"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_dark">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ayush"
