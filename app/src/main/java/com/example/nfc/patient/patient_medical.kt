@@ -27,7 +27,6 @@ class patient_medical : AppCompatActivity() {
         weight()
         bldgrp()
         ayush()
-        bldgrp()
 
         val reg=findViewById<Button>(R.id.button)
         reg.setOnClickListener {
