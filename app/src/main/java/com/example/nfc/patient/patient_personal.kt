@@ -111,12 +111,20 @@ class patient_personal : AppCompatActivity() {
                                 .set(details)
                                 .addOnSuccessListener { documentReference ->
                                 Log.d(ContentValues.TAG, "DocumentSnapshot added ")
+                                    MotionToast.darkColorToast(this,"Form submitted!",
+                                        "JINKLAS BHAVA",
+                                        MotionToastStyle.SUCCESS,
+                                        MotionToast.GRAVITY_BOTTOM,
+                                        MotionToast.LONG_DURATION,
+                                        ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
+                                    startActivity(Intent(this,patient_medical::class.java))
+
                                 Toast.makeText(this, "ADDED VALUEs", Toast.LENGTH_SHORT).show()
 
-                            }
-                                .addOnFailureListener { e ->
+                                }.addOnFailureListener { e ->
                                     Log.w(ContentValues.TAG, "Error adding document", e)
                                 }
+
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -129,15 +137,8 @@ class patient_personal : AppCompatActivity() {
                                 ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
                         }
                     }
-
-                MotionToast.darkColorToast(this,"Form submitted!",
-                    "JINKLAS BHAVA",
-                    MotionToastStyle.SUCCESS,
-                    MotionToast.GRAVITY_BOTTOM,
-                    MotionToast.LONG_DURATION,
-                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
-                startActivity(Intent(this,patient_medical::class.java))
             }
+
             else{
                 MotionToast.darkColorToast(this,"Enter All Details!",
                     "HAGLAS BHAVA",
