@@ -368,5 +368,6 @@ class patient_personal : AppCompatActivity() {
         val validatedob=binding.dobcon.helperText==null
 
         return validfname && validmname && validlname && validpnum && validanum && validemail && validgender && validpass && validcpass && validatedob
+
     }
 }

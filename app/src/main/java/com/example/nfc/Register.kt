@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.nfc.hospital.hospital_signin
+import com.example.nfc.patient.patient_medical
 import com.example.nfc.patient.patient_personal
 import com.example.nfc.patient.patient_signin
 
@@ -21,7 +22,7 @@ class Register : AppCompatActivity() {
 
         reg.setOnClickListener {
 
-            val intent= Intent(this,patient_personal::class.java)
+            val intent= Intent(this,patient_medical::class.java)
             startActivity(intent)
 
         }
