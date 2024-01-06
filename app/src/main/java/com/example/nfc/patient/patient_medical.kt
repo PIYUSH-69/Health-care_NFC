@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Toast
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityPatientMedicalBinding
 
@@ -18,7 +19,6 @@ class patient_medical : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
         val array = arrayListOf("O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, array)
         binding.bldgrp.setAdapter(adapter)
@@ -26,16 +26,45 @@ class patient_medical : AppCompatActivity() {
         height()
         weight()
         ayush()
-
-
+        bldgrp()
 
         val reg=findViewById<Button>(R.id.button)
         reg.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
+
+            if (submitform()){
+
+                startActivity(Intent(this,MainActivity::class.java))
+
+            }
+            else{
+
+                Toast.makeText(this, "gsdgdsgds", Toast.LENGTH_SHORT).show()
+            }
+
+
+
+
+
         }
 
     }
 
+    private fun submitform(): Boolean {
+
+        binding.ayushcon.helperText=validateayush()
+        binding.bldgrpcon.helperText=validatebldgrp()
+        binding.weightcon.helperText= validateweight()
+        binding.heightcon.helperText= validateheight()
+
+       val a= binding.ayushcon.helperText==null
+       val b= binding.bldgrpcon.helperText==null
+       val c= binding.weightcon.helperText==null
+       val d= binding.heightcon.helperText==null
+
+
+        return a && b && c && d
+
+    }
 
 
     private fun height() {
