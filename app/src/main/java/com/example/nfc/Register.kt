@@ -22,16 +22,14 @@ class Register : AppCompatActivity() {
 
         reg.setOnClickListener {
 
-            val intent= Intent(this,patient_medical::class.java)
+            val intent= Intent(this,patient_personal::class.java)
             startActivity(intent)
 
         }
 
         sign.setOnClickListener {
-
             val intent= Intent(this,patient_signin::class.java)
             startActivity(intent)
-
         }
 
         signinhos.setOnClickListener {

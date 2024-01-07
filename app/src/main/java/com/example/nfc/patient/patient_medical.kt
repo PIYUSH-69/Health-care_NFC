@@ -138,10 +138,9 @@ class patient_medical : AppCompatActivity() {
     }
 
     private fun validateheight(): String? {
-        val text = binding.height.text.toString()
         if (binding.height.text.toString().isEmpty()) {
             return "THIS FIELD IS REQUIRED"
-        } else if (binding.height.text.toString().length<=272){
+        } else if (binding.height.text.toString().toInt()>272){
             return "INVALID HEIGHT"
         }
         else return null
@@ -158,7 +157,7 @@ class patient_medical : AppCompatActivity() {
     private fun validateweight(): String? {
         if (binding.weight.text.toString().isEmpty()) {
             return "THIS FIELD IS REQUIRED"
-        } else if (binding.weight.text.toString().length<=200){
+        } else if (binding.weight.text.toString().toInt()>200){
             return "INVALID WEIGHT"
         }
         else return null
@@ -192,7 +191,7 @@ class patient_medical : AppCompatActivity() {
     private fun validateayush(): String? {
         if (binding.ayush.text.toString().isEmpty()) {
             return "THIS FIELD IS REQUIRED"
-        } else if(binding.ayush.text.toString().length<=14){
+        } else if(binding.ayush.text.toString().length<14){
             return "TOO SHORT"
         }
         else return null

@@ -43,6 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Height(in cms)"
+                    android:maxLength="3"
                     android:inputType="number"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -59,6 +60,7 @@
                     android:id="@+id/weight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLength="3"
                     android:hint="Weight(in Kgs)"
                     android:inputType="numberDecimal"
                     android:singleLine="true" />
@@ -131,6 +133,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/surgery"
+                    android:inputType="text"
                     android:hint="Past illnesses and surgeries" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,6 +147,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/allergies"
+                    android:inputType="text"
                     android:hint="Allergies" />
             </com.google.android.material.textfield.TextInputLayout>
 
