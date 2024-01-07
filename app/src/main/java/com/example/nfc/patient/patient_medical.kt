@@ -12,6 +12,7 @@ import androidx.core.content.res.ResourcesCompat
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityPatientMedicalBinding
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.rpc.context.AttributeContext.Auth
@@ -68,9 +69,10 @@ class patient_medical : AppCompatActivity() {
                 mdetails.put("Allergies",Allergies)
                 mdetails.put("AYUSHMAN ID",ayush)
 
+
                 db.collection("Patient")
                     .document(user)
-                    .set(mdetails)
+                    .set(mdetails, SetOptions.merge())
                     .addOnSuccessListener { documentReference ->
                         Log.d(ContentValues.TAG, "DocumentSnapshot added ")
                         MotionToast.darkColorToast(this,"Form submitted!",
@@ -91,11 +93,6 @@ class patient_medical : AppCompatActivity() {
 
                 Toast.makeText(this, "gsdgdsgds", Toast.LENGTH_SHORT).show()
             }
-
-
-
-
-
         }
 
     }
@@ -112,9 +109,7 @@ class patient_medical : AppCompatActivity() {
        val c= binding.weightcon.helperText==null
        val d= binding.heightcon.helperText==null
 
-
         return a && b && c && d
-
     }
 
 
