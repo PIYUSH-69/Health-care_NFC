@@ -38,7 +38,7 @@ class patient_medical : AppCompatActivity() {
             }
             else{
 
-                Toast.makeText(this, "gsdgdsgds", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill the required fields", Toast.LENGTH_SHORT).show()
             }
 
 
