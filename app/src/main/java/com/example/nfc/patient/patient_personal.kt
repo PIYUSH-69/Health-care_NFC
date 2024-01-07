@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.example.nfc.databinding.ActivityPatientPersonalBinding
+import com.example.nfc.patient.patient_medical
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -114,7 +115,7 @@ class patient_personal : AppCompatActivity() {
                                         MotionToast.GRAVITY_BOTTOM,
                                         MotionToast.LONG_DURATION,
                                         ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
-                                    startActivity(Intent(this,patient_medical::class.java))
+                                    startActivity(Intent(this, patient_medical::class.java))
 
                                 Toast.makeText(this, "ADDED DETAILS", Toast.LENGTH_SHORT).show()
 

@@ -1,7 +1,11 @@
 package com.example.nfc.patient
 
+import com.example.nfc.patient.MainActivity
+
+
 import android.content.ContentValues
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +19,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.rpc.context.AttributeContext.Auth
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 
@@ -42,6 +45,19 @@ class patient_medical : AppCompatActivity() {
 
         val reg=findViewById<Button>(R.id.button)
         val user=Auth.uid.toString()
+
+        binding.butto.setOnClickListener {
+
+            val url = "https://abdm.gov.in/"
+            val i =Intent(Intent.ACTION_VIEW)
+            i.setData(Uri.parse(url))
+            startActivity(i)
+
+        }
+
+
+
+
         reg.setOnClickListener {
 
 
@@ -81,7 +97,7 @@ class patient_medical : AppCompatActivity() {
                             MotionToast.GRAVITY_BOTTOM,
                             MotionToast.LONG_DURATION,
                             ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
-                        startActivity(Intent(this,MainActivity::class.java))
+                        startActivity(Intent(this, MainActivity::class.java))
                         Toast.makeText(this, "ADDED VALUEs", Toast.LENGTH_SHORT).show()
 
                     }.addOnFailureListener { e ->
@@ -125,9 +141,10 @@ class patient_medical : AppCompatActivity() {
         val text = binding.height.text.toString()
         if (binding.height.text.toString().isEmpty()) {
             return "THIS FIELD IS REQUIRED"
-        } else {
-            return null
+        } else if (binding.height.text.toString().length<=272){
+            return "INVALID HEIGHT"
         }
+        else return null
     }
 
     private fun weight() {
@@ -141,10 +158,12 @@ class patient_medical : AppCompatActivity() {
     private fun validateweight(): String? {
         if (binding.weight.text.toString().isEmpty()) {
             return "THIS FIELD IS REQUIRED"
-        } else {
-            return null
+        } else if (binding.weight.text.toString().length<=200){
+            return "INVALID WEIGHT"
         }
+        else return null
     }
+
 
     private fun bldgrp() {
         binding.bldgrp.setOnFocusChangeListener { _, hasFocus ->
@@ -173,11 +192,9 @@ class patient_medical : AppCompatActivity() {
     private fun validateayush(): String? {
         if (binding.ayush.text.toString().isEmpty()) {
             return "THIS FIELD IS REQUIRED"
-        } else {
-            return null
-            }
+        } else if(binding.ayush.text.toString().length<=14){
+            return "TOO SHORT"
         }
-
-
-
+        else return null
+        }
 }

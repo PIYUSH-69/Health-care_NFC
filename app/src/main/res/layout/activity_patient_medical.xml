@@ -164,7 +164,22 @@
                     android:inputType="number"
                     android:maxLength="14"
                     android:singleLine="true" />
+
+                <Button
+                    android:id="@+id/butto"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IF NOT,CLICK HERE TO GENERATE"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
             </com.google.android.material.textfield.TextInputLayout>
+
+
+
 
             <Button
                 android:id="@+id/button"
