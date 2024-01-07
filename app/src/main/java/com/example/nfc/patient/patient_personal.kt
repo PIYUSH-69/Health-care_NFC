@@ -103,8 +103,6 @@ class patient_personal : AppCompatActivity() {
                             details.put("EMAIL",emailid)
                             details.put("PASSWORD",pass)
 
-
-
                             db.collection("Patient")
                                 .document(user)
                                 .set(details)

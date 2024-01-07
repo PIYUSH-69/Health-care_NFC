@@ -1,13 +1,22 @@
 package com.example.nfc.patient
 
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityPatientMedicalBinding
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.rpc.context.AttributeContext.Auth
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 
 class patient_medical : AppCompatActivity() {
 
@@ -25,20 +34,62 @@ class patient_medical : AppCompatActivity() {
 
         height()
         weight()
-        bldgrp()
         ayush()
+        bldgrp()
+
+        val Auth=Firebase.auth
 
         val reg=findViewById<Button>(R.id.button)
+        val user=Auth.uid.toString()
         reg.setOnClickListener {
+
 
             if (submitform()){
 
-                startActivity(Intent(this,MainActivity::class.java))
+                val height=binding.height.text.toString()
+                val wieght=binding.weight.text.toString()
+                val bldgrp=binding.bldgrp.text.toString()
+                val bloodpressure=binding.checkBox3.isChecked.toString()
+                val diabetes=binding.checkBox4.isChecked.toString()
+                val asthama=binding.checkBox5.isChecked.toString()
+                val illness=binding.allergies.text.toString()
+                val Allergies=binding.allergies.text.toString()
+                val ayush=binding.ayush.text.toString()
+
+                val db=Firebase.firestore
+                var mdetails= HashMap<String,String>()
+                mdetails.put("HEIGHT",height)
+                mdetails.put("WEIGHT",wieght)
+                mdetails.put("BLOOD GROUP",bldgrp)
+                mdetails.put("BLOOD PRESSURE",bloodpressure)
+                mdetails.put("DIABETES",diabetes)
+                mdetails.put("ASTHAMA",asthama)
+                mdetails.put("SURGERIES/ILLNESS",illness)
+                mdetails.put("Allergies",Allergies)
+                mdetails.put("AYUSHMAN ID",ayush)
+
+                db.collection("Patient")
+                    .document(user)
+                    .set(mdetails)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d(ContentValues.TAG, "DocumentSnapshot added ")
+                        MotionToast.darkColorToast(this,"Form submitted!",
+                            "JINKLAS BHAVA",
+                            MotionToastStyle.SUCCESS,
+                            MotionToast.GRAVITY_BOTTOM,
+                            MotionToast.LONG_DURATION,
+                            ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
+                        startActivity(Intent(this,MainActivity::class.java))
+                        Toast.makeText(this, "ADDED VALUEs", Toast.LENGTH_SHORT).show()
+
+                    }.addOnFailureListener { e ->
+                        Log.w(ContentValues.TAG, "Error adding document", e)
+                    }
 
             }
             else{
 
-                Toast.makeText(this, "Please fill the required fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "gsdgdsgds", Toast.LENGTH_SHORT).show()
             }
 
 
