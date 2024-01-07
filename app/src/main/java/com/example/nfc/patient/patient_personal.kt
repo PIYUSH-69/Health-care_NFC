@@ -118,7 +118,7 @@ class patient_personal : AppCompatActivity() {
                                         ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
                                     startActivity(Intent(this,patient_medical::class.java))
 
-                                Toast.makeText(this, "ADDED VALUEs", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "ADDED DETAILS", Toast.LENGTH_SHORT).show()
 
                                 }.addOnFailureListener { e ->
                                     Log.w(ContentValues.TAG, "Error adding document", e)
