@@ -1,9 +1,7 @@
 package com.example.nfc.patient
 
-import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
@@ -30,7 +28,7 @@ class Patient_main : AppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView : NavigationView = findViewById(R.id.nav_view)
         val navHeaderView = navView.getHeaderView(0)
-        val logout=findViewById<Button>(R.id.logoutpatient)
+        val logout=findViewById<Button>(R.id.logout)
 
         navView.itemIconTintList = null
         val navHeaderImage: ImageView = navHeaderView.findViewById(R.id.nav_header_image)
