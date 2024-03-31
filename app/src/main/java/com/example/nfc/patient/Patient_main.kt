@@ -20,7 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 class Patient_main : AppCompatActivity() {
-    lateinit var bottomNavBar : BottomNavigationView
     lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -42,7 +41,6 @@ class Patient_main : AppCompatActivity() {
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        bottomNavBar = findViewById(R.id.bNav)
         logout.setOnClickListener {
             val sharedPreferences= getSharedPreferences("counter", MODE_PRIVATE)
             sharedPreferences.edit().apply{
@@ -50,12 +48,6 @@ class Patient_main : AppCompatActivity() {
             startActivity(Intent(this, Register::class.java))
 
         }
-
-
-
-
-
-
 
     }
 
