@@ -9,11 +9,11 @@
 
     <item
         android:id="@+id/Doctors"
-        android:title="Docotors"/>
+        android:title="Doctors"/>
 
     <item
         android:id="@+id/staff"
-        android:title="staff" />
+        android:title="Staff" />
 
     <item
         android:id="@+id/Patient_data"

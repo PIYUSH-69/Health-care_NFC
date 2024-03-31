@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityHospitalSigninBinding
 import com.example.nfc.hospital.Hospital_main
@@ -27,7 +28,6 @@ class hospital_signin : AppCompatActivity() {
 
 
         binding.log2.setOnClickListener {
-
             validatename()
             validatepass()
 
@@ -35,16 +35,12 @@ class hospital_signin : AppCompatActivity() {
             val pass=binding.pass.text.toString()
 
             if (submit()){
-                auth.signInWithEmailAndPassword(name,pass).addOnSuccessListener {
-
+                if (name=="hospital@gmail.com" && pass=="Hospital@123"){
                     startActivity(Intent(this, Hospital_main::class.java))
-
-                }.addOnFailureListener {
-
+            }else{
                     binding.textview3.text="INVALID EMAIL OR PASSWORD"
-                    binding.textview3.setTextColor(resources.getColor(R.color.red))
-
-                }
+                binding.textview3.setTextColor(resources.getColor(R.color.red))
+            }
             }
         }
     }
