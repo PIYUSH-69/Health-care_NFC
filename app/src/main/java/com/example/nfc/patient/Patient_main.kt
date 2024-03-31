@@ -27,7 +27,7 @@ class Patient_main : AppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView : NavigationView = findViewById(R.id.nav_view)
         val navHeaderView = navView.getHeaderView(0)
-        val logout=findViewById<Button>(R.id.logout)
+        val logout=findViewById<Button>(R.id.logoutpatient)
 
         navView.itemIconTintList = null
         val navHeaderImage: ImageView = navHeaderView.findViewById(R.id.nav_header_image)
