@@ -40,6 +40,28 @@ class Hospital_main : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         bottomNavBar = findViewById(R.id.bNav)
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.Appointments -> {
+                    val eIntent = Intent(this, HospitalAppointments::class.java)
+                    startActivity(eIntent)
+                }
+                R.id.Doctors -> {
+                    val favEventIntent = Intent(this, Doctors::class.java)
+                    startActivity(favEventIntent)
+                }
+                R.id.staff -> {
+                    val cIntent = Intent(this, Staff::class.java)
+                    startActivity(cIntent)
+                }
+
+                R.id.Patient_data -> {
+                    val cIntent = Intent(this, PatientData::class.java)
+                    startActivity(cIntent)
+                }
+            }
+            true
+        }
 
         logout.setOnClickListener {
             startActivity(Intent(this, Register::class.java))

@@ -1,9 +1,7 @@
 package com.example.nfc.patient
 
-import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
@@ -20,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 class Patient_main : AppCompatActivity() {
+    lateinit var bottomNavBar : BottomNavigationView
     lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -29,7 +28,7 @@ class Patient_main : AppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView : NavigationView = findViewById(R.id.nav_view)
         val navHeaderView = navView.getHeaderView(0)
-        val logout=findViewById<Button>(R.id.logoutpatient)
+        val logout=findViewById<Button>(R.id.logout)
 
         navView.itemIconTintList = null
         val navHeaderImage: ImageView = navHeaderView.findViewById(R.id.nav_header_image)
@@ -41,6 +40,7 @@ class Patient_main : AppCompatActivity() {
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        bottomNavBar = findViewById(R.id.bNav)
         logout.setOnClickListener {
             val sharedPreferences= getSharedPreferences("counter", MODE_PRIVATE)
             sharedPreferences.edit().apply{
@@ -48,6 +48,35 @@ class Patient_main : AppCompatActivity() {
             startActivity(Intent(this, Register::class.java))
 
         }
+
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.Appointments -> {
+                    val aIntent = Intent(this, Appointments::class.java)
+                    startActivity(aIntent)
+                }
+                R.id.record -> {
+                    val rIntent = Intent(this, Records::class.java)
+                    startActivity(rIntent)
+                }
+                R.id.uploadodoc -> {
+                    val uIntent = Intent(this, MedicalReports::class.java)
+                    startActivity(uIntent)
+                }
+
+                R.id.profile -> {
+                    val pIntent = Intent(this, PatientProfile::class.java)
+                    startActivity(pIntent)
+                }
+
+                R.id.ayucard -> {
+                    val yIntent = Intent(this, AyuCard::class.java)
+                    startActivity(yIntent)
+                }
+            }
+            true
+        }
+
 
     }
 
