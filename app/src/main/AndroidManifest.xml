@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.NFC" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +16,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NFC.NoActionBar"
         tools:targetApi="31">
+        <activity
+            android:name=".hospital.PatientData"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.Staff"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.Doctors"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.HospitalAppointments"
+            android:exported="false" />
+        <activity
+            android:name=".patient.AyuCard"
+            android:exported="false" />
+        <activity
+            android:name=".patient.PatientProfile"
+            android:exported="false" />
+        <activity
+            android:name=".patient.MedicalReports"
+            android:exported="false" />
+        <activity
+            android:name=".patient.Records"
+            android:exported="false" />
+        <activity
+            android:name=".patient.Appointments"
+            android:exported="false" />
         <activity
             android:name=".hospital.Hospital_main"
             android:exported="false" />
