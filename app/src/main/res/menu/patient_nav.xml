@@ -13,6 +13,7 @@
 
     <item
         android:id="@+id/uploadodoc"
+        android:icon="@drawable/patient"
         android:title="Medical Reports" />
 
     <item
