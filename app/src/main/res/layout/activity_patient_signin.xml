@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/blue"
     android:backgroundTint="@color/blue"
-    tools:context=".patient.patient_signin">
+    tools:context=".auth.patient_signin">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

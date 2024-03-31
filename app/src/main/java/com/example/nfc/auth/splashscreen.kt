@@ -1,4 +1,4 @@
-package com.example.nfc
+package com.example.nfc.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.core.os.postDelayed
-import com.example.nfc.patient.patient_signin
+import com.example.nfc.R
 
 class splashscreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

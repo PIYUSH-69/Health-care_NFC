@@ -1,6 +1,4 @@
-package com.example.nfc.patient
-
-import com.example.nfc.patient.MainActivity
+package com.example.nfc.auth
 
 
 import android.content.ContentValues
@@ -15,6 +13,7 @@ import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityPatientMedicalBinding
+import com.example.nfc.patient.Patient_main
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
@@ -22,7 +21,7 @@ import com.google.firebase.ktx.Firebase
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 
-class patient_medical : AppCompatActivity() {
+class patient_medical_signin : AppCompatActivity() {
 
     private lateinit var binding: ActivityPatientMedicalBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,7 +96,7 @@ class patient_medical : AppCompatActivity() {
                             MotionToast.GRAVITY_BOTTOM,
                             MotionToast.LONG_DURATION,
                             ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
-                        startActivity(Intent(this, MainActivity::class.java))
+                        startActivity(Intent(this, Patient_main::class.java))
                         Toast.makeText(this, "ADDED VALUEs", Toast.LENGTH_SHORT).show()
 
                     }.addOnFailureListener { e ->

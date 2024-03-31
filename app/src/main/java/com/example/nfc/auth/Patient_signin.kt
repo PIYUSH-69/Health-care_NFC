@@ -1,4 +1,4 @@
-package com.example.nfc.patient
+package com.example.nfc.auth
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.widget.Button
 import androidx.core.content.res.ResourcesCompat
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityPatientSigninBinding
+import com.example.nfc.patient.Patient_main
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import www.sanju.motiontoast.MotionToast
@@ -44,15 +45,13 @@ class patient_signin : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(name,pass).addOnSuccessListener {
 
 
-                    startActivity(Intent(this,MainActivity::class.java))
+                    startActivity(Intent(this, Patient_main::class.java))
 
 
                 }.addOnFailureListener {
 
-
                     binding.textView3.text="INVALID EMAIL OR PASSWORD"
                     binding.textView3.setTextColor(resources.getColor(R.color.red))
-
 
                 }
             }

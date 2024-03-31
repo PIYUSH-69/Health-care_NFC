@@ -1,13 +1,12 @@
-package com.example.nfc.hospital
+package com.example.nfc.auth
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityHospitalSigninBinding
-import com.example.nfc.patient.MainActivity
+import com.example.nfc.hospital.Hospital_main
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -29,7 +28,6 @@ class hospital_signin : AppCompatActivity() {
 
         binding.log2.setOnClickListener {
 
-
             validatename()
             validatepass()
 
@@ -37,10 +35,9 @@ class hospital_signin : AppCompatActivity() {
             val pass=binding.pass.text.toString()
 
             if (submit()){
-
                 auth.signInWithEmailAndPassword(name,pass).addOnSuccessListener {
 
-                    startActivity(Intent(this,HOSPITAL::class.java))
+                    startActivity(Intent(this, Hospital_main::class.java))
 
                 }.addOnFailureListener {
 

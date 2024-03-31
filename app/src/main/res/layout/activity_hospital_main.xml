@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/drawer_layout"
+    android:layout_height="match_parent"
+    tools:context=".patient.Patient_main">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbarLayout"
+            android:id="@+id/frameL"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bNav"
+            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            app:menu="@menu/b_nav"
+            app:elevation="20dp"
+            android:elevation="20dp"
+            app:itemIconSize="25dp"
+
+            app:labelVisibilityMode="selected"
+            android:layout_alignParentBottom="true"/>
+        <include
+            android:id="@+id/toolbarLayout"
+            layout="@layout/navigation_bar"/>
+
+    </RelativeLayout>
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        app:itemVerticalPadding="15dp"
+        app:itemTextAppearance="@style/MenuItems"
+        android:background="@color/white"
+        app:itemTextColor="#0E074F"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/hospital_sidenav"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/logout"
+                style="@style/Widget.Material3.ExtendedFloatingActionButton.Icon.Surface"
+                android:layout_width="243dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="40dp"
+                android:backgroundTintMode="add"
+                android:elevation="20dp"
+                android:text="LOGOUT"
+                app:iconTint="#FF0000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

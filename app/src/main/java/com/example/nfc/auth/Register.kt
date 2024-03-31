@@ -1,14 +1,11 @@
-package com.example.nfc
+package com.example.nfc.auth
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.nfc.hospital.hospital_signin
-import com.example.nfc.patient.patient_medical
-import com.example.nfc.patient.patient_personal
-import com.example.nfc.patient.patient_signin
+import com.example.nfc.R
 
 class Register : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -22,19 +19,19 @@ class Register : AppCompatActivity() {
 
         reg.setOnClickListener {
 
-            val intent= Intent(this,patient_personal::class.java)
+            val intent= Intent(this, patient_personal::class.java)
             startActivity(intent)
 
         }
 
         sign.setOnClickListener {
-            val intent= Intent(this,patient_signin::class.java)
+            val intent= Intent(this, patient_signin::class.java)
             startActivity(intent)
         }
 
         signinhos.setOnClickListener {
 
-            val intent= Intent(this,hospital_signin::class.java)
+            val intent= Intent(this, hospital_signin::class.java)
             startActivity(intent)
 
 

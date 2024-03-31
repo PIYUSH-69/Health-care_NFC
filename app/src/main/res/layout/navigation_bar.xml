@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbars"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:theme="@style/Widget.Material3.CollapsingToolbar"
+        android:layout_height="60dp"
+        app:navigationIcon="@drawable/ic_round_menu_24"
+        app:titleMarginStart="10dp"
+        app:title="NFC"
+        android:foregroundTint="@color/white"
+        app:titleTextColor="@color/white"
+        android:background="@color/green"
+        app:navigationContentDescription="Drawer"
+        android:minHeight="?attr/actionBarSize"/>
+
+</RelativeLayout>
