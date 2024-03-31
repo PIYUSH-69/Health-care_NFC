@@ -8,6 +8,7 @@
 
     <item
         android:id="@+id/record"
+        android:icon="@drawable/ic_round_menu_24"
         android:title="Personal Health Record"/>
 
     <item

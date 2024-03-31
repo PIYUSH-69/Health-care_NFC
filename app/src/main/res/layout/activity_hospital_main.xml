@@ -18,18 +18,6 @@
             android:layout_below="@id/toolbarLayout"
             android:id="@+id/frameL"/>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bNav"
-            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            app:menu="@menu/b_nav"
-            app:elevation="20dp"
-            android:elevation="20dp"
-            app:itemIconSize="25dp"
-
-            app:labelVisibilityMode="selected"
-            android:layout_alignParentBottom="true"/>
         <include
             android:id="@+id/toolbarLayout"
             layout="@layout/navigation_bar"/>

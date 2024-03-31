@@ -18,7 +18,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 class Hospital_main : AppCompatActivity() {
-    lateinit var bottomNavBar : BottomNavigationView
     lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +38,6 @@ class Hospital_main : AppCompatActivity() {
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        bottomNavBar = findViewById(R.id.bNav)
 
         logout.setOnClickListener {
             startActivity(Intent(this, Register::class.java))

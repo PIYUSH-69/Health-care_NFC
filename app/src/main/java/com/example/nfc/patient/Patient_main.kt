@@ -46,9 +46,7 @@ class Patient_main : AppCompatActivity() {
             sharedPreferences.edit().apply{
                 putBoolean("flag",false) }.apply()
             startActivity(Intent(this, Register::class.java))
-
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
