@@ -9,7 +9,7 @@
     <item
         android:id="@+id/form"
         android:iconTint="#0D1542"
-        android:title="FORM"/>
+        android:title="Fill form"/>
 
     <item
         android:id="@+id/profile"
