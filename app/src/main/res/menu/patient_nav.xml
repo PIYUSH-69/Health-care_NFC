@@ -8,15 +8,23 @@
         android:title="Appointments" />
 
     <item
-        android:id="@+id/Medicines"
+        android:id="@+id/Medication"
         android:title="Medicines"/>
 
     <item
-        android:id="@+id/Doctors"
-        android:title="Docotors"/>
+        android:id="@+id/record"
+        android:title="Personal Health Record"/>
 
     <item
-        android:id="@+id/Patient_data"
-        android:title="Patient data" />
+        android:id="@+id/uploadodoc"
+        android:title="Upload Medical Report" />
+
+    <item
+        android:id="@+id/family"
+        android:title="Family" />
+
+    <item
+        android:id="@+id/ayucard"
+        android:title="Link Aabha Card" />
 
 </menu>

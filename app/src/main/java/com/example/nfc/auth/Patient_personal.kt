@@ -39,6 +39,7 @@ class patient_personal : AppCompatActivity() {
         val array = arrayListOf("Male", "Female", "Transgender")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, array)
         binding.gender.setAdapter(adapter)
+
         //datepicker
         val datePickerBuilder = MaterialDatePicker.Builder.datePicker()
         val datePicker = datePickerBuilder.build()
