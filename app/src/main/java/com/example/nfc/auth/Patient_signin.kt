@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import androidx.core.content.res.ResourcesCompat
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityPatientSigninBinding
@@ -24,37 +25,45 @@ class patient_signin : AppCompatActivity() {
         binding= ActivityPatientSigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var check=findViewById<CheckBox>(R.id.checkBox)
         val auth=Firebase.auth
 
         valname()
         valpass()
 
+        val sharedPreferences= getSharedPreferences("counter", MODE_PRIVATE)
 
         val log=findViewById<Button>(R.id.log)
         log.setOnClickListener {
 
+            var check1=check.isChecked
+
             validatename()
             validatepass()
-
             val name=binding.name.text.toString()
             val pass=binding.pass.text.toString()
 
-
             if (submit()){
 
-                auth.signInWithEmailAndPassword(name,pass).addOnSuccessListener {
-
-
-                    startActivity(Intent(this, Patient_main::class.java))
-
-
-                }.addOnFailureListener {
-
-                    binding.textView3.text="INVALID EMAIL OR PASSWORD"
-                    binding.textView3.setTextColor(resources.getColor(R.color.red))
-
+                auth.signInWithEmailAndPassword(name,pass).addOnCompleteListener {task->
+                    if (task.isSuccessful) {
+                        val userid=auth.uid
+                        sharedPreferences.edit().apply{
+                            putBoolean("flag",check1)
+                            putString("uid",userid)
+                        }.apply()
+                        startActivity(Intent(this, Patient_main::class.java))
+                    }else{
+                        MotionToast.darkColorToast(this,"Enter All Details!",
+                            "HAGLAS BHAVA",
+                            MotionToastStyle.ERROR,
+                            MotionToast.GRAVITY_BOTTOM,
+                            MotionToast.LONG_DURATION,
+                            ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
+                    }
                 }
             }
+
             else{
                 MotionToast.darkColorToast(this,"Enter All Details!",
                     "HAGLAS BHAVA",

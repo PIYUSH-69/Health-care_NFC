@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.nfc.R
+import com.example.nfc.patient.Patient_main
 
 class Register : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -30,14 +31,17 @@ class Register : AppCompatActivity() {
         }
 
         signinhos.setOnClickListener {
-
             val intent= Intent(this, hospital_signin::class.java)
             startActivity(intent)
-
-
         }
-
-
-
+    }
+    override fun onStart() {
+        super.onStart()
+        val sharedPreferences= getSharedPreferences("counter", MODE_PRIVATE)
+        val flag=sharedPreferences.getBoolean("flag",false)
+        if (flag)
+        {
+            startActivity(Intent(this, Patient_main::class.java))
+        }
     }
 }
