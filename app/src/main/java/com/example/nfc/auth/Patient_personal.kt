@@ -84,6 +84,7 @@ class patient_personal : AppCompatActivity() {
                 val emailid=binding.email.text.toString()
                 val pass=binding.pass.text.toString()
 
+
                 auth.createUserWithEmailAndPassword(emailid, pass)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {

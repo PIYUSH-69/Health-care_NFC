@@ -4,11 +4,12 @@
     tools:showIn="navigation_view">
     <item
         android:id="@+id/Appointments"
+        android:icon="@drawable/appointment"
         android:title="Appointments" />
 
     <item
         android:id="@+id/record"
-        android:icon="@drawable/ic_round_menu_24"
+        android:icon="@drawable/ic_check_green"
         android:title="Personal Health Record"/>
 
     <item

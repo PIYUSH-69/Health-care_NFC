@@ -17,31 +17,37 @@
         android:theme="@style/Theme.NFC.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".hospital.PatientData"
+            android:name=".patient.qr.qrcodepatient"
             android:exported="false" />
         <activity
-            android:name=".hospital.Staff"
+            android:name=".patient.qr.nfc"
             android:exported="false" />
         <activity
-            android:name=".hospital.Doctors"
+            android:name=".hospital.hospitalsidenav.PatientData"
             android:exported="false" />
         <activity
-            android:name=".hospital.HospitalAppointments"
+            android:name=".hospital.hospitalsidenav.Staff"
             android:exported="false" />
         <activity
-            android:name=".patient.AyuCard"
+            android:name=".hospital.hospitalsidenav.Doctors"
             android:exported="false" />
         <activity
-            android:name=".patient.PatientProfile"
+            android:name=".hospital.hospitalsidenav.HospitalAppointments"
             android:exported="false" />
         <activity
-            android:name=".patient.MedicalReports"
+            android:name=".patient.sidenav.AyuCard"
             android:exported="false" />
         <activity
-            android:name=".patient.Records"
+            android:name=".patient.sidenav.PatientProfile"
             android:exported="false" />
         <activity
-            android:name=".patient.Appointments"
+            android:name=".patient.sidenav.MedicalReports"
+            android:exported="false" />
+        <activity
+            android:name=".patient.sidenav.Records"
+            android:exported="false" />
+        <activity
+            android:name=".patient.sidenav.Appointments"
             android:exported="false" />
         <activity
             android:name=".hospital.Hospital_main"

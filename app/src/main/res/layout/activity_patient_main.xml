@@ -24,6 +24,12 @@ tools:context=".patient.Patient_main">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Patient Activity Home PAge" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CLICK HERE TO SUBMIT HOSPITAL FORM" />
     </LinearLayout>
     <include
         android:id="@+id/toolbarLayout"

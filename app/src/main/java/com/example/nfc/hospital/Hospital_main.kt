@@ -6,15 +6,15 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.nfc.R
 import com.example.nfc.auth.Register
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.nfc.hospital.hospitalsidenav.Doctors
+import com.example.nfc.hospital.hospitalsidenav.HospitalAppointments
+import com.example.nfc.hospital.hospitalsidenav.PatientData
+import com.example.nfc.hospital.hospitalsidenav.Staff
 import com.google.android.material.navigation.NavigationView
 
 class Hospital_main : AppCompatActivity() {

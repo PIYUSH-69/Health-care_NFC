@@ -6,15 +6,17 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.nfc.R
 import com.example.nfc.auth.Register
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.nfc.patient.qr.nfc
+import com.example.nfc.patient.sidenav.Appointments
+import com.example.nfc.patient.sidenav.AyuCard
+import com.example.nfc.patient.sidenav.MedicalReports
+import com.example.nfc.patient.sidenav.PatientProfile
+import com.example.nfc.patient.sidenav.Records
 import com.google.android.material.navigation.NavigationView
 
 class Patient_main : AppCompatActivity() {
@@ -28,7 +30,7 @@ class Patient_main : AppCompatActivity() {
         val navView : NavigationView = findViewById(R.id.nav_view)
         val navHeaderView = navView.getHeaderView(0)
         val logout=findViewById<Button>(R.id.logoutpatient)
-
+        val form=findViewById<Button>(R.id.button4)
         navView.itemIconTintList = null
         val navHeaderImage: ImageView = navHeaderView.findViewById(R.id.nav_header_image)
         val navHeaderName: TextView = navHeaderView.findViewById(R.id.nav_header_name)
@@ -44,6 +46,10 @@ class Patient_main : AppCompatActivity() {
             sharedPreferences.edit().apply{
                 putBoolean("flag",false) }.apply()
             startActivity(Intent(this, Register::class.java))
+        }
+
+        form.setOnClickListener {
+            startActivity(Intent(this, nfc ::class.java))
         }
 
         navView.setNavigationItemSelectedListener {

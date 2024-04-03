@@ -5,6 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".patient.sidenav.MedicalReports">
+    tools:context=".patient.qr.qrcodepatient">
 
+    <ImageButton
+        android:id="@+id/qr_code"
+        android:layout_width="1024px"
+        android:layout_height="1024px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
