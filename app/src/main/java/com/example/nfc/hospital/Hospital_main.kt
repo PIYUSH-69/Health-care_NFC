@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.nfc.R
 import com.example.nfc.auth.Register
-import com.example.nfc.hospital.hospitalsidenav.Doctors
+import com.example.nfc.doctors.Doctors
 import com.example.nfc.hospital.hospitalsidenav.HospitalAppointments
 import com.example.nfc.hospital.hospitalsidenav.PatientData
 import com.example.nfc.hospital.hospitalsidenav.Staff
