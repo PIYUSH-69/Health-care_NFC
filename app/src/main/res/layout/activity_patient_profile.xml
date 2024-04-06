@@ -1,10 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:focusableInTouchMode="true"
     tools:context=".patient.sidenav.PatientProfile">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:background="@color/offwhite2"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:padding="20dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_view_user_avatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="50dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/white"
+                android:src="@drawable/ic_baseline_person_24" />
+
+<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                android:id="@+id/fab_profile_avatar_update"-->
+<!--                android:visibility="gone"-->
+<!--                app:fabCustomSize="35dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="110dp"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                app:tint="@color/csi_primary_accent"-->
+<!--                android:src="@drawable/ic_generic_add"-->
+<!--                android:layout_marginLeft="60dp"/>-->
+
+            <TextView
+                android:id="@+id/text_view_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/image_view_user_avatar"
+                android:fontFamily="@font/alata"
+                android:includeFontPadding="false"
+                android:text="Raj Bhosle"
+                android:textColor="@color/black"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_view_profile_student_id"-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:layout_below="@id/text_view_profile_name"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_toRightOf="@+id/image_view_user_avatar"-->
+<!--                android:includeFontPadding="false"-->
+<!--                android:text="Ved@123"-->
+<!--                android:textSize="16sp" />-->
+        </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:hint="Full Name"
+                app:boxStrokeWidth="0dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_profile_name"
+                    style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:drawablePadding="30dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/alata" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_profile_class"
+                android:hint="Class"
+                android:layout_margin="5sp"
+                app:boxStrokeWidth="0dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_student_class"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:cursorVisible="true"
+                    android:drawablePadding="30dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alata"
+                    android:layout_width="match_parent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="Student ID"
+                android:layout_margin="5sp"
+                android:id="@+id/input_layout_profile_studentid"
+                app:boxStrokeWidth="0dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_profile_studentid"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"
+                    android:focusable="true"
+                    android:cursorVisible="true"
+                    android:drawablePadding="30dp"
+                    android:text="2021DSC002"
+                    android:fontFamily="@font/alata"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="Email Address"
+                android:layout_margin="5sp"
+                android:id="@+id/input_layout_profile_email"
+                android:fontFamily="@font/alata"
+                app:boxStrokeWidth="0dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_profile_email"
+                    android:inputType="textEmailAddress"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:cursorVisible="true"
+                    android:drawablePadding="30dp"
+                    android:text="user@domain.com"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="Contact"
+                android:layout_margin="5sp"
+                app:boxStrokeWidth="0dp"
+                android:id="@+id/input_layout_profile_contact"
+                android:fontFamily="@font/alata"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_profile_mobile"
+                    android:drawablePadding="30dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:cursorVisible="true"
+                    android:text="+91 8787654732"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:textAllCaps="true"
+                android:id="@+id/button_profile_update"
+                android:background="#fece2f"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/alata"
+                android:text="UPDATE"
+                android:layout_margin="15dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
