@@ -28,18 +28,6 @@
                 app:civ_border_color="@color/white"
                 android:src="@drawable/ic_baseline_person_24" />
 
-<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                android:id="@+id/fab_profile_avatar_update"-->
-<!--                android:visibility="gone"-->
-<!--                app:fabCustomSize="35dp"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="110dp"-->
-<!--                android:backgroundTint="@color/white"-->
-<!--                app:tint="@color/csi_primary_accent"-->
-<!--                android:src="@drawable/ic_generic_add"-->
-<!--                android:layout_marginLeft="60dp"/>-->
-
             <TextView
                 android:id="@+id/text_view_profile_name"
                 android:layout_width="wrap_content"
@@ -49,23 +37,10 @@
                 android:layout_toRightOf="@+id/image_view_user_avatar"
                 android:fontFamily="@font/alata"
                 android:includeFontPadding="false"
-                android:text="Raj Bhosle"
+                android:text="Your Name"
                 android:textColor="@color/black"
                 android:textSize="32sp"
                 android:textStyle="bold" />
-
-<!--            <TextView-->
-<!--                android:id="@+id/text_view_profile_student_id"-->
-<!--                android:textColor="@color/grey"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:layout_below="@id/text_view_profile_name"-->
-<!--                android:layout_marginLeft="20dp"-->
-<!--                android:layout_toRightOf="@+id/image_view_user_avatar"-->
-<!--                android:includeFontPadding="false"-->
-<!--                android:text="Ved@123"-->
-<!--                android:textSize="16sp" />-->
         </RelativeLayout>
 
 
@@ -77,15 +52,15 @@
             android:padding="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_layout_profile_name"
+                android:id="@+id/input_layout_profile_first_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5sp"
-                android:hint="Full Name"
+                android:hint="First Name"
                 app:boxStrokeWidth="0dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_text_profile_name"
+                    android:id="@+id/edit_text_profile_first_name"
                     style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -98,42 +73,85 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_layout_profile_class"
-                android:hint="Class"
-                android:layout_margin="5sp"
-                app:boxStrokeWidth="0dp"
+                android:id="@+id/input_layout_profile_middle_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+                android:layout_margin="5sp"
+                android:hint="Middle Name"
+                app:boxStrokeWidth="0dp">
+
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_text_student_class"
+                    android:id="@+id/edit_text_profile_middle_name"
+                    style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:cursorVisible="false"
+                    android:drawablePadding="30dp"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
-                    android:cursorVisible="true"
-                    android:drawablePadding="30dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/alata"
-                    android:layout_width="match_parent" />
+                    android:fontFamily="@font/alata" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Student ID"
-                android:layout_margin="5sp"
-                android:id="@+id/input_layout_profile_studentid"
-                app:boxStrokeWidth="0dp"
+                android:id="@+id/input_layout_profile_last_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+                android:layout_margin="5sp"
+                android:hint="Last Name"
+                app:boxStrokeWidth="0dp">
+
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_text_profile_studentid"
+                    android:id="@+id/edit_text_profile_last_name"
+                    style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:focusableInTouchMode="true"
+                    android:cursorVisible="false"
+                    android:drawablePadding="30dp"
                     android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/alata" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_profile_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:hint="DOB"
+                app:boxStrokeWidth="0dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_student_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
                     android:cursorVisible="true"
                     android:drawablePadding="30dp"
-                    android:text="2021DSC002"
-                    android:fontFamily="@font/alata"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/alata" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_profile_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:hint="Gender"
+                app:boxStrokeWidth="0dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_profile_gender"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent" />
+                    android:clickable="true"
+                    android:cursorVisible="true"
+                    android:drawablePadding="30dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/alata" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -153,7 +171,6 @@
                     android:focusableInTouchMode="true"
                     android:cursorVisible="true"
                     android:drawablePadding="30dp"
-                    android:text="user@domain.com"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent" />
 
@@ -174,9 +191,29 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:cursorVisible="true"
-                    android:text="+91 8787654732"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_profile_aadhar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:hint="Aadhar Card"
+                app:boxStrokeWidth="0dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_profile_aadhar"
+                    style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:drawablePadding="30dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/alata" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
