@@ -8,7 +8,7 @@
         android:id="@+id/toolbars"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
-        android:theme="@style/Widget.Material3.CollapsingToolbar"
+        android:theme="@style/white"
         android:layout_height="60dp"
         app:navigationIcon="@drawable/ic_round_menu_24"
         app:titleMarginStart="10dp"

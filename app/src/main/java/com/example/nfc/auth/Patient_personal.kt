@@ -22,7 +22,6 @@ import www.sanju.motiontoast.MotionToastStyle
 import java.util.Date
 import java.util.Locale
 
-
 class patient_personal : AppCompatActivity() {
 
     private lateinit var binding: ActivityPatientPersonalBinding

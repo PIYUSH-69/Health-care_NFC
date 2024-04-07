@@ -31,12 +31,21 @@ class Hospital_main : AppCompatActivity() {
         navView.itemIconTintList = null
         val navHeaderImage: ImageView = navHeaderView.findViewById(R.id.nav_header_image)
         val navHeaderName: TextView = navHeaderView.findViewById(R.id.nav_header_name)
+        val navHeaderdesc: TextView = navHeaderView.findViewById(R.id.nav_header_description)
+
+        navHeaderName.text="HOSPITAL"
+        navHeaderdesc.text=""
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         toggle.isDrawerIndicatorEnabled = true
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val scan=findViewById<Button>(R.id.button6)
+        scan.setOnClickListener {
+            startActivity(Intent(this,NFC_hospital::class.java))
+        }
 
         navView.setNavigationItemSelectedListener {
             when(it.itemId){

@@ -53,7 +53,6 @@ class Doctors : AppCompatActivity() {
         var db = FirebaseFirestore.getInstance()
         db.collection("Doctors").addSnapshotListener(object : EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                //recylerarralist.clear()
                 if (error != null) {
                     Log.e("Firestore Error", error.message.toString())
                     return
