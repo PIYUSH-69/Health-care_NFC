@@ -1,7 +1,9 @@
 package com.example.nfc.patient
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
@@ -18,6 +20,9 @@ import com.example.nfc.patient.sidenav.MedicalReports
 import com.example.nfc.patient.sidenav.PatientProfile
 import com.example.nfc.patient.sidenav.Records
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class Patient_main : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
@@ -40,6 +45,24 @@ class Patient_main : AppCompatActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val userid=Firebase.auth.currentUser!!.uid
+        val db= Firebase.firestore.collection("Patient").document(userid)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val fname=document.getString("FIRST NAME")
+                    val lname=document.getString("LAST NAME")
+                    navHeaderName.text=fname +" "+lname
+                    Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data!!.get("1")}")
+                } else {
+                    Log.d(ContentValues.TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(ContentValues.TAG, "get failed with ", exception)
+            }
+
 
         logout.setOnClickListener {
             val sharedPreferences= getSharedPreferences("counter", MODE_PRIVATE)

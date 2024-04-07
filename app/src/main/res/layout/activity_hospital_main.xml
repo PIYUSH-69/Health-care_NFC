@@ -12,11 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
+        <LinearLayout
+            android:id="@+id/linearlayouthospital"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbarLayout"
-            android:id="@+id/frameL"/>
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+        </LinearLayout>
 
         <include
             android:id="@+id/toolbarLayout"
