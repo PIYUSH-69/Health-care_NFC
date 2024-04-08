@@ -58,7 +58,6 @@ class qrscanner_hospital : AppCompatActivity() {
             val mediaPlayer=MediaPlayer.create(this,R.raw.beep)
             mediaPlayer.start()
             startActivity(Intent(this,form_fill::class.java).putExtra("uid",it.text))
-
         }
 
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS

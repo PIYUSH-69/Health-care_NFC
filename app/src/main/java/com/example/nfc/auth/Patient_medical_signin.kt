@@ -76,13 +76,13 @@ class patient_medical_signin : AppCompatActivity() {
                 var mdetails= HashMap<String,String>()
                 mdetails.put("HEIGHT",height)
                 mdetails.put("WEIGHT",wieght)
-                mdetails.put("BLOOD GROUP",bldgrp)
-                mdetails.put("BLOOD PRESSURE",bloodpressure)
+                mdetails.put("BLOOD_GROUP",bldgrp)
+                mdetails.put("BLOOD_PRESSURE",bloodpressure)
                 mdetails.put("DIABETES",diabetes)
                 mdetails.put("ASTHAMA",asthama)
                 mdetails.put("SURGERIES/ILLNESS",illness)
                 mdetails.put("Allergies",Allergies)
-                mdetails.put("AYUSHMAN ID",ayush)
+                mdetails.put("AYUSHMAN_ID",ayush)
 
 
                 db.collection("Patient")

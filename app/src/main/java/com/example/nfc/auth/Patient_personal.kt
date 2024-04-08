@@ -92,13 +92,13 @@ class patient_personal : AppCompatActivity() {
                             val user = auth.uid.toString()
                             val db=Firebase.firestore
                             var details= HashMap<String,String>()
-                            details.put("FIRST NAME",fname)
-                            details.put("MIDDLE NAME",mname)
-                            details.put("LAST NAME",lname)
+                            details.put("FIRST_NAME",fname)
+                            details.put("MIDDLE_NAME",mname)
+                            details.put("LAST_NAME",lname)
                             details.put("GENDER",gender)
                             details.put("DOB", dob)
-                            details.put("PHONE NUMBER",pnum)
-                            details.put("ADHARCARD NUMBER",anum)
+                            details.put("PHONE_NUMBER",pnum)
+                            details.put("ADHARCARD_NUMBER",anum)
                             details.put("EMAIL",emailid)
                             details.put("PASSWORD",pass)
 

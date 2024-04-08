@@ -27,5 +27,7 @@ class form_fill : AppCompatActivity() {
 
         Firebase.firestore.collection("Patient").document(uid).update("qr","true")
 
+
+
     }
 }
