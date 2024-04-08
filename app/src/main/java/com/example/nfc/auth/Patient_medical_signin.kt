@@ -80,7 +80,7 @@ class patient_medical_signin : AppCompatActivity() {
                 mdetails.put("BLOOD_PRESSURE",bloodpressure)
                 mdetails.put("DIABETES",diabetes)
                 mdetails.put("ASTHAMA",asthama)
-                mdetails.put("SURGERIES/ILLNESS",illness)
+                mdetails.put("SURGERIES",illness)
                 mdetails.put("Allergies",Allergies)
                 mdetails.put("AYUSHMAN_ID",ayush)
 
