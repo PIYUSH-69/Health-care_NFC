@@ -65,6 +65,7 @@ dependencies {
     implementation ("com.github.Spikeysanju:MotionToast:1.4")
     implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation ("com.github.yuriy-budiyev:code-scanner:2.3.2")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 
 
 }

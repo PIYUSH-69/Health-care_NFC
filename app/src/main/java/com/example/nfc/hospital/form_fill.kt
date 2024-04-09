@@ -8,6 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityFormFillBinding
 import com.example.nfc.databinding.ActivityPatientSigninBinding
@@ -49,9 +51,15 @@ class form_fill : AppCompatActivity() {
         binding.adhar.setText(patients.ADHARCARD_NUMBER)
         binding.abha.setText(patients.AYUSHMAN_ID)
         binding.phoneno.setText(patients.PHONE_NUMBER)
+        binding.blood.setText(patients.BLOOD_GROUP)
 
-
-
+        runBlocking {
+            patientcrud.getphotourl(uid){
+                Glide.with(applicationContext)
+                    .setDefaultRequestOptions(RequestOptions())
+                    .load(it)
+                    .into(binding.imageView2)
+            }
+        }
     }
-
 }
