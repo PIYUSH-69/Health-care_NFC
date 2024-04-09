@@ -51,8 +51,8 @@ class Patient_main : AppCompatActivity() {
             .get()
             .addOnSuccessListener { document ->
                 if (document != null && document.exists()) {
-                    val fname=document.getString("FIRST NAME")
-                    val lname=document.getString("LAST NAME")
+                    val fname=document.getString("FIRST_NAME")
+                    val lname=document.getString("LAST_NAME")
                     navHeaderName.text=fname +" "+lname
                     Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data!!.get("1")}")
                 } else {

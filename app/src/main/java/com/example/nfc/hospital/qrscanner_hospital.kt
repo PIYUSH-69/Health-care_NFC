@@ -52,13 +52,13 @@ class qrscanner_hospital : AppCompatActivity() {
         codeScanner.scanMode = ScanMode.CONTINUOUS// or CONTINUOUS or PREVIEW
         codeScanner.isAutoFocusEnabled = true // Whether to enable auto focus or not
         codeScanner.isFlashEnabled = false // Whether to enable flash or not
+        codeScanner.startPreview()
 
         // Callbacks
         codeScanner.decodeCallback = DecodeCallback {
             val mediaPlayer=MediaPlayer.create(this,R.raw.beep)
             mediaPlayer.start()
             startActivity(Intent(this,form_fill::class.java).putExtra("uid",it.text))
-
         }
 
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
@@ -71,9 +71,8 @@ class qrscanner_hospital : AppCompatActivity() {
             }
         }
 
-        scannerView.setOnClickListener {
-            codeScanner.startPreview()
-        }
+
+
 
 
 
