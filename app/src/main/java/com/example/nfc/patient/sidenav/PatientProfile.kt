@@ -59,14 +59,14 @@ class PatientProfile : AppCompatActivity() {
                 .get()
                 .addOnSuccessListener {document ->
                     if (document != null && document.exists()) {
-                        val firstName = document.getString("FIRST NAME")
-                        val middleName = document.getString("MIDDLE NAME")
-                        val lastName = document.getString("LAST NAME")
+                        val firstName = document.getString("FIRST_NAME")
+                        val middleName = document.getString("MIDDLE_NAME")
+                        val lastName = document.getString("LAST_NAME")
                         val dob = document.getString("DOB")
                         val gender = document.getString("GENDER")
                         val email = document.getString("EMAIL")
                         val contact = document.getString("PHONE NUMBER")
-                        val aadhar = document.getString("ADHARCARD NUMBER")
+                        val aadhar = document.getString("ADHARCARD_NUMBER")
                         headerName.text = firstName+" "+lastName
 
                         edit_text_profile_first_name.setText(firstName)
