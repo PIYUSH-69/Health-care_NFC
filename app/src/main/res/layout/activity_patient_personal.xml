@@ -28,6 +28,13 @@
                 android:textColor="@color/blue"
                 android:textSize="20sp" />
 
+            <ImageView
+                android:id="@+id/addUser"
+                android:layout_width="100dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/add_user" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fnamecon"
                 android:layout_width="match_parent"
