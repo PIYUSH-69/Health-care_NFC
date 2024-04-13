@@ -11,6 +11,8 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.nfc.R
 import com.example.nfc.auth.Register
 import com.example.nfc.patient.qr.nfc
@@ -23,6 +25,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.runBlocking
 
 class Patient_main : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
@@ -47,6 +50,14 @@ class Patient_main : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val userid=Firebase.auth.currentUser!!.uid
+        runBlocking {
+            patientcrud.getphotourl(userid){
+                Glide.with(applicationContext)
+                    .setDefaultRequestOptions(RequestOptions())
+                    .load(it)
+                    .into(navHeaderImage)
+            }
+        }
          Firebase.firestore.collection("Patient").document(userid)
             .get()
             .addOnSuccessListener { document ->
