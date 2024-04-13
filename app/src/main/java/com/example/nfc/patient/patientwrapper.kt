@@ -17,6 +17,7 @@ data class patientwrapper(
     val PHONE_NUMBER: String? = null,
     val ADHARCARD_NUMBER: String? = null,
     val EMAIL: String? = null,
+    val HEIGHT: String? = null,
     val WEIGHT: String? = null,
     val BLOOD_GROUP: String? = null,
     val BLOOD_PRESSURE: String? = null,
