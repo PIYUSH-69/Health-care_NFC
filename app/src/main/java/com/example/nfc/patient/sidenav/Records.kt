@@ -27,8 +27,8 @@ class Records : AppCompatActivity() {
         val uid= Firebase.auth.currentUser?.uid.toString()
 
         patients= runBlocking { patientcrud.getpatient(uid) }!!
-        binding.editTextHeight.setText(patients.HEIGHT)
-        binding.editTextWeight.setText(patients.WEIGHT)
+        binding.editTextHeight.setText(patients.HEIGHT+" m")
+        binding.editTextWeight.setText(patients.WEIGHT+" kg")
         binding.editTextBloodGroup.setText(patients.BLOOD_GROUP)
         binding.editTextBloodPressure.setText(patients.BLOOD_PRESSURE)
         binding.editTextDiabetes.setText(patients.DIABETES)
