@@ -28,12 +28,13 @@ class newdoctor : AppCompatActivity() {
         binding.button8.setOnClickListener {
             runBlocking {
                 doctorwrapper.adddoctor(
-                    doctorlist(name = binding.docotr.text.toString(),
+                    doctorlist(
+                        docuid = "Doctor:${System.currentTimeMillis()}",
+                        name = binding.docotr.text.toString(),
                         domain = binding.domain.text.toString(),
                         specialization = binding.spz.text.toString(),
                         contact = binding.contact.text.toString()),
                         )
-
             }
 
             Toast.makeText(this, "Doctor Added successfully!", Toast.LENGTH_SHORT).show()
@@ -44,4 +45,6 @@ class newdoctor : AppCompatActivity() {
 
 
     }
+
+
 }

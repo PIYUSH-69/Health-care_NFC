@@ -52,6 +52,8 @@ class patient_signin : AppCompatActivity() {
                             putBoolean("flag",check1)
                             putString("uid",userid)
                         }.apply()
+
+
                         startActivity(Intent(this, Patient_main::class.java))
                     }else{
                         MotionToast.darkColorToast(this,"Enter All Details!",

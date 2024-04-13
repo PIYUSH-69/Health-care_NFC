@@ -4,8 +4,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.text.util.Linkify
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -40,7 +38,7 @@ class qrscanner_hospital : AppCompatActivity() {
 
         setuppermissions()
         val scannerView = findViewById<CodeScannerView>(R.id.scanner_view)
-        val resultTextView = findViewById<TextView>(R.id.textView12)
+        val resultTextView = findViewById<TextView>(R.id.appspec)
 
         codeScanner = CodeScanner(this, scannerView)
 

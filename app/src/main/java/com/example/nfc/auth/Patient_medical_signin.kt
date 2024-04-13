@@ -84,14 +84,13 @@ class patient_medical_signin : AppCompatActivity() {
                 mdetails.put("Allergies",Allergies)
                 mdetails.put("AYUSHMAN_ID",ayush)
 
-
                 db.collection("Patient")
                     .document(user)
                     .set(mdetails, SetOptions.merge())
                     .addOnSuccessListener { documentReference ->
                         Log.d(ContentValues.TAG, "DocumentSnapshot added ")
                         MotionToast.darkColorToast(this,"Form submitted!",
-                            "JINKLAS BHAVA",
+                            "Registeration successful",
                             MotionToastStyle.SUCCESS,
                             MotionToast.GRAVITY_BOTTOM,
                             MotionToast.LONG_DURATION,
@@ -109,7 +108,6 @@ class patient_medical_signin : AppCompatActivity() {
                 Toast.makeText(this, "gsdgdsgds", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 
     private fun submitform(): Boolean {
@@ -126,7 +124,6 @@ class patient_medical_signin : AppCompatActivity() {
 
         return a && b && c && d
     }
-
 
     private fun height() {
         binding.height.setOnFocusChangeListener { _, hasFocus ->
