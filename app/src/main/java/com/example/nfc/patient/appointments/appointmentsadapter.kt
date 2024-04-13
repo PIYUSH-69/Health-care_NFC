@@ -44,11 +44,7 @@ class appointmentsadapter(private val doctorlist: ArrayList<doctorlist>) : Recyc
             val intent = Intent(holder.button.context, submitappointment::class.java)
             intent.putExtra("Doctorid", doctors.docuid)
             (mContext as Activity).startActivityForResult(intent,100)
+
         }
-
     }
-
-
-
-
 }

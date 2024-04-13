@@ -12,7 +12,7 @@ class doctorsadapter(private val doctorlist: ArrayList<doctorlist>) :RecyclerVie
         var name=itemView.findViewById<TextView>(R.id.card_doctor)
         val domain=itemView.findViewById<TextView>(R.id.card_designation)
         val specialization=itemView.findViewById<TextView>(R.id.card_specaliztion)
-        val contact=itemView.findViewById<TextView>(R.id.contact)
+        val contact=itemView.findViewById<TextView>(R.id.card_contact)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Myviewholder {

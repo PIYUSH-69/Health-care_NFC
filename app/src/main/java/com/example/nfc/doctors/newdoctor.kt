@@ -26,11 +26,13 @@ class newdoctor : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button8.setOnClickListener {
+            val str = binding.docotr.text.toString()
+            val uid = str.substring(0,3)+System.currentTimeMillis()
             runBlocking {
                 doctorwrapper.adddoctor(
                     doctorlist(
-                        docuid = "Doctor:${System.currentTimeMillis()}",
-                        name = binding.docotr.text.toString(),
+                        docuid = uid,
+                        name = str,
                         domain = binding.domain.text.toString(),
                         specialization = binding.spz.text.toString(),
                         contact = binding.contact.text.toString()),

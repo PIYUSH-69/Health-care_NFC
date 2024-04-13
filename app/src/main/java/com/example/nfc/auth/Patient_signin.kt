@@ -52,12 +52,18 @@ class patient_signin : AppCompatActivity() {
                             putBoolean("flag",check1)
                             putString("uid",userid)
                         }.apply()
+                        MotionToast.darkColorToast(this,"WELCOME",
+                            "Authentication Successfull",
+                            MotionToastStyle.SUCCESS,
+                            MotionToast.GRAVITY_BOTTOM,
+                            MotionToast.LONG_DURATION,
+                            ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
 
 
                         startActivity(Intent(this, Patient_main::class.java))
                     }else{
-                        MotionToast.darkColorToast(this,"Enter All Details!",
-                            "HAGLAS BHAVA",
+                        MotionToast.darkColorToast(this,"",
+                            "Wrong Credentials!!",
                             MotionToastStyle.ERROR,
                             MotionToast.GRAVITY_BOTTOM,
                             MotionToast.LONG_DURATION,
@@ -68,7 +74,7 @@ class patient_signin : AppCompatActivity() {
 
             else{
                 MotionToast.darkColorToast(this,"Enter All Details!",
-                    "HAGLAS BHAVA",
+                    "Enter EmailID and Password",
                     MotionToastStyle.ERROR,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,

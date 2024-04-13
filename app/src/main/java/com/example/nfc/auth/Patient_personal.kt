@@ -149,6 +149,17 @@ class patient_personal : AppCompatActivity() {
                                 .set(details)
                                 .addOnSuccessListener { documentReference ->
                                     Log.d(ContentValues.TAG, "DocumentSnapshot added ")
+                                    MotionToast.darkColorToast(
+                                        this, "Congratulations!!!",
+                                        "Registeration Successfully !",
+                                        MotionToastStyle.SUCCESS,
+                                        MotionToast.GRAVITY_BOTTOM,
+                                        MotionToast.SHORT_DURATION,
+                                        ResourcesCompat.getFont(
+                                            this,
+                                            www.sanju.motiontoast.R.font.helvetica_regular
+                                        )
+                                    )
 
                                     startActivity(Intent(this, patient_medical_signin::class.java))
 
@@ -157,29 +168,15 @@ class patient_personal : AppCompatActivity() {
                                 }
 
 
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
-                            MotionToast.darkColorToast(
-                                this, "Authentication Failed!",
-                                "JINKLAS BHAVA",
-                                MotionToastStyle.SUCCESS,
-                                MotionToast.GRAVITY_BOTTOM,
-                                MotionToast.LONG_DURATION,
-                                ResourcesCompat.getFont(
-                                    this,
-                                    www.sanju.motiontoast.R.font.helvetica_regular
-                                )
-                            )
                         }
-                    }
-            } else {
+                    } }
+            else {
                 MotionToast.darkColorToast(
-                    this, "Enter All Details!",
-                    "HAGLAS BHAVA",
+                    this, "Validation Failed",
+                    "Enter All Details!",
                     MotionToastStyle.ERROR,
                     MotionToast.GRAVITY_BOTTOM,
-                    MotionToast.LONG_DURATION,
+                    MotionToast.SHORT_DURATION,
                     ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular)
                 )
             }

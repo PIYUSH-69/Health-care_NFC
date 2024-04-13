@@ -93,7 +93,7 @@ class patient_medical_signin : AppCompatActivity() {
                             "Registeration successful",
                             MotionToastStyle.SUCCESS,
                             MotionToast.GRAVITY_BOTTOM,
-                            MotionToast.LONG_DURATION,
+                            MotionToast.SHORT_DURATION,
                             ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
                         startActivity(Intent(this, Patient_main::class.java))
                         Toast.makeText(this, "ADDED VALUEs", Toast.LENGTH_SHORT).show()
@@ -104,8 +104,12 @@ class patient_medical_signin : AppCompatActivity() {
 
             }
             else{
-
-                Toast.makeText(this, "gsdgdsgds", Toast.LENGTH_SHORT).show()
+                MotionToast.darkColorToast(this,"Validation Failed!",
+                    "Enter All Details!l",
+                    MotionToastStyle.ERROR,
+                    MotionToast.GRAVITY_BOTTOM,
+                    MotionToast.SHORT_DURATION,
+                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
             }
         }
     }

@@ -1,5 +1,7 @@
 package com.example.nfc.doctors
 
+import com.example.nfc.patient.patientcrud
+import com.example.nfc.patient.patientwrapper
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
@@ -15,8 +17,14 @@ class doctorwrapper{
 companion object{
     private val doctorCollectionRef = FirebaseFirestore.getInstance().collection("Doctors")
 
+
+    suspend fun getdocotr(userId: String): doctorlist? {
+        val document = doctorCollectionRef.document(userId).get().await()
+        return document.toObject(doctorlist::class.java)!!
+    }
+
     suspend fun adddoctor(docotrobject: doctorlist) {
-        val doctorId: String = docotrobject.name.toString()
+        val doctorId: String = docotrobject.docuid.toString()
         doctorCollectionRef
             .document(doctorId)
             .set(docotrobject)

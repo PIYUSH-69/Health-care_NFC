@@ -35,8 +35,6 @@ class Appointments : AppCompatActivity() {
         recyler.adapter=myadapter
         eventchanfelisterner()
 
-
-
     }
 
     private fun eventchanfelisterner() {
@@ -52,7 +50,6 @@ class Appointments : AppCompatActivity() {
                         recylerarralist.add(dc.document.toObject(doctorlist::class.java))
                     }
                 }
-
                 myadapter.notifyDataSetChanged()
             }
 
