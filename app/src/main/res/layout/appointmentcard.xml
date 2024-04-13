@@ -44,7 +44,7 @@
             android:text="Contact:" />
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/profileButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Book Appointment" />

@@ -27,12 +27,9 @@ import kotlinx.coroutines.runBlocking
 import java.util.Date
 import java.util.Locale
 
-
-private lateinit var binding: ActivitySubmitappointmentBinding
-private lateinit var doctors: doctorlist
-
-
-class submitappointment : AppCompatActivity() {
+class SubmitAppointment : AppCompatActivity() {
+    private lateinit var binding: ActivitySubmitappointmentBinding
+    private lateinit var doctors: doctorlist
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

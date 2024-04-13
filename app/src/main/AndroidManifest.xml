@@ -23,6 +23,12 @@
         android:theme="@style/Theme.NFC.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".hospital.hospitalsidenav.HealthRecord"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.hospitalsidenav.ProfileDetails"
+            android:exported="false" />
+        <activity
             android:name=".patient.appointments.submitappointment"
             android:exported="false" />
         <activity
