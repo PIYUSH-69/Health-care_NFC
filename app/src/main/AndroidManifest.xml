@@ -22,6 +22,12 @@
         android:theme="@style/Theme.NFC.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".patient.appointments.submitappointment"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.nfc_tag_hospital"
+            android:exported="false" />
+        <activity
             android:name=".hospital.form_fill"
             android:exported="false" />
         <activity
@@ -64,7 +70,7 @@
             android:name=".patient.sidenav.Records"
             android:exported="false" />
         <activity
-            android:name=".patient.sidenav.Appointments"
+            android:name=".patient.appointments.Appointments"
             android:exported="false" />
         <activity
             android:name=".hospital.Hospital_main"

@@ -83,7 +83,6 @@ class patient_personal : AppCompatActivity() {
                 val emailid=binding.email.text.toString()
                 val pass=binding.pass.text.toString()
 
-
                 auth.createUserWithEmailAndPassword(emailid, pass)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
@@ -107,15 +106,7 @@ class patient_personal : AppCompatActivity() {
                                 .set(details)
                                 .addOnSuccessListener { documentReference ->
                                 Log.d(ContentValues.TAG, "DocumentSnapshot added ")
-                                    MotionToast.darkColorToast(this,"Form submitted!",
-                                        "JINKLAS BHAVA",
-                                        MotionToastStyle.SUCCESS,
-                                        MotionToast.GRAVITY_BOTTOM,
-                                        MotionToast.LONG_DURATION,
-                                        ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
                                     startActivity(Intent(this, patient_medical_signin::class.java))
-
-                                Toast.makeText(this, "ADDED DETAILS", Toast.LENGTH_SHORT).show()
 
                                 }.addOnFailureListener { e ->
                                     Log.w(ContentValues.TAG, "Error adding document", e)

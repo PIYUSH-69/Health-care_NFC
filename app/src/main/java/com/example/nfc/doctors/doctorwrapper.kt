@@ -4,10 +4,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
 data class doctorlist (
+    val docuid:String?=null,
     val name :String? = null,
     val domain :String? = null,
     val specialization :String? = null,
-    val contact :String? = null)
+    val contact :String? = null,)
 
 class doctorwrapper{
 
@@ -15,13 +16,12 @@ companion object{
     private val doctorCollectionRef = FirebaseFirestore.getInstance().collection("Doctors")
 
     suspend fun adddoctor(docotrobject: doctorlist) {
-        val agendaId: String = docotrobject.name.toString()
+        val doctorId: String = docotrobject.name.toString()
         doctorCollectionRef
-            .document(agendaId)
+            .document(doctorId)
             .set(docotrobject)
             .await()
     }
-
 
 }
 

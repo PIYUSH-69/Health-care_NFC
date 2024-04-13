@@ -14,7 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.nfc.R
 import com.example.nfc.auth.Register
 import com.example.nfc.patient.qr.nfc
-import com.example.nfc.patient.sidenav.Appointments
+import com.example.nfc.patient.appointments.Appointments
 import com.example.nfc.patient.sidenav.AyuCard
 import com.example.nfc.patient.sidenav.MedicalReports
 import com.example.nfc.patient.sidenav.PatientProfile
@@ -47,7 +47,7 @@ class Patient_main : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val userid=Firebase.auth.currentUser!!.uid
-        val db= Firebase.firestore.collection("Patient").document(userid)
+         Firebase.firestore.collection("Patient").document(userid)
             .get()
             .addOnSuccessListener { document ->
                 if (document != null && document.exists()) {

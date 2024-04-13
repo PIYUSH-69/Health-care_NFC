@@ -37,7 +37,6 @@ class patientcrud {
             return document.toObject(patientwrapper::class.java)!!
         }
 
-
         suspend fun getphotourl(userId: String, callback: (String?) -> Unit) {
             var url=""
             patientstorage.child(userId).child("profilepic/").child("profile.jpg").downloadUrl.addOnSuccessListener{
@@ -48,8 +47,6 @@ class patientcrud {
             Log.d(ContentValues.TAG, "getphotourl: "+url)
 
         }
-
-
     }
 }
 
