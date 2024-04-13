@@ -11,9 +11,7 @@
         android:id="@+id/Doctors"
         android:title="Doctors"/>
 
-    <item
-        android:id="@+id/staff"
-        android:title="Staff" />
+
 
     <item
         android:id="@+id/Patient_data"

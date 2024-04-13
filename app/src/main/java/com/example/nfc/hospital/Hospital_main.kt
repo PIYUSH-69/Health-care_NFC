@@ -57,10 +57,6 @@ class Hospital_main : AppCompatActivity() {
                     val favEventIntent = Intent(this, Doctors::class.java)
                     startActivity(favEventIntent)
                 }
-                R.id.staff -> {
-                    val cIntent = Intent(this, Staff::class.java)
-                    startActivity(cIntent)
-                }
 
                 R.id.Patient_data -> {
                     val cIntent = Intent(this, PatientData::class.java)

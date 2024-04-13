@@ -23,6 +23,6 @@
 
     <item
         android:id="@+id/ayucard"
-        android:title="Link Aabha Card" />
+        android:title="Aabha Card" />
 
 </menu>
