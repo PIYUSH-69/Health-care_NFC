@@ -20,7 +20,7 @@ class appointmentsadapter(private val doctorlist: ArrayList<doctorlist>) : Recyc
         val domain=itemView.findViewById<TextView>(R.id.appdesignation)
         val specialization=itemView.findViewById<TextView>(R.id.appspec)
         val contact=itemView.findViewById<TextView>(R.id.appcontact)
-        val button=itemView.findViewById<Button>(R.id.button10)
+        val button=itemView.findViewById<Button>(R.id.profileButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Myviewholder {
@@ -41,7 +41,7 @@ class appointmentsadapter(private val doctorlist: ArrayList<doctorlist>) : Recyc
         holder.contact.text="Contact: "+doctors.contact
 
         holder.button.setOnClickListener {
-            val intent = Intent(holder.button.context, submitappointment::class.java)
+            val intent = Intent(holder.button.context, SubmitAppointment::class.java)
             intent.putExtra("Doctorid", doctors.docuid)
             (mContext as Activity).startActivityForResult(intent,100)
 
