@@ -19,10 +19,12 @@
 
     <item
         android:id="@+id/profile"
-        android:title="Profile" />
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_person_24" />
 
     <item
         android:id="@+id/ayucard"
+        android:icon="@drawable/identity_card"
         android:title="Aabha Card" />
 
 </menu>
