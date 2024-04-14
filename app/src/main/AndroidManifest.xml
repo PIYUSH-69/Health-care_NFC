@@ -23,25 +23,25 @@
         android:theme="@style/Theme.NFC.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".hospital.hospitalsidenav.HealthRecord"
+            android:name=".hospital.patientdata.HealthRecord"
             android:exported="false" />
         <activity
-            android:name=".hospital.hospitalsidenav.ProfileDetails"
+            android:name=".hospital.patientdata.ProfileDetails"
             android:exported="false" />
         <activity
             android:name=".patient.appointments.SubmitAppointment"
             android:exported="false" />
         <activity
-            android:name=".hospital.nfc_tag_hospital"
+            android:name=".hospital.nfchospital.nfc_tag_hospital"
             android:exported="false" />
         <activity
-            android:name=".hospital.form_fill"
+            android:name=".hospital.nfchospital.form_fill"
             android:exported="false" />
         <activity
-            android:name=".hospital.qrscanner_hospital"
+            android:name=".hospital.nfchospital.qrscanner_hospital"
             android:exported="false" />
         <activity
-            android:name=".hospital.NFC_hospital"
+            android:name=".hospital.nfchospital.NFC_hospital"
             android:exported="false" />
         <activity
             android:name=".doctors.newdoctor"
@@ -53,7 +53,7 @@
             android:name=".patient.qr.nfc"
             android:exported="false" />
         <activity
-            android:name=".hospital.hospitalsidenav.PatientData"
+            android:name=".hospital.patientdata.PatientData"
             android:exported="false" />
         <activity
             android:name=".hospital.hospitalsidenav.Staff"

@@ -5,6 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".hospital.hospitalsidenav.MedicalReport">
+    tools:context=".hospital.patientdata.MedicalReport">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

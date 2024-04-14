@@ -1,6 +1,5 @@
-package com.example.nfc.hospital.hospitalsidenav
+package com.example.nfc.hospital.patientdata
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater

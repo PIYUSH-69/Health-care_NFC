@@ -1,4 +1,4 @@
-package com.example.nfc.hospital.hospitalsidenav
+package com.example.nfc.hospital.patientdata
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

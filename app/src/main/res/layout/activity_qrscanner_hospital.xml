@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".hospital.qrscanner_hospital">
+    tools:context=".hospital.nfchospital.qrscanner_hospital">
 
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/scanner_view"

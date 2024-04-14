@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityHospitalSigninBinding
 import com.example.nfc.databinding.ActivityNewdoctorBinding
 import kotlinx.coroutines.runBlocking
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 import java.util.ArrayList
 import java.util.Date
 
@@ -24,6 +27,7 @@ class newdoctor : AppCompatActivity() {
 
         binding=ActivityNewdoctorBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         binding.button8.setOnClickListener {
             val str = binding.docotr.text.toString()
@@ -39,8 +43,12 @@ class newdoctor : AppCompatActivity() {
                         )
             }
 
-            Toast.makeText(this, "Doctor Added successfully!", Toast.LENGTH_SHORT).show()
-            finish()
+            MotionToast.darkColorToast(this,"WELCOME",
+                "Doctor added Successfully",
+                MotionToastStyle.SUCCESS,
+                MotionToast.GRAVITY_BOTTOM,
+                MotionToast.LONG_DURATION,
+                ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
 
         }
 

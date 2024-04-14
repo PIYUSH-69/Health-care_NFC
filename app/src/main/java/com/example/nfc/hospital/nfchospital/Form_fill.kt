@@ -1,31 +1,20 @@
-package com.example.nfc.hospital
+package com.example.nfc.hospital.nfchospital
 
 import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.nfc.R
-import com.example.nfc.auth.patient_medical_signin
 import com.example.nfc.databinding.ActivityFormFillBinding
-import com.example.nfc.databinding.ActivityPatientSigninBinding
 import com.example.nfc.patient.patientcrud
 import com.example.nfc.patient.patientwrapper
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.tasks.await
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 
@@ -87,7 +76,7 @@ class form_fill : AppCompatActivity() {
                         MotionToast.GRAVITY_BOTTOM,
                         MotionToast.LONG_DURATION,
                         ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
-                        startActivity(Intent(this,nfc_tag_hospital::class.java))
+                        startActivity(Intent(this, nfc_tag_hospital::class.java))
 
                 }.addOnFailureListener { e ->
                     Log.w(ContentValues.TAG, "Error adding document", e)

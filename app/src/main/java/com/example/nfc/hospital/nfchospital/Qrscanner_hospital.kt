@@ -1,5 +1,6 @@
-package com.example.nfc.hospital
+package com.example.nfc.hospital.nfchospital
 
+import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
@@ -19,12 +20,11 @@ import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.example.nfc.R
-private const val camcode = 101
-
 
 class qrscanner_hospital : AppCompatActivity() {
 
     private lateinit var codeScanner: CodeScanner
+    private val camcode = 101
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +54,9 @@ class qrscanner_hospital : AppCompatActivity() {
 
         // Callbacks
         codeScanner.decodeCallback = DecodeCallback {
-            val mediaPlayer=MediaPlayer.create(this,R.raw.beep)
+            val mediaPlayer= MediaPlayer.create(this, R.raw.beep)
             mediaPlayer.start()
-            startActivity(Intent(this,form_fill::class.java).putExtra("uid",it.text))
+            startActivity(Intent(this, form_fill::class.java).putExtra("uid",it.text))
         }
 
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
@@ -87,7 +87,7 @@ class qrscanner_hospital : AppCompatActivity() {
     }
 
     private fun setuppermissions() {
-        val permission = ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
+        val permission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
 
         if (permission != PackageManager.PERMISSION_GRANTED) {
             makeRequest()
@@ -97,7 +97,7 @@ class qrscanner_hospital : AppCompatActivity() {
     private fun makeRequest() {
         ActivityCompat.requestPermissions(
             this,
-            arrayOf(android.Manifest.permission.CAMERA),
+            arrayOf(Manifest.permission.CAMERA),
             camcode
         )
     }

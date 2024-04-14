@@ -13,8 +13,8 @@ import com.example.nfc.R
 import com.example.nfc.auth.Register
 import com.example.nfc.doctors.Doctors
 import com.example.nfc.hospital.hospitalsidenav.HospitalAppointments
-import com.example.nfc.hospital.hospitalsidenav.PatientData
-import com.example.nfc.hospital.hospitalsidenav.Staff
+import com.example.nfc.hospital.nfchospital.NFC_hospital
+import com.example.nfc.hospital.patientdata.PatientData
 import com.google.android.material.navigation.NavigationView
 
 class Hospital_main : AppCompatActivity() {
@@ -44,7 +44,7 @@ class Hospital_main : AppCompatActivity() {
 
         val scan=findViewById<Button>(R.id.button6)
         scan.setOnClickListener {
-            startActivity(Intent(this,NFC_hospital::class.java))
+            startActivity(Intent(this, NFC_hospital::class.java))
         }
 
         navView.setNavigationItemSelectedListener {
