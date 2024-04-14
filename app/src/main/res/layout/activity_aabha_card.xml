@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".patient.sidenav.AyuCard">
 
 
@@ -205,12 +204,11 @@
                 android:id="@+id/imageView4"
                 android:layout_width="106dp"
                 android:layout_height="105dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/abhaDob"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.666"
-                app:layout_constraintStart_toEndOf="@+id/abhaNo"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                app:layout_constraintVertical_bias="0.387"
+                app:layout_constraintVertical_bias="0.293"
                 app:srcCompat="@drawable/ic_code_scanner_auto_focus_off" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

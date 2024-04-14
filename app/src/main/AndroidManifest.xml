@@ -29,7 +29,7 @@
             android:name=".hospital.hospitalsidenav.ProfileDetails"
             android:exported="false" />
         <activity
-            android:name=".patient.appointments.submitappointment"
+            android:name=".patient.appointments.SubmitAppointment"
             android:exported="false" />
         <activity
             android:name=".hospital.nfc_tag_hospital"

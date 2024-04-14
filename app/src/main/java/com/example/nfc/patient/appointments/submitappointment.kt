@@ -85,14 +85,7 @@ class SubmitAppointment : AppCompatActivity() {
 
 
         binding.button11.setOnClickListener {
-
-
-
-
-
             startActivity(Intent(this,Patient_main::class.java))
-
-
         }
 
 
