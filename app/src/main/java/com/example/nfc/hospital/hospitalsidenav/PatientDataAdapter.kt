@@ -28,9 +28,6 @@ class PatientDataAdapter(private val registeredUsersList : ArrayList<patientwrap
         val profileDetailsButton: Button = itemView.findViewById(R.id.profileButton)
         val healthRecordButton: Button = itemView.findViewById(R.id.healthButton)
         val medicalReportButton: Button = itemView.findViewById(R.id.medicalButton)
-
-        private lateinit var mContext: Context
-        private val REQUEST_CODE_LOOP_TO_LIST: Int = 100
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
