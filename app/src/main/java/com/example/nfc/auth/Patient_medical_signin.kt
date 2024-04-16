@@ -76,14 +76,13 @@ class patient_medical_signin : AppCompatActivity() {
                 var mdetails= HashMap<String,String>()
                 mdetails.put("HEIGHT",height)
                 mdetails.put("WEIGHT",wieght)
-                mdetails.put("BLOOD GROUP",bldgrp)
-                mdetails.put("BLOOD PRESSURE",bloodpressure)
+                mdetails.put("BLOOD_GROUP",bldgrp)
+                mdetails.put("BLOOD_PRESSURE",bloodpressure)
                 mdetails.put("DIABETES",diabetes)
                 mdetails.put("ASTHAMA",asthama)
-                mdetails.put("SURGERIES/ILLNESS",illness)
+                mdetails.put("SURGERIES",illness)
                 mdetails.put("Allergies",Allergies)
-                mdetails.put("AYUSHMAN ID",ayush)
-
+                mdetails.put("AYUSHMAN_ID",ayush)
 
                 db.collection("Patient")
                     .document(user)
@@ -91,10 +90,10 @@ class patient_medical_signin : AppCompatActivity() {
                     .addOnSuccessListener { documentReference ->
                         Log.d(ContentValues.TAG, "DocumentSnapshot added ")
                         MotionToast.darkColorToast(this,"Form submitted!",
-                            "JINKLAS BHAVA",
+                            "Registeration successful",
                             MotionToastStyle.SUCCESS,
                             MotionToast.GRAVITY_BOTTOM,
-                            MotionToast.LONG_DURATION,
+                            MotionToast.SHORT_DURATION,
                             ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
                         startActivity(Intent(this, Patient_main::class.java))
                         Toast.makeText(this, "ADDED VALUEs", Toast.LENGTH_SHORT).show()
@@ -105,11 +104,14 @@ class patient_medical_signin : AppCompatActivity() {
 
             }
             else{
-
-                Toast.makeText(this, "gsdgdsgds", Toast.LENGTH_SHORT).show()
+                MotionToast.darkColorToast(this,"Validation Failed!",
+                    "Enter All Details!l",
+                    MotionToastStyle.ERROR,
+                    MotionToast.GRAVITY_BOTTOM,
+                    MotionToast.SHORT_DURATION,
+                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
             }
         }
-
     }
 
     private fun submitform(): Boolean {
@@ -126,7 +128,6 @@ class patient_medical_signin : AppCompatActivity() {
 
         return a && b && c && d
     }
-
 
     private fun height() {
         binding.height.setOnFocusChangeListener { _, hasFocus ->

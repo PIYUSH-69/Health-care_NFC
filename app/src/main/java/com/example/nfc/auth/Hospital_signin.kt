@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityHospitalSigninBinding
 import com.example.nfc.hospital.Hospital_main

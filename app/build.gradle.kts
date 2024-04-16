@@ -52,10 +52,10 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation("com.google.firebase:firebase-auth:22.3.1")
     implementation("com.google.firebase:firebase-database:20.3.1")
-    implementation("com.google.firebase:firebase-firestore:24.10.3")
+    implementation("com.google.firebase:firebase-firestore:24.11.0")
     implementation("com.google.firebase:firebase-storage:20.3.0")
-    implementation("com.google.firebase:firebase-crashlytics:18.6.2")
-    implementation("com.google.firebase:firebase-analytics:21.5.1")
+    implementation("com.google.firebase:firebase-crashlytics:18.6.3")
+    implementation("com.google.firebase:firebase-analytics:21.6.1")
     implementation("androidx.activity:activity:1.8.2")
     implementation("com.google.firebase:firebase-messaging:23.4.1")
     testImplementation("junit:junit:4.13.2")
@@ -63,5 +63,12 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.28")
     implementation ("com.github.Spikeysanju:MotionToast:1.4")
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation ("com.github.yuriy-budiyev:code-scanner:2.3.2")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.0")
+
+
 
 }

@@ -5,18 +5,19 @@
     tools:showIn="navigation_view">
     <item
         android:id="@+id/Appointments"
+        android:icon="@drawable/appointment"
         android:title="Appointments" />
 
     <item
         android:id="@+id/Doctors"
+        android:icon="@drawable/doctor"
         android:title="Doctors"/>
 
-    <item
-        android:id="@+id/staff"
-        android:title="Staff" />
+
 
     <item
         android:id="@+id/Patient_data"
+        android:icon="@drawable/patient_data"
         android:title="Patient data" />
 
 

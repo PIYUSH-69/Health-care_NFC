@@ -4,11 +4,12 @@
     tools:showIn="navigation_view">
     <item
         android:id="@+id/Appointments"
+        android:icon="@drawable/appointment"
         android:title="Appointments" />
 
     <item
         android:id="@+id/record"
-        android:icon="@drawable/ic_round_menu_24"
+        android:icon="@drawable/ic_check_green"
         android:title="Personal Health Record"/>
 
     <item
@@ -18,11 +19,12 @@
 
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/user"
-        android:title="Profile" />
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_person_24" />
 
     <item
         android:id="@+id/ayucard"
-        android:title="Link Aabha Card" />
+        android:icon="@drawable/identity_card"
+        android:title="Aabha Card" />
 
 </menu>

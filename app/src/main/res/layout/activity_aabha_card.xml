@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/qrabha"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".patient.sidenav.AyuCard">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="400dp"
+        android:layout_height="326dp"
+        android:layout_margin="20dp"
+        android:elevation="20dp"
+        android:orientation="vertical"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="401dp"
+                android:layout_height="64dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/screenshot_2024_04_08_172056" />
+
+            <ImageView
+                android:id="@+id/abhaPhoto"
+                android:layout_width="82dp"
+                android:layout_height="111dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:layout_constraintVertical_bias="0.463"
+                app:srcCompat="@drawable/ic_baseline_person_24" />
+
+            <TextView
+                android:id="@+id/abhaName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:text="Name/नाम "
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/abhaDbName"
+                app:layout_constraintStart_toEndOf="@+id/abhaPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+            <TextView
+                android:id="@+id/abhaDbName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="166dp"
+                android:layout_marginBottom="16dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/abhaNo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/abhaPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/abhaName" />
+
+            <TextView
+                android:id="@+id/abhaNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="ABHA number/आभा-संख्या "
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/abhaPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/abhaDbName" />
+
+            <TextView
+                android:id="@+id/abhaDbNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="126dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/abhaAddr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/abhaPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/abhaNo"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/abhaAddr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="156dp"
+                android:text="ABHA address/आभा पता "
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/abhaDbAddr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.166"
+                app:layout_constraintStart_toEndOf="@+id/abhaPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/abhaDbNo" />
+
+            <TextView
+                android:id="@+id/abhaDbAddr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="132dp"
+                android:layout_marginBottom="29dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/abhaGender"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/abhaPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/abhaAddr" />
+
+            <TextView
+                android:id="@+id/abhaGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:text="Gender/लिंग "
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/abhaPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/abhaDbAddr" />
+
+            <TextView
+                android:id="@+id/abhaDbGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="46dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/abhaDbDob"
+                app:layout_constraintHorizontal_bias="0.086"
+                app:layout_constraintStart_toEndOf="@+id/abhaPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/abhaGender"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/abhaDob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:text="Date of birth/जन्मतिथि "
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.466"
+                app:layout_constraintStart_toEndOf="@+id/abhaGender"
+                app:layout_constraintTop_toTopOf="@+id/abhaGender" />
+
+            <TextView
+                android:id="@+id/abhaDbDob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="44dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/abhaDob"
+                app:layout_constraintTop_toBottomOf="@+id/abhaDob"
+                app:layout_constraintVertical_bias="0.062" />
+
+            <TextView
+                android:id="@+id/abhaMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:text="Mobile/मोबाइल "
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/abhaPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/abhaDbGender" />
+
+            <TextView
+                android:id="@+id/abhaDbMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/abhaPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/abhaMobile" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="106dp"
+                android:layout_height="105dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/abhaDob"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:layout_constraintVertical_bias="0.293"
+                app:srcCompat="@drawable/ic_code_scanner_auto_focus_off" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

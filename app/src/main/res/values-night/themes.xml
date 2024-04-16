@@ -3,7 +3,7 @@
 
     <style name="Theme.NFC.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
 
-        <item name="colorPrimary">#86D12E</item>
+        <item name="colorPrimary">#D12E2E</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="background">@color/red</item>

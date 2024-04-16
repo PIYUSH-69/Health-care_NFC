@@ -1,32 +1,46 @@
 package com.example.nfc.auth
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.ContentValues
 import android.content.Intent
 import android.icu.text.SimpleDateFormat
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import com.example.nfc.R
 import com.example.nfc.databinding.ActivityPatientPersonalBinding
+import com.example.nfc.patient.patientcrud
+import com.example.nfc.patient.patientwrapper
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import kotlinx.coroutines.runBlocking
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 import java.util.Date
 import java.util.Locale
 
-
 class patient_personal : AppCompatActivity() {
 
     private lateinit var binding: ActivityPatientPersonalBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var ivStudentAvatar: ImageView
+    private val REQUEST_CODE_IMAGE_UPSERT = 103
+    private var imageUri: Uri? = null
+    private lateinit var patients: patientwrapper
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +48,16 @@ class patient_personal : AppCompatActivity() {
 
         binding = ActivityPatientPersonalBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //add profile picture
+        ivStudentAvatar = findViewById(R.id.addUser)
+        ivStudentAvatar.setOnClickListener {
+            val intent = Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(intent, REQUEST_CODE_IMAGE_UPSERT)
+        }
+
 
         //spinner
         val array = arrayListOf("Male", "Female", "Transgender")
@@ -45,8 +69,7 @@ class patient_personal : AppCompatActivity() {
         val datePicker = datePickerBuilder.build()
 
         binding.dob.setOnClickListener {
-            if (!datePicker.isAdded)
-            {
+            if (!datePicker.isAdded) {
                 datePicker.show(supportFragmentManager, "DatePicker")
             }
         }
@@ -69,20 +92,39 @@ class patient_personal : AppCompatActivity() {
         cpass()
 
         //submitform
-        auth=Firebase.auth
+        auth = Firebase.auth
 
         binding.button3.setOnClickListener {
-            if(submitform())
-            {
-                val fname=binding.fname.text.toString()
-                val mname=binding.mname.text.toString()
-                val lname=binding.lname.text.toString()
-                val anum=binding.anum.text.toString()
-                val pnum=binding.pnum.text.toString()
-                val dob=binding.dob.text.toString()
-                val gender=binding.gender.text.toString()
-                val emailid=binding.email.text.toString()
-                val pass=binding.pass.text.toString()
+            if (submitform()) {
+                val fname = binding.fname.text.toString()
+                val mname = binding.mname.text.toString()
+                val lname = binding.lname.text.toString()
+                val anum = binding.anum.text.toString()
+                val pnum = binding.pnum.text.toString()
+                val dob = binding.dob.text.toString()
+                val gender = binding.gender.text.toString()
+                val emailid = binding.email.text.toString()
+                val pass = binding.pass.text.toString()
+
+                val currentUserUid = Firebase.auth.currentUser?.uid
+                currentUserUid?.let { uid ->
+                    val storageRef = FirebaseStorage.getInstance().reference.child(uid)
+                    val imageRef = storageRef.child("profilepic/").child("profile.jpg")
+
+                    // Upload the selected image to that folder
+                    imageUri?.let { uri ->
+                        imageRef.putFile(uri)
+                            .addOnSuccessListener { taskSnapshot ->
+                                Log.d("Storage", "Image uploaded successfully: ${taskSnapshot.metadata?.path}")
+                                // Handle successful upload
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.e("Storage", "Image upload failed: ${exception.message}")
+                                // Handle failed upload
+                            }
+                    }
+                }
+
 
                 auth.createUserWithEmailAndPassword(emailid, pass)
                     .addOnCompleteListener(this) { task ->
@@ -90,58 +132,53 @@ class patient_personal : AppCompatActivity() {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(ContentValues.TAG, "createUserWithEmail:success")
                             val user = auth.uid.toString()
-                            val db=Firebase.firestore
-                            var details= HashMap<String,String>()
-                            details.put("FIRST NAME",fname)
-                            details.put("MIDDLE NAME",mname)
-                            details.put("LAST NAME",lname)
-                            details.put("GENDER",gender)
+                            val db = Firebase.firestore
+                            var details = HashMap<String, String>()
+                            details.put("FIRST_NAME", fname)
+                            details.put("MIDDLE_NAME", mname)
+                            details.put("LAST_NAME", lname)
+                            details.put("GENDER", gender)
                             details.put("DOB", dob)
-                            details.put("PHONE NUMBER",pnum)
-                            details.put("ADHARCARD NUMBER",anum)
-                            details.put("EMAIL",emailid)
-                            details.put("PASSWORD",pass)
+                            details.put("PHONE_NUMBER", pnum)
+                            details.put("ADHARCARD_NUMBER", anum)
+                            details.put("EMAIL", emailid)
+                            details.put("PASSWORD", pass)
 
                             db.collection("Patient")
                                 .document(user)
                                 .set(details)
                                 .addOnSuccessListener { documentReference ->
-                                Log.d(ContentValues.TAG, "DocumentSnapshot added ")
-                                    MotionToast.darkColorToast(this,"Form submitted!",
-                                        "JINKLAS BHAVA",
+                                    Log.d(ContentValues.TAG, "DocumentSnapshot added ")
+                                    MotionToast.darkColorToast(
+                                        this, "Congratulations!!!",
+                                        "Registeration Successfully !",
                                         MotionToastStyle.SUCCESS,
                                         MotionToast.GRAVITY_BOTTOM,
-                                        MotionToast.LONG_DURATION,
-                                        ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
-                                    startActivity(Intent(this, patient_medical_signin::class.java))
+                                        MotionToast.SHORT_DURATION,
+                                        ResourcesCompat.getFont(
+                                            this,
+                                            www.sanju.motiontoast.R.font.helvetica_regular
+                                        )
+                                    )
 
-                                Toast.makeText(this, "ADDED DETAILS", Toast.LENGTH_SHORT).show()
+                                    startActivity(Intent(this, patient_medical_signin::class.java))
 
                                 }.addOnFailureListener { e ->
                                     Log.w(ContentValues.TAG, "Error adding document", e)
                                 }
 
 
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
-                            MotionToast.darkColorToast(this,"Authentication Failed!",
-                                "JINKLAS BHAVA",
-                                MotionToastStyle.SUCCESS,
-                                MotionToast.GRAVITY_BOTTOM,
-                                MotionToast.LONG_DURATION,
-                                ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
                         }
-                    }
-            }
-
-            else{
-                MotionToast.darkColorToast(this,"Enter All Details!",
-                    "HAGLAS BHAVA",
+                    } }
+            else {
+                MotionToast.darkColorToast(
+                    this, "Validation Failed",
+                    "Enter All Details!",
                     MotionToastStyle.ERROR,
                     MotionToast.GRAVITY_BOTTOM,
-                    MotionToast.LONG_DURATION,
-                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
+                    MotionToast.SHORT_DURATION,
+                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular)
+                )
             }
         }
     }
@@ -237,7 +274,6 @@ class patient_personal : AppCompatActivity() {
     }
 
 
-
     private fun pnum() {
         binding.pnum.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
@@ -260,11 +296,11 @@ class patient_personal : AppCompatActivity() {
     }
 
     private fun dob() {
-            if (binding.dob.text.toString().isEmpty()) {
-                binding.dobcon.helperText = "REQUIRED FIELD"
-            }
-            else {
-            binding.dobcon.helperText = null}
+        if (binding.dob.text.toString().isEmpty()) {
+            binding.dobcon.helperText = "REQUIRED FIELD"
+        } else {
+            binding.dobcon.helperText = null
+        }
     }
 
     private fun gender() {
@@ -361,9 +397,17 @@ class patient_personal : AppCompatActivity() {
         val validgender = binding.gendercon.helperText == null
         val validpass = binding.passcon.helperText == null
         val validcpass = binding.cpasscon.helperText == null
-        val validatedob=binding.dobcon.helperText==null
+        val validatedob = binding.dobcon.helperText == null
 
         return validfname && validmname && validlname && validpnum && validanum && validemail && validgender && validpass && validcpass && validatedob
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_IMAGE_UPSERT && resultCode == RESULT_OK && data != null && data.data != null) {
+            imageUri = data.data
+            ivStudentAvatar.setImageURI(imageUri)
+
+        }
     }
 }

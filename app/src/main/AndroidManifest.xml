@@ -2,46 +2,85 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/applogo"
         android:label="Health Connect"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.NFC.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".hospital.PatientData"
+            android:name=".hospital.patientdata.HealthRecord"
             android:exported="false" />
         <activity
-            android:name=".hospital.Staff"
+            android:name=".hospital.patientdata.ProfileDetails"
             android:exported="false" />
         <activity
-            android:name=".hospital.Doctors"
+            android:name=".patient.appointments.SubmitAppointment"
             android:exported="false" />
         <activity
-            android:name=".hospital.HospitalAppointments"
+            android:name=".hospital.nfchospital.nfc_tag_hospital"
             android:exported="false" />
         <activity
-            android:name=".patient.AyuCard"
+            android:name=".hospital.nfchospital.form_fill"
             android:exported="false" />
         <activity
-            android:name=".patient.PatientProfile"
+            android:name=".hospital.nfchospital.qrscanner_hospital"
             android:exported="false" />
         <activity
-            android:name=".patient.MedicalReports"
+            android:name=".hospital.nfchospital.NFC_hospital"
             android:exported="false" />
         <activity
-            android:name=".patient.Records"
+            android:name=".doctors.newdoctor"
             android:exported="false" />
         <activity
-            android:name=".patient.Appointments"
+            android:name=".patient.qr.qrcodepatient"
+            android:exported="false" />
+        <activity
+            android:name=".patient.qr.nfc"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.patientdata.PatientData"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.hospitalsidenav.Staff"
+            android:exported="false" />
+        <activity
+            android:name=".doctors.Doctors"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.hospitalsidenav.HospitalAppointments"
+            android:exported="false" />
+        <activity
+            android:name=".patient.sidenav.AyuCard"
+            android:exported="false" />
+        <activity
+            android:name=".patient.sidenav.PatientProfile"
+            android:exported="false" />
+        <activity
+            android:name=".patient.sidenav.MedicalReports"
+            android:exported="false" />
+        <activity
+            android:name=".patient.sidenav.Records"
+            android:exported="false" />
+        <activity
+            android:name=".patient.appointments.Appointments"
             android:exported="false" />
         <activity
             android:name=".hospital.Hospital_main"
@@ -85,6 +124,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

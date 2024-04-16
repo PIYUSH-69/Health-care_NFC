@@ -1,21 +1,31 @@
 package com.example.nfc.patient
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.nfc.R
 import com.example.nfc.auth.Register
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.nfc.patient.qr.nfc
+import com.example.nfc.patient.appointments.Appointments
+import com.example.nfc.patient.sidenav.AyuCard
+import com.example.nfc.patient.sidenav.MedicalReports
+import com.example.nfc.patient.sidenav.PatientProfile
+import com.example.nfc.patient.sidenav.Records
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.runBlocking
 
 class Patient_main : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
@@ -28,7 +38,7 @@ class Patient_main : AppCompatActivity() {
         val navView : NavigationView = findViewById(R.id.nav_view)
         val navHeaderView = navView.getHeaderView(0)
         val logout=findViewById<Button>(R.id.logoutpatient)
-
+        val form=findViewById<Button>(R.id.button4)
         navView.itemIconTintList = null
         val navHeaderImage: ImageView = navHeaderView.findViewById(R.id.nav_header_image)
         val navHeaderName: TextView = navHeaderView.findViewById(R.id.nav_header_name)
@@ -39,11 +49,41 @@ class Patient_main : AppCompatActivity() {
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val userid=Firebase.auth.currentUser!!.uid
+        runBlocking {
+            patientcrud.getphotourl(userid){
+                Glide.with(applicationContext)
+                    .setDefaultRequestOptions(RequestOptions())
+                    .load(it)
+                    .into(navHeaderImage)
+            }
+        }
+         Firebase.firestore.collection("Patient").document(userid)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val fname=document.getString("FIRST_NAME")
+                    val lname=document.getString("LAST_NAME")
+                    navHeaderName.text=fname +" "+lname
+                    Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data!!.get("1")}")
+                } else {
+                    Log.d(ContentValues.TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(ContentValues.TAG, "get failed with ", exception)
+            }
+
+
         logout.setOnClickListener {
             val sharedPreferences= getSharedPreferences("counter", MODE_PRIVATE)
             sharedPreferences.edit().apply{
                 putBoolean("flag",false) }.apply()
             startActivity(Intent(this, Register::class.java))
+        }
+
+        form.setOnClickListener {
+            startActivity(Intent(this, nfc ::class.java))
         }
 
         navView.setNavigationItemSelectedListener {

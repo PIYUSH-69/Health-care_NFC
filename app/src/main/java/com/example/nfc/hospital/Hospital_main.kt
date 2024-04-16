@@ -6,15 +6,15 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.nfc.R
 import com.example.nfc.auth.Register
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.nfc.doctors.Doctors
+import com.example.nfc.hospital.hospitalsidenav.HospitalAppointments
+import com.example.nfc.hospital.nfchospital.NFC_hospital
+import com.example.nfc.hospital.patientdata.PatientData
 import com.google.android.material.navigation.NavigationView
 
 class Hospital_main : AppCompatActivity() {
@@ -31,12 +31,21 @@ class Hospital_main : AppCompatActivity() {
         navView.itemIconTintList = null
         val navHeaderImage: ImageView = navHeaderView.findViewById(R.id.nav_header_image)
         val navHeaderName: TextView = navHeaderView.findViewById(R.id.nav_header_name)
+        val navHeaderdesc: TextView = navHeaderView.findViewById(R.id.nav_header_description)
+
+        navHeaderName.text="HOSPITAL"
+        navHeaderdesc.text=""
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         toggle.isDrawerIndicatorEnabled = true
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val scan=findViewById<Button>(R.id.button6)
+        scan.setOnClickListener {
+            startActivity(Intent(this, NFC_hospital::class.java))
+        }
 
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
@@ -47,10 +56,6 @@ class Hospital_main : AppCompatActivity() {
                 R.id.Doctors -> {
                     val favEventIntent = Intent(this, Doctors::class.java)
                     startActivity(favEventIntent)
-                }
-                R.id.staff -> {
-                    val cIntent = Intent(this, Staff::class.java)
-                    startActivity(cIntent)
                 }
 
                 R.id.Patient_data -> {
