@@ -18,7 +18,7 @@ companion object{
     private val doctorCollectionRef = FirebaseFirestore.getInstance().collection("Doctors")
 
 
-    suspend fun getdocotr(userId: String): doctorlist? {
+    suspend fun getdocotr(userId: String): doctorlist {
         val document = doctorCollectionRef.document(userId).get().await()
         return document.toObject(doctorlist::class.java)!!
     }

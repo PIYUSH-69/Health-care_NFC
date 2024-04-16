@@ -32,7 +32,6 @@ import kotlinx.coroutines.runBlocking
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 import java.util.Calendar
-import java.util.Calendar.YEAR
 import java.util.Date
 import java.util.Locale
 
@@ -86,10 +85,7 @@ class SubmitAppointment : AppCompatActivity() {
         )
 
 
-
         val datePicker = datePickerBuilder.build()
-
-
         val dob=findViewById<TextInputEditText>(R.id.dateob)
 
 
@@ -123,6 +119,7 @@ class SubmitAppointment : AppCompatActivity() {
 
         binding.button11.setOnClickListener {
             appointments=appointmentwrapper(
+                uid = user,
                 booktime = System.currentTimeMillis().toString(),
                 doctorid =  docuid,
                 timeslot = binding.slot.text.toString() ,
