@@ -9,12 +9,12 @@
 
     <item
         android:id="@+id/record"
-        android:icon="@drawable/ic_check_green"
+        android:icon="@drawable/recorddd"
         android:title="Personal Health Record"/>
 
     <item
         android:id="@+id/uploadodoc"
-        android:icon="@drawable/patient"
+        android:icon="@drawable/history"
         android:title="Medical Reports" />
 
     <item
