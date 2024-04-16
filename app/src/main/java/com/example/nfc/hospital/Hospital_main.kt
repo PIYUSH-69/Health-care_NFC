@@ -25,16 +25,9 @@ class Hospital_main : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbars))
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView : NavigationView = findViewById(R.id.nav_view)
-        val navHeaderView = navView.getHeaderView(0)
         val logout=findViewById<Button>(R.id.logout)
 
         navView.itemIconTintList = null
-        val navHeaderImage: ImageView = navHeaderView.findViewById(R.id.nav_header_image)
-        val navHeaderName: TextView = navHeaderView.findViewById(R.id.nav_header_name)
-        val navHeaderdesc: TextView = navHeaderView.findViewById(R.id.nav_header_description)
-
-        navHeaderName.text="HOSPITAL"
-        navHeaderdesc.text=""
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         toggle.isDrawerIndicatorEnabled = true
@@ -69,7 +62,6 @@ class Hospital_main : AppCompatActivity() {
         logout.setOnClickListener {
             startActivity(Intent(this, Register::class.java))
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

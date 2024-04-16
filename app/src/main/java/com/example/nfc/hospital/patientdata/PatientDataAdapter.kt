@@ -41,7 +41,7 @@ class PatientDataAdapter(private val registeredUsersList : ArrayList<patientwrap
         holder.patient_phone_no.text = user.PHONE_NUMBER
 
         runBlocking {
-            val uid= Firebase.auth.currentUser?.uid.toString()
+            val uid= user.USER_ID.toString()
             patientcrud.getphotourl(uid){
                 Glide.with(holder.patient_dp.context)
                     .setDefaultRequestOptions(RequestOptions())

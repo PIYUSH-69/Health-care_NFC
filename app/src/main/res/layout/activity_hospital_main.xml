@@ -43,9 +43,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/hospital_sidenav"
-        >
+        app:headerLayout="@layout/nav_header_hospital"
+        app:menu="@menu/hospital_sidenav">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
