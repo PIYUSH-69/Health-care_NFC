@@ -21,7 +21,7 @@
         android:title="Patient data" />
 
     <item
-        android:id="@+id/Doctors"
+        android:id="@+id/Scantag"
         android:icon="@drawable/doctor"
         android:title="Scan Tag"/>
 
