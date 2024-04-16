@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/record"
-        android:icon="@drawable/ic_check_green"
+        android:icon="@drawable/recorddd"
         android:title="Personal Health Record"/>
 
     <item
