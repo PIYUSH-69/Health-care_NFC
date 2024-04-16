@@ -107,22 +107,6 @@ class patient_personal : AppCompatActivity() {
                 val emailid = binding.email.text.toString()
                 val pass = binding.pass.text.toString()
 
-                val currentUserUid = Firebase.auth.currentUser?.uid.toString()
-
-                    val storageRef = FirebaseStorage.getInstance().reference.child(currentUserUid)
-                    val imageRef = storageRef.child("profilepic/").child("profile.jpg")
-                    // Upload the selected image to that folder
-                        imageRef.putFile(imageUri!!)
-                            .addOnSuccessListener { taskSnapshot ->
-                                Log.d("Storage", "Image uploaded successfully: ${taskSnapshot.metadata?.path}")
-                                // Handle successful upload
-                            }
-                            .addOnFailureListener { exception ->
-                                Log.e("Storage", "Image upload failed: ${exception.message}")
-                                // Handle failed upload
-                            }
-
-
 
                 auth.createUserWithEmailAndPassword(emailid, pass)
                     .addOnCompleteListener(this) { task ->
@@ -142,6 +126,20 @@ class patient_personal : AppCompatActivity() {
                             details.put("ADHARCARD_NUMBER", anum)
                             details.put("EMAIL", emailid)
                             details.put("PASSWORD", pass)
+
+                            val storageRef = FirebaseStorage.getInstance().reference.child(user)
+                            val imageRef = storageRef.child("profilepic/").child("profile.jpg")
+                            // Upload the selected image to that folder
+                            imageRef.putFile(imageUri!!)
+                                .addOnSuccessListener { taskSnapshot ->
+                                    Log.d("Storage", "Image uploaded successfully: ${taskSnapshot.metadata?.path}")
+                                    // Handle successful upload
+                                }
+                                .addOnFailureListener { exception ->
+                                    Log.e("Storage", "Image upload failed: ${exception.message}")
+                                    // Handle failed upload
+                                }
+
 
                             db.collection("Patient")
                                 .document(user)

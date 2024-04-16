@@ -23,7 +23,6 @@ class Register : AppCompatActivity() {
 
             val intent= Intent(this, patient_personal::class.java)
             startActivity(intent)
-
         }
 
         sign.setOnClickListener {
