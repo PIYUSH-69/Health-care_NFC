@@ -20,5 +20,11 @@
         android:icon="@drawable/patient_data"
         android:title="Patient data" />
 
+    <item
+        android:id="@+id/Doctors"
+        android:icon="@drawable/doctor"
+        android:title="Scan Tag"/>
+
+
 
 </menu>
