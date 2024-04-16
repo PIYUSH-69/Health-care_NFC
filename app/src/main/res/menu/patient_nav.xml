@@ -14,7 +14,7 @@
 
     <item
         android:id="@+id/uploadodoc"
-        android:icon="@drawable/patient"
+        android:icon="@drawable/history"
         android:title="Medical Reports" />
 
     <item
