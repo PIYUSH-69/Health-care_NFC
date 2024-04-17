@@ -16,7 +16,6 @@ class hospital_signin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hospital_signin)
-
         binding=ActivityHospitalSigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
