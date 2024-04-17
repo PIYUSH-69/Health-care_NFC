@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/drawer_layout"
+    android:background="@color/offwhite2"
     android:layout_height="match_parent"
     tools:context=".patient.Patient_main">
 
@@ -13,17 +14,57 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:background="@color/offwhite2"
             android:id="@+id/linearlayouthospital"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbarLayout"
             android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/button6"
+            <TextView
+                android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:fontFamily="@font/alatsi"
+                android:text="WELCOME ADMIN"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:id="@+id/button6"
+                android:clickable="true"
+                app:srcCompat="@drawable/acceptform"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lexend_semibold"
+                android:text="Ayushman Bharat Digital Mission (ABDM) "
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:gravity="fill"
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The Ayushman Bharat Digital Mission (ABDM) aims to develop the backbone necessary to support the integrated digital health infrastructure of the country. It will bridge the existing gap amongst different stakeholders of Healthcare ecosystem through digital highways."
+                android:textColor="#262727" />
+
+            <Button
+                android:id="@+id/call"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CALL TOLL FREE NUMBER NOW!!"
+                app:icon="@android:drawable/stat_sys_phone_call" />
+
+
         </LinearLayout>
 
         <include
@@ -61,6 +102,8 @@
                 android:backgroundTintMode="add"
                 android:elevation="20dp"
                 android:text="LOGOUT"
+
+                app:icon="@drawable/exit"
                 app:iconTint="#FF0000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

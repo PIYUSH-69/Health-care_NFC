@@ -34,7 +34,7 @@
             android:id="@+id/docotr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Docotr Name" />
+            android:hint="Docotor Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -82,10 +82,11 @@
         style="@style/Widget.Material3.Button.ElevatedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="@color/blue"
         android:elevation="10dp"
         android:text="ADD DOCTOR"
         android:textColor="@color/white"
-        app:icon="@drawable/add_user" />
+        app:icon="@android:drawable/ic_input_add"
+        app:iconTint="@color/teal_200" />
 
 </LinearLayout>

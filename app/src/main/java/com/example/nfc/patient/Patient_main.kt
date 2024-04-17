@@ -2,6 +2,7 @@ package com.example.nfc.patient
 
 import android.content.ContentValues
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -21,6 +22,7 @@ import com.example.nfc.patient.sidenav.AyuCard
 import com.example.nfc.patient.sidenav.MedicalReports
 import com.example.nfc.patient.sidenav.PatientProfile
 import com.example.nfc.patient.sidenav.Records
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -38,7 +40,7 @@ class Patient_main : AppCompatActivity() {
         val navView : NavigationView = findViewById(R.id.nav_view)
         val navHeaderView = navView.getHeaderView(0)
         val logout=findViewById<Button>(R.id.logoutpatient)
-        val form=findViewById<Button>(R.id.button4)
+        val form=findViewById<ImageView>(R.id.button4)
         navView.itemIconTintList = null
         val navHeaderImage: ImageView = navHeaderView.findViewById(R.id.nav_header_image)
         val navHeaderName: TextView = navHeaderView.findViewById(R.id.nav_header_name)
@@ -48,6 +50,19 @@ class Patient_main : AppCompatActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val tollfree = findViewById<Button>(R.id.call)
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        tollfree.setOnClickListener {
+            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + 14477))
+            startActivity(intent)
+
+        }
+
+        fab.setOnClickListener {
+
+
+        }
 
         val userid=Firebase.auth.currentUser!!.uid
         runBlocking {

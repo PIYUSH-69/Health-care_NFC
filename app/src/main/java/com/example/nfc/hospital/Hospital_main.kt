@@ -1,11 +1,11 @@
 package com.example.nfc.hospital
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -26,6 +26,7 @@ class Hospital_main : AppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView : NavigationView = findViewById(R.id.nav_view)
         val logout=findViewById<Button>(R.id.logout)
+        val tollfree=findViewById<Button>(R.id.call)
 
         navView.itemIconTintList = null
 
@@ -35,9 +36,15 @@ class Hospital_main : AppCompatActivity() {
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val scan=findViewById<Button>(R.id.button6)
+        val scan=findViewById<ImageView>(R.id.button6)
         scan.setOnClickListener {
             startActivity(Intent(this, NFC_hospital::class.java))
+        }
+
+        tollfree.setOnClickListener {
+            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + 14477))
+            startActivity(intent)
+
         }
 
         navView.setNavigationItemSelectedListener {
