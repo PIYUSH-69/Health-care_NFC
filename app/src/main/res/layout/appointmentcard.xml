@@ -19,34 +19,43 @@
             android:id="@+id/appdoctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lexend_semibold"
             android:padding="5dp"
-            android:text="Doctor Name:" />
+            android:text="Doctor Name:"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/appdesignation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lexend_semibold"
             android:padding="5dp"
-            android:text="Designation:" />
+            android:text="Designation:"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/appspec"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lexend_semibold"
             android:padding="5dp"
-            android:text="Specialization:" />
+            android:text="Specialization:"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/appcontact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lexend_semibold"
             android:padding="5dp"
-            android:text="Contact:" />
+            android:text="Contact:"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/profileButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Book Appointment" />
 
     </LinearLayout>

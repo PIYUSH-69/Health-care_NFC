@@ -95,7 +95,8 @@ class patient_personal : AppCompatActivity() {
         auth = Firebase.auth
 
         binding.button3.setOnClickListener {
-            if (submitform()) {
+            if (submitform() ) {
+               if(imagesubmit()) {
                 val fname = binding.fname.text.toString()
                 val mname = binding.mname.text.toString()
                 val lname = binding.lname.text.toString()
@@ -106,25 +107,6 @@ class patient_personal : AppCompatActivity() {
                 val emailid = binding.email.text.toString()
                 val pass = binding.pass.text.toString()
 
-                val currentUserUid = Firebase.auth.currentUser?.uid
-                currentUserUid?.let { uid ->
-                    val storageRef = FirebaseStorage.getInstance().reference.child(uid)
-                    val imageRef = storageRef.child("profilepic/").child("profile.jpg")
-
-                    // Upload the selected image to that folder
-                    imageUri?.let { uri ->
-                        imageRef.putFile(uri)
-                            .addOnSuccessListener { taskSnapshot ->
-                                Log.d("Storage", "Image uploaded successfully: ${taskSnapshot.metadata?.path}")
-                                // Handle successful upload
-                            }
-                            .addOnFailureListener { exception ->
-                                Log.e("Storage", "Image upload failed: ${exception.message}")
-                                // Handle failed upload
-                            }
-                    }
-                }
-
 
                 auth.createUserWithEmailAndPassword(emailid, pass)
                     .addOnCompleteListener(this) { task ->
@@ -134,6 +116,7 @@ class patient_personal : AppCompatActivity() {
                             val user = auth.uid.toString()
                             val db = Firebase.firestore
                             var details = HashMap<String, String>()
+                            details.put("USER_ID", user)
                             details.put("FIRST_NAME", fname)
                             details.put("MIDDLE_NAME", mname)
                             details.put("LAST_NAME", lname)
@@ -143,6 +126,20 @@ class patient_personal : AppCompatActivity() {
                             details.put("ADHARCARD_NUMBER", anum)
                             details.put("EMAIL", emailid)
                             details.put("PASSWORD", pass)
+
+                            val storageRef = FirebaseStorage.getInstance().reference.child(user)
+                            val imageRef = storageRef.child("profilepic/").child("profile.jpg")
+                            // Upload the selected image to that folder
+                            imageRef.putFile(imageUri!!)
+                                .addOnSuccessListener { taskSnapshot ->
+                                    Log.d("Storage", "Image uploaded successfully: ${taskSnapshot.metadata?.path}")
+                                    // Handle successful upload
+                                }
+                                .addOnFailureListener { exception ->
+                                    Log.e("Storage", "Image upload failed: ${exception.message}")
+                                    // Handle failed upload
+                                }
+
 
                             db.collection("Patient")
                                 .document(user)
@@ -169,7 +166,7 @@ class patient_personal : AppCompatActivity() {
 
 
                         }
-                    } }
+                    } } }
             else {
                 MotionToast.darkColorToast(
                     this, "Validation Failed",
@@ -181,6 +178,25 @@ class patient_personal : AppCompatActivity() {
                 )
             }
         }
+    }
+
+    private fun imagesubmit(): Boolean {
+        if (imageUri==null){
+            MotionToast.darkColorToast(
+                this, "Validation Failed",
+                "UPLOAD PHOTO!",
+                MotionToastStyle.ERROR,
+                MotionToast.GRAVITY_BOTTOM,
+                MotionToast.SHORT_DURATION,
+                ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular)
+            )
+            return false
+        }else{
+
+
+           return true
+        }
+
     }
 
     //functions----->
@@ -407,6 +423,9 @@ class patient_personal : AppCompatActivity() {
         if (requestCode == REQUEST_CODE_IMAGE_UPSERT && resultCode == RESULT_OK && data != null && data.data != null) {
             imageUri = data.data
             ivStudentAvatar.setImageURI(imageUri)
+        }
+        else{
+
 
         }
     }

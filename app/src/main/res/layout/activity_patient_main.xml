@@ -11,26 +11,86 @@ tools:context=".patient.Patient_main">
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:id="@+id/linearlayout"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbarLayout"
-        android:orientation="vertical">
+        android:background="@color/offwhite2"
+        android:layout_height="match_parent">
 
-
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
+            android:id="@+id/linearlayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Patient Activity Home PAge" />
+            android:layout_height="match_parent"
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
+            android:layout_marginTop="64dp"
+            android:background="@color/offwhite2"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lexend_semibold"
+                android:text="GET WELL SOON!!"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/button4"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/fillform" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lexend_semibold"
+                android:text="Ayushman Bharat Digital Mission (ABDM) "
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/textView18"
+               android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="fill"
+                android:text="The Ayushman Bharat Digital Mission (ABDM) aims to develop the backbone necessary to support the integrated digital health infrastructure of the country. It will bridge the existing gap amongst different stakeholders of Healthcare ecosystem through digital highways."
+                android:textColor="#262727" />
+
+            <Button
+                android:layout_marginHorizontal="20dp"
+                android:id="@+id/call"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CALL TOLL FREE NUMBER NOW!!"
+                app:icon="@android:drawable/stat_sys_phone_call" />
+
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CLICK HERE TO SUBMIT HOSPITAL FORM" />
-    </LinearLayout>
+            android:layout_gravity="end|bottom"
+            android:layout_margin="30dp"
+            android:backgroundTint="@color/green"
+            android:contentDescription="Doctor"
+            android:src="@drawable/ic_round_menu_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <include
         android:id="@+id/toolbarLayout"
         layout="@layout/navigation_bar"/>
@@ -67,6 +127,7 @@ tools:context=".patient.Patient_main">
             android:backgroundTintMode="add"
             android:elevation="20dp"
             android:text="LOGOUT"
+            app:icon="@drawable/exit"
             app:iconTint="#FF0000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

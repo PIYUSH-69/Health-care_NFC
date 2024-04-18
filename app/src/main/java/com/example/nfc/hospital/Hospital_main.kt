@@ -1,11 +1,11 @@
 package com.example.nfc.hospital
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -25,16 +25,10 @@ class Hospital_main : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbars))
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView : NavigationView = findViewById(R.id.nav_view)
-        val navHeaderView = navView.getHeaderView(0)
         val logout=findViewById<Button>(R.id.logout)
+        val tollfree=findViewById<Button>(R.id.call)
 
         navView.itemIconTintList = null
-        val navHeaderImage: ImageView = navHeaderView.findViewById(R.id.nav_header_image)
-        val navHeaderName: TextView = navHeaderView.findViewById(R.id.nav_header_name)
-        val navHeaderdesc: TextView = navHeaderView.findViewById(R.id.nav_header_description)
-
-        navHeaderName.text="HOSPITAL"
-        navHeaderdesc.text=""
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         toggle.isDrawerIndicatorEnabled = true
@@ -42,9 +36,15 @@ class Hospital_main : AppCompatActivity() {
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val scan=findViewById<Button>(R.id.button6)
+        val scan=findViewById<ImageView>(R.id.button6)
         scan.setOnClickListener {
             startActivity(Intent(this, NFC_hospital::class.java))
+        }
+
+        tollfree.setOnClickListener {
+            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + 14477))
+            startActivity(intent)
+
         }
 
         navView.setNavigationItemSelectedListener {
@@ -69,7 +69,6 @@ class Hospital_main : AppCompatActivity() {
         logout.setOnClickListener {
             startActivity(Intent(this, Register::class.java))
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

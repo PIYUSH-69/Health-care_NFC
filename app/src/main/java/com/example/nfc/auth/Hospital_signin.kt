@@ -20,7 +20,6 @@ class hospital_signin : AppCompatActivity() {
         setContentView(binding.root)
 
         val auth= Firebase.auth
-
         valname()
         valpass()
 

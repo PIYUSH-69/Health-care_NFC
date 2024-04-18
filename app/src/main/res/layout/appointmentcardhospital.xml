@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="20dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="20dp"
     app:cardBackgroundColor="@color/white"
-
-    android:elevation="10dp"
-    style="@style/Widget.Material3.CardView.Elevated"
-    android:layout_height="wrap_content">
+    android:elevation="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:padding="15dp"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
+            android:padding="5dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/button10"
@@ -38,7 +40,6 @@
                 android:id="@+id/textView13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:text="TextView"
                 android:textSize="18sp" />
 
@@ -46,7 +47,6 @@
                 android:id="@+id/textView15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:text="TextView"
                 android:textSize="18sp" />
 
@@ -54,7 +54,6 @@
                 android:id="@+id/textView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:text="TextView"
                 android:textSize="18sp" />
 
@@ -63,21 +62,26 @@
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="100dp"
+            android:padding="5dp"
             android:layout_height="100dp"
             app:layout_constraintBottom_toTopOf="@+id/button10"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            app:srcCompat="@drawable/doctor" />
 
         <Button
             android:id="@+id/button10"
-            style="@style/Widget.Material3.Button.Icon"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/blue"
             android:backgroundTintMode="src_atop"
+            android:padding="5dp"
             android:text="Call patient"
+            android:textAlignment="center"
+            app:cornerRadius="10dp"
             app:icon="@android:drawable/stat_sys_phone_call"
+            app:iconGravity="start"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

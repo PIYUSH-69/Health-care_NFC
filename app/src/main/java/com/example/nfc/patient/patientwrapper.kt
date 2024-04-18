@@ -10,6 +10,7 @@ import kotlinx.coroutines.tasks.await
 
 data class patientwrapper(
     val FIRST_NAME: String? = null,
+    val USER_ID: String? = null,
     val MIDDLE_NAME: String? = null,
     val LAST_NAME: String? = null,
     val GENDER: String? = null,
