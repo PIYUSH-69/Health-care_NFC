@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/offwhite2"
     android:orientation="vertical"
     tools:context=".patient.appointments.submitappointment">
 
@@ -12,9 +13,9 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="44dp"
         android:text="BOOK APPOINTMENT"
-        android:layout_gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -24,16 +25,17 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp"
         android:layout_margin="10dp"
         app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
         app:cardElevation="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp"
-            android:orientation="vertical">
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/doctorrr"
@@ -62,8 +64,8 @@
         android:id="@+id/textInputLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Time Slot"
         android:layout_marginTop="10dp"
+        android:hint="Time Slot"
         android:padding="20dp"
         app:boxBackgroundMode="filled"
         app:endIconMode="dropdown_menu"
@@ -74,6 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/offwhite2"
             android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -81,8 +84,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dobconn"
         android:layout_width="409dp"
-        android:padding="20dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/dateob"
@@ -98,12 +101,13 @@
 
     <Button
         android:id="@+id/button11"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/green"
-        android:elevation="50dp"
         style="@style/Widget.Material3.Button.ElevatedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Book Appointment" />
+        android:layout_gravity="center"
+        android:backgroundTint="@color/green"
+        android:elevation="50dp"
+        android:text="Book Appointment"
+        android:textColor="@color/white" />
 
 </LinearLayout>

@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.nfc.R
+import com.example.nfc.auth.Hashing
 import com.example.nfc.patient.Patient_main
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
@@ -22,6 +23,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
+import kotlinx.coroutines.runBlocking
 
 class qrcodepatient : AppCompatActivity() {
 
@@ -38,7 +40,8 @@ class qrcodepatient : AppCompatActivity() {
         }
         val userid=Firebase.auth.currentUser!!.uid
         val qr =findViewById<ImageView>(R.id.qr_code)
-        bmpQr1=qrcodegenerator(userid)
+        val encodedtoken= runBlocking { Hashing.encode(userid)}
+        bmpQr1=qrcodegenerator(encodedtoken)
         qr.setImageBitmap(bmpQr1)
         qrcheck()
 

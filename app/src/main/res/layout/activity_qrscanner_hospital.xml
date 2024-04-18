@@ -10,7 +10,7 @@
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/scanner_view"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="0dp"
         app:autoFocusButtonColor="@color/black"
         app:autoFocusButtonVisible="true"
         app:flashButtonColor="@android:color/white"
@@ -21,13 +21,5 @@
 
 
     </com.budiyev.android.codescanner.CodeScannerView>
-
-    <TextView
-        android:id="@+id/appspec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintTop_toBottomOf="@+id/scanner_view"
-        tools:layout_editor_absoluteX="153dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

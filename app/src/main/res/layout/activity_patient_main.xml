@@ -33,7 +33,11 @@ tools:context=".patient.Patient_main">
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="GET WELL SOON!!" />
+                android:fontFamily="@font/lexend_semibold"
+                android:text="GET WELL SOON!!"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/button4"
@@ -55,6 +59,7 @@ tools:context=".patient.Patient_main">
 
             <TextView
                 android:id="@+id/textView18"
+               android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="fill"
@@ -62,6 +67,7 @@ tools:context=".patient.Patient_main">
                 android:textColor="#262727" />
 
             <Button
+                android:layout_marginHorizontal="20dp"
                 android:id="@+id/call"
                 style="@style/Widget.Material3.Button.OutlinedButton.Icon"
                 android:layout_width="match_parent"

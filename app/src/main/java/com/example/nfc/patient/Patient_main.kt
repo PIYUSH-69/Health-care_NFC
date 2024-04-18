@@ -59,6 +59,8 @@ class Patient_main : AppCompatActivity() {
 
         }
 
+        val text=findViewById<TextView>(R.id.textView)
+
         fab.setOnClickListener {
 
 
@@ -80,6 +82,8 @@ class Patient_main : AppCompatActivity() {
                     val fname=document.getString("FIRST_NAME")
                     val lname=document.getString("LAST_NAME")
                     navHeaderName.text=fname +" "+lname
+                    text.text="WELCOME "+fname
+
                     Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data!!.get("1")}")
                 } else {
                     Log.d(ContentValues.TAG, "No such document")

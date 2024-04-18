@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.budiyev.android.codescanner.AutoFocusMode
@@ -20,6 +21,9 @@ import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.example.nfc.R
+import com.example.nfc.auth.Hashing
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 
 class qrscanner_hospital : AppCompatActivity() {
 
@@ -38,7 +42,6 @@ class qrscanner_hospital : AppCompatActivity() {
 
         setuppermissions()
         val scannerView = findViewById<CodeScannerView>(R.id.scanner_view)
-        val resultTextView = findViewById<TextView>(R.id.appspec)
 
         codeScanner = CodeScanner(this, scannerView)
 
@@ -53,19 +56,23 @@ class qrscanner_hospital : AppCompatActivity() {
         codeScanner.startPreview()
 
         // Callbacks
+        codeScanner.formats
         codeScanner.decodeCallback = DecodeCallback {
+            val userid=Hashing.deocode(it.text)
             val mediaPlayer= MediaPlayer.create(this, R.raw.beep)
             mediaPlayer.start()
-            startActivity(Intent(this, form_fill::class.java).putExtra("uid",it.text))
+            startActivity(Intent(this, form_fill::class.java).putExtra("uid",userid))
         }
 
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
             runOnUiThread {
-                resultTextView.text = "fgfdgg"
-                Toast.makeText(
-                    this, "Camera initialization error: ${it.message}",
-                    Toast.LENGTH_LONG
-                ).show()
+                MotionToast.darkColorToast(this,"",
+                    "Wrong QR code!!",
+                    MotionToastStyle.ERROR,
+                    MotionToast.GRAVITY_BOTTOM,
+                    MotionToast.LONG_DURATION,
+                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
+                startActivity(Intent(this,NFC_hospital::class.java))
             }
         }
 

@@ -1,9 +1,11 @@
 package com.example.nfc.hospital.nfchospital
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
@@ -33,7 +35,11 @@ class form_fill : AppCompatActivity() {
         val uid=intent.extras!!.getString("uid").toString()
         Firebase.firestore.collection("Patient").document(uid).update("qr","true")
 
-        patients= runBlocking { patientcrud.getpatient(uid) }!!
+        try {
+            patients= runBlocking { patientcrud.getpatient(uid) }!!
+        }catch (e :Exception){
+            Toast.makeText(this, "wrong user id", Toast.LENGTH_SHORT).show()
+        }
         binding.patient.setText(patients.FIRST_NAME+" "+patients.MIDDLE_NAME+" "+patients.LAST_NAME)
         binding.dob.setText(patients.DOB)
         binding.gender.setText(patients.GENDER)
