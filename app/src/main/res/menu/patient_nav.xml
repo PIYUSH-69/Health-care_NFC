@@ -27,6 +27,9 @@
         android:icon="@drawable/identity_card"
         android:title="Aabha Card" />
 
-
+    <item
+        android:id="@+id/ayucard"
+        android:icon="@drawable/sos"
+        android:title="SOS" />
 
 </menu>
