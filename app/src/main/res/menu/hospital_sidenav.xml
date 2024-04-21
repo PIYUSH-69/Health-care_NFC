@@ -10,19 +10,22 @@
 
     <item
         android:id="@+id/Doctors"
-        android:icon="@drawable/doctor"
+        android:icon="@drawable/patientactive"
+        android:title="Active Patients"/>
+
+    <item
+        android:id="@+id/Doctors"
+        android:icon="@drawable/doctornn"
         android:title="Doctors"/>
-
-
 
     <item
         android:id="@+id/Patient_data"
-        android:icon="@drawable/patient_data"
+        android:icon="@drawable/patientdata"
         android:title="Patient data" />
 
     <item
         android:id="@+id/Scantag"
-        android:icon="@drawable/doctor"
+        android:icon="@drawable/check"
         android:title="Scan Tag"/>
 
 
