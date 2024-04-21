@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/offwhite2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".patient.qr.qrcodepatient">
@@ -11,8 +12,23 @@
         android:id="@+id/qr_code"
         android:layout_width="1024px"
         android:layout_height="1024px"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="124dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SHOW QR TO THE HOSPITALS RECEPTIONIST"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qr_code"
+        app:layout_constraintVertical_bias="0.252" />
 </androidx.constraintlayout.widget.ConstraintLayout>

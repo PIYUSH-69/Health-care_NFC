@@ -12,7 +12,7 @@
         android:layout_height="60dp"
         app:navigationIcon="@drawable/ic_round_menu_24"
         app:titleMarginStart="10dp"
-        app:title="NFC"
+        app:title="HEALTH CONNECT"
         android:foregroundTint="@color/white"
         app:titleTextColor="@color/white"
         android:background="@color/green"

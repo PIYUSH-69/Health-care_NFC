@@ -1,17 +1,12 @@
 package com.example.nfc.patient
 
-import android.graphics.Typeface
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
-import android.text.Spanned
-import android.text.style.StyleSpan
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.toSpannable
+import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.nfc.R
@@ -35,9 +30,12 @@ class chatbot : AppCompatActivity() {
         val symptoms=findViewById<TextInputEditText>(R.id.symptoms)
         val text=findViewById<TextView>(R.id.textView22)
         val button=findViewById<Button>(R.id.button14)
+        val card=findViewById<CardView>(R.id.symptomcard)
 
         button.setOnClickListener {
+            card.visibility= View.VISIBLE
             val symp=symptoms.text.toString()
+            text.text="WAIT FOR 5 to 10 Seconds"
             val generativeModel = GenerativeModel(
                 // For text-only input, use the gemini-pro model
                 modelName = "gemini-pro",
@@ -50,11 +48,11 @@ class chatbot : AppCompatActivity() {
                 val response = generativeModel.generateContent(prompt)
 
 
-                text.setText(response.text)
+                val string = response.text
+                val newString = string!!.replace("*", "")
+                text.setText(newString)
             }
         }
-
-
     }
-
+   
 }

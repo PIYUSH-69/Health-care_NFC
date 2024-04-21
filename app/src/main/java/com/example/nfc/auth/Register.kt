@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.nfc.R
 import com.example.nfc.hospital.Hospital_main
+import com.example.nfc.hospital.nfchospital.nfc_tag_hospital
 import com.example.nfc.patient.Patient_main
 
 class Register : AppCompatActivity() {
