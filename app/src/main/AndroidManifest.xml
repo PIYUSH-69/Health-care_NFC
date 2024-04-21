@@ -19,13 +19,16 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/heart"
         android:label="Health Connect"
         android:roundIcon="@drawable/heart"
-        android:hardwareAccelerated="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.NFC.NoActionBar"
         tools:targetApi="31">
+        <activity
+            android:name=".patient.chatbot"
+            android:exported="false" />
         <activity
             android:name=".hospital.patientdata.HealthRecord"
             android:exported="false" />
@@ -46,7 +49,24 @@
             android:exported="false" />
         <activity
             android:name=".hospital.nfchospital.NFC_hospital"
-            android:exported="false" />
+            android:exported="false">
+
+        <intent-filter>
+            <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <action android:name="android.nfc.action.TAG_DISCOVERED" />
+            <action android:name="android.nfc.action.TECH_DISCOVERED" />
+            <data android:mimeType="text/plain" />
+        </intent-filter>
+
+        <meta-data
+            android:name="android.nfc.action.TECH_DISCOVERED"
+            android:resource="@xml/nfc_tech_filter" />
+
+        </activity>
+
+
+
         <activity
             android:name=".doctors.newdoctor"
             android:exported="false" />

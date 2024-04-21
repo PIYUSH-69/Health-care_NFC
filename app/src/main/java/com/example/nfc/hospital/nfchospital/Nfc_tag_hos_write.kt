@@ -11,8 +11,6 @@ import android.nfc.tech.Ndef
 import android.nfc.tech.NfcF
 import android.os.Bundle
 import android.provider.Settings
-import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -21,41 +19,41 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.nfc.R
+import com.example.nfc.auth.Hashing
+import kotlinx.coroutines.runBlocking
 import java.lang.Exception
 
-class NFC_hospital : AppCompatActivity() {
+class nfc_tag_hospital : AppCompatActivity() {
 
 
+    private lateinit var hashcode:String
+    private lateinit var Text: TextView
     private var intentFiltersArray: Array<IntentFilter>? = null
     private val techListsArray = arrayOf(arrayOf(NfcF::class.java.name))
     private val nfcAdapter: NfcAdapter? by lazy {
         NfcAdapter.getDefaultAdapter(this)
     }
     private var pendingIntent: PendingIntent? = null
-    private lateinit var textView: TextView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_nfc_hospital)
+        setContentView(R.layout.activity_nfc_tag_hospital)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val but=findViewById<Button>(R.id.button7)
-        but.setOnClickListener {
-            startActivity(Intent(this, qrscanner_hospital::class.java))
-        }
+        Text=findViewById(R.id.textView25)
 
-       textView=findViewById(R.id.textView23)
+        val uid=intent.extras!!.getString("userid").toString()
+        val hashcode= runBlocking { Hashing.encode(uid)}
 
 
-        //nfc
         pendingIntent = PendingIntent.getActivity(
             this, 0, Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
-            PendingIntent.FLAG_IMMUTABLE)
+            PendingIntent.FLAG_IMMUTABLE
+        )
         val ndef = IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED)
         try {
             ndef.addDataType("text/plain")
@@ -65,15 +63,14 @@ class NFC_hospital : AppCompatActivity() {
         intentFiltersArray = arrayOf(ndef)
         if (nfcAdapter == null) {
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Alert")
             builder.setMessage("This device doesn't support NFC.")
-            builder.setPositiveButton("Use Qr code"){_,_ ->startActivity(Intent(this,qrscanner_hospital::class.java))}
-            builder.show()
-
-            Toast.makeText(this, "NO NFC", Toast.LENGTH_SHORT).show()
+            builder.setPositiveButton("Cancel", null)
+            val myDialog = builder.create()
+            myDialog.setCanceledOnTouchOutside(false)
+            myDialog.show()
 
         } else if (!nfcAdapter!!.isEnabled) {
-            val builder = AlertDialog.Builder(this, R.style.Theme_NFC)
+            val builder = AlertDialog.Builder(this)
             builder.setTitle("NFC Disabled")
             builder.setMessage("Plesae Enable NFC")
             builder.setPositiveButton("Settings") { _, _ -> startActivity(Intent(Settings.ACTION_NFC_SETTINGS)) }
@@ -81,7 +78,9 @@ class NFC_hospital : AppCompatActivity() {
             val myDialog = builder.create()
             myDialog.setCanceledOnTouchOutside(false)
             myDialog.show()
+
         }
+
     }
 
     override fun onResume() {
@@ -89,8 +88,10 @@ class NFC_hospital : AppCompatActivity() {
         nfcAdapter?.enableForegroundDispatch(this, pendingIntent, intentFiltersArray, techListsArray)
     }
 
+
+
     var machineid="";
-    var userid ="";
+    var shopid="";
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
 
@@ -101,14 +102,39 @@ class NFC_hospital : AppCompatActivity() {
             val parcelables = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
             with(parcelables) {
                 try {
-                    val inNdefMessage = this?.get(0) as NdefMessage
-                    val inNdefRecords = inNdefMessage.records
-                    //if there are many records, you can call inNdefRecords[1] as array
-                    var ndefRecord_0 = inNdefRecords[0]
-                    var inMessage = String(ndefRecord_0.payload)
-                    userid = inMessage.drop(3);
-                    textView.setText("User ID: " + userid)
 
+                    //write operation
+                        if (NfcAdapter.ACTION_TECH_DISCOVERED == intent.action
+                            || NfcAdapter.ACTION_NDEF_DISCOVERED == intent.action
+                        ) {
+
+                            val tag =
+                                intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG) ?: return
+                            val ndef = Ndef.get(tag) ?: return
+
+                            if (ndef.isWritable) {
+
+                                var message = NdefMessage(
+                                    arrayOf(
+                                        NdefRecord.createTextRecord("en", hashcode)
+                                    )
+                                )
+
+
+                                ndef.connect()
+                                ndef.writeNdefMessage(message)
+                                ndef.close()
+
+                                Text.setText("USER ID: "+ hashcode.toString());
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Successfully Wroted!",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                            }
+                        }
+//
                 } catch (ex: Exception) {
                     Toast.makeText(
                         applicationContext,
@@ -128,6 +154,7 @@ class NFC_hospital : AppCompatActivity() {
             nfcAdapter?.disableForegroundDispatch(this)
         }
         super.onPause()
-    }
 }
 
+
+}

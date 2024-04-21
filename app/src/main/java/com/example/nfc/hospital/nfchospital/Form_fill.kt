@@ -82,11 +82,12 @@ class form_fill : AppCompatActivity() {
                         MotionToast.GRAVITY_BOTTOM,
                         MotionToast.LONG_DURATION,
                         ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
-                        startActivity(Intent(this, nfc_tag_hospital::class.java))
+                        startActivity(Intent(this, nfc_tag_hospital::class.java).putExtra("userid",uid))
 
-                }.addOnFailureListener { e ->
-                    Log.w(ContentValues.TAG, "Error adding document", e)
+                }.addOnFailureListener {
+                    Log.w(ContentValues.TAG, "Error adding document", it)
                 }
+
 
         }
 
