@@ -15,6 +15,7 @@ import com.example.nfc.patient.patientwrapper
 import kotlinx.coroutines.runBlocking
 import android.view.View
 import android.widget.Button
+import com.example.nfc.hospital.patientdata.medicalReport.MedicalReport
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -62,6 +63,8 @@ class PatientDataAdapter(private val registeredUsersList : ArrayList<patientwrap
 
         holder.medicalReportButton.setOnClickListener {
             val intent = Intent(context, MedicalReport::class.java)
+            val userId = Firebase.auth.uid.toString()
+            intent.putExtra("userId", userId)
             context.startActivity(intent)
         }
 

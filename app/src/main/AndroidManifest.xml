@@ -36,6 +36,12 @@
             android:name=".hospital.patientdata.ProfileDetails"
             android:exported="false" />
         <activity
+            android:name=".hospital.patientdata.medicalReport.MedicalReport"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.patientdata.medicalReport.ShowReport"
+            android:exported="false" />
+        <activity
             android:name=".patient.appointments.SubmitAppointment"
             android:exported="false" />
         <activity

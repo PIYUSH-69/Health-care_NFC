@@ -16,7 +16,7 @@
             android:background="?attr/colorPrimary"
             app:title="Images"
             app:titleTextColor="@color/white"/>
-        <!--            app:menu="@menu/delete"/>-->
+<!--            app:menu="@menu/delete"/>-->
 
     </com.google.android.material.appbar.AppBarLayout>
 

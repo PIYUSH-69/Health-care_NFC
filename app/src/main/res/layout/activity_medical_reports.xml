@@ -1,39 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    android:padding="20dp"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:focusableInTouchMode="true"
-    tools:context=".patient.sidenav.PatientProfile">
+    tools:context=".hospital.patientdata.medicalReport.MedicalReport">
 
-    <TextView
-        android:id="@+id/textView20"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue"
+        app:title="Upload Report"
+        app:titleTextColor="@android:color/white" />
 
-    <EditText
-        android:id="@+id/editTextText"
+    <ScrollView
+        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-    <Button
-        android:id="@+id/button13"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_margin="8dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="centerInside" />
 
-</LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/enter_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Title"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="379dp"
+                android:layout_height="74dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/choose_image"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:padding="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icons8_choose" />
+
+                <ImageButton
+                    android:id="@+id/upload_image"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:padding="8dp"
+                    android:src="@drawable/icons8_upload" />
+
+                <ImageButton
+                    android:id="@+id/retrieve_image"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:padding="8dp"
+                    android:src="@drawable/icons8_gallery" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
