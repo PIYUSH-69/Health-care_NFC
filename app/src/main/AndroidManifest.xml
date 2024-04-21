@@ -46,6 +46,11 @@
             android:exported="false" />
         <activity
             android:name=".hospital.nfchospital.nfc_tag_hospital"
+
+
+
+
+
             android:exported="false" />
         <activity
             android:name=".hospital.nfchospital.form_fill"

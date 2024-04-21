@@ -1,6 +1,7 @@
 package com.example.nfc.hospital.nfchospital
 
 import android.app.PendingIntent
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.IntentFilter
 import android.nfc.NdefMessage
@@ -11,6 +12,7 @@ import android.nfc.tech.Ndef
 import android.nfc.tech.NfcF
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -47,12 +49,11 @@ class nfc_tag_hospital : AppCompatActivity() {
         Text=findViewById(R.id.textView25)
 
         val uid=intent.extras!!.getString("userid").toString()
-        val hashcode= runBlocking { Hashing.encode(uid)}
-
+        hashcode= uid
 
         pendingIntent = PendingIntent.getActivity(
             this, 0, Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
-            PendingIntent.FLAG_IMMUTABLE
+            PendingIntent.FLAG_MUTABLE
         )
         val ndef = IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED)
         try {
@@ -90,8 +91,6 @@ class nfc_tag_hospital : AppCompatActivity() {
 
 
 
-    var machineid="";
-    var shopid="";
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
 
@@ -119,11 +118,17 @@ class nfc_tag_hospital : AppCompatActivity() {
                                         NdefRecord.createTextRecord("en", hashcode)
                                     )
                                 )
-
-
-                                ndef.connect()
-                                ndef.writeNdefMessage(message)
-                                ndef.close()
+                                try {
+                                    ndef.connect()
+                                    ndef.writeNdefMessage(message)
+                                    ndef.close()
+                                }catch(ex: Exception){
+                                    Toast.makeText(
+                                        applicationContext,
+                                        "WRITE UNSUCCESFUUL",
+                                        Toast.LENGTH_SHORT
+                                    )
+                                }
 
                                 Text.setText("USER ID: "+ hashcode.toString());
                                 Toast.makeText(
@@ -132,7 +137,13 @@ class nfc_tag_hospital : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 )
                                     .show()
+                            }else{
+                                Log.d(TAG, "NFC READ NOT WRITABLE")
+
                             }
+                        }
+                        else{
+                            Log.d(TAG, "NFC READ ERROORRRRR")
                         }
 //
                 } catch (ex: Exception) {
@@ -143,10 +154,7 @@ class nfc_tag_hospital : AppCompatActivity() {
                     ).show()
                 }
             }
-
-
         }
-
     }
 
     override fun onPause() {
