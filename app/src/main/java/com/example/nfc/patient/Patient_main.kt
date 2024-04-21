@@ -62,7 +62,7 @@ class Patient_main : AppCompatActivity() {
         val text=findViewById<TextView>(R.id.textView)
 
         fab.setOnClickListener {
-
+            startActivity(Intent(this,chatbot::class.java))
 
         }
 
