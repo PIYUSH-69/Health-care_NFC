@@ -9,7 +9,7 @@
         android:title="Appointments" />
 
     <item
-        android:id="@+id/Doctors"
+        android:id="@+id/activepatients"
         android:icon="@drawable/patientactive"
         android:title="Active Patients"/>
 

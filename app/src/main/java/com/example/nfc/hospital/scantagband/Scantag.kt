@@ -1,8 +1,7 @@
-package com.example.nfc.hospital.nfchospital
+package com.example.nfc.hospital.scantagband
 
-import android.annotation.SuppressLint
 import android.app.PendingIntent
-import android.content.ContentValues.TAG
+import android.content.ContentValues
 import android.content.Intent
 import android.content.IntentFilter
 import android.nfc.NdefMessage
@@ -11,7 +10,6 @@ import android.nfc.tech.NfcF
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -20,9 +18,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.nfc.R
+import com.example.nfc.hospital.Hospital_main
+import com.example.nfc.hospital.nfchospital.form_fill
+import com.example.nfc.hospital.nfchospital.qrscanner_hospital
 import java.lang.Exception
 
-class NFC_hospital : AppCompatActivity() {
+class scantag : AppCompatActivity() {
 
     private var intentFiltersArray: Array<IntentFilter>? = null
     private val techListsArray = arrayOf(arrayOf(NfcF::class.java.name))
@@ -35,20 +36,12 @@ class NFC_hospital : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_nfc_hospital)
+        setContentView(R.layout.activity_scantag)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        val but=findViewById<Button>(R.id.button7)
-        but.setOnClickListener {
-            startActivity(Intent(this, qrscanner_hospital::class.java))
-        }
-
-       textView=findViewById(R.id.textView23)
-
 
         //nfc
         pendingIntent = PendingIntent.getActivity(
@@ -62,10 +55,14 @@ class NFC_hospital : AppCompatActivity() {
         }
         intentFiltersArray = arrayOf(ndef)
         if (nfcAdapter == null) {
+
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Alert")
             builder.setMessage("This device doesn't support NFC.")
-            builder.setPositiveButton("Use Qr code"){_,_ ->startActivity(Intent(this,qrscanner_hospital::class.java))}
+            builder.setPositiveButton("OK"){_,_ ->startActivity(
+                Intent(this,
+                    Hospital_main::class.java)
+            )}
             builder.show()
 
         } else if (!nfcAdapter!!.isEnabled) {
@@ -86,15 +83,15 @@ class NFC_hospital : AppCompatActivity() {
     var userid ="";
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        Log.d(TAG, "NFC READ initalized STAGE 1")
+        Log.d(ContentValues.TAG, "NFC READ initalized STAGE 1")
 
         val action = intent.action
         if (NfcAdapter.ACTION_NDEF_DISCOVERED == action) {
             val parcelables = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
             with(parcelables) {
                 try {
-                    Log.d(TAG, "NFC READ initalized")
-                    Toast.makeText(this@NFC_hospital, "SUCCCESS", Toast.LENGTH_SHORT).show()
+                    Log.d(ContentValues.TAG, "NFC READ initalized")
+                    Toast.makeText(this@scantag, "SUCCCESS", Toast.LENGTH_SHORT).show()
                     val inNdefMessage = this?.get(0) as NdefMessage
                     val inNdefRecords = inNdefMessage.records
                     //if there are many records, you can call inNdefRecords[1] as array
@@ -102,18 +99,17 @@ class NFC_hospital : AppCompatActivity() {
                     var inMessage = String(ndefRecord_0.payload)
 
                     userid = inMessage.drop(3)
-                    textView.setText("User ID: " + userid)
-                    startActivity(Intent(this@NFC_hospital, form_fill::class.java).putExtra("uid",userid))
+                    startActivity(Intent(this@scantag, form_fill::class.java).putExtra("uid",userid))
 
                 } catch (ex: Exception) {
-                    Log.d(TAG, "NFC READ initalized STAGE ERROR"+ex)
+                    Log.d(ContentValues.TAG, "NFC READ initalized STAGE ERROR"+ex)
                     Toast.makeText(applicationContext, "There are no Machine and Shop information found!, please click write data to write those!", Toast.LENGTH_SHORT
                     ).show()
                 }
             }
         }else
         {
-            Log.d(TAG, "NFC READ initalized STAGE ERROR else")
+            Log.d(ContentValues.TAG, "NFC READ initalized STAGE ERROR else")
         }
     }
 
