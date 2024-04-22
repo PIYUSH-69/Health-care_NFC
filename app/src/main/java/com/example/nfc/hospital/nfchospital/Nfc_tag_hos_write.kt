@@ -22,6 +22,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.nfc.R
 import com.example.nfc.auth.Hashing
+import com.example.nfc.hospital.Hospital_main
 import kotlinx.coroutines.runBlocking
 import java.lang.Exception
 
@@ -132,10 +133,11 @@ class nfc_tag_hospital : AppCompatActivity() {
                                 Text.setText("USER ID: "+ hashcode.toString());
                                 Toast.makeText(
                                     applicationContext,
-                                    "Successfully Wroted!",
+                                    "Successfully Wrote!",
                                     Toast.LENGTH_SHORT
                                 )
                                     .show()
+                                startActivity(Intent(this@nfc_tag_hospital,Hospital_main::class.java))
                             }else{
                                 Log.d(TAG, "NFC READ NOT WRITABLE")
 

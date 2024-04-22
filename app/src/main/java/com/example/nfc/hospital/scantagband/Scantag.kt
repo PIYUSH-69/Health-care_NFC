@@ -99,7 +99,7 @@ class scantag : AppCompatActivity() {
                     var inMessage = String(ndefRecord_0.payload)
 
                     userid = inMessage.drop(3)
-                    startActivity(Intent(this@scantag, form_fill::class.java).putExtra("uid",userid))
+                    startActivity(Intent(this@scantag, recordoptions::class.java).putExtra("uid",userid))
 
                 } catch (ex: Exception) {
                     Log.d(ContentValues.TAG, "NFC READ initalized STAGE ERROR"+ex)
