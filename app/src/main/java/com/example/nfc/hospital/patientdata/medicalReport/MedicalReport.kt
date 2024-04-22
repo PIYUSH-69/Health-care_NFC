@@ -35,7 +35,7 @@ class MedicalReport : AppCompatActivity() {
         progressBar = findViewById(R.id.progress)
         progressBar!!.visibility = View.VISIBLE
 
-        val userId = intent.getStringExtra("userId") ?: ""
+        val userId = intent.getStringExtra("uid").toString()
 
         val image_refrance: StorageReference = FirebaseStorage.getInstance().reference.child(userId)
 

@@ -15,11 +15,9 @@ import com.example.nfc.patient.patientwrapper
 import kotlinx.coroutines.runBlocking
 import android.view.View
 import android.widget.Button
+import com.example.nfc.hospital.patientdata.medicalReport.MedicalReport
 import com.example.nfc.hospital.scantagband.record_medical
 import com.example.nfc.hospital.scantagband.record_perosnal
-import com.example.nfc.hospital.scantagband.record_reports
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class PatientDataAdapter(private val registeredUsersList : ArrayList<patientwrapper>, private val context: Context): RecyclerView.Adapter<PatientDataAdapter.MyViewHolder>() {
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -64,7 +62,7 @@ class PatientDataAdapter(private val registeredUsersList : ArrayList<patientwrap
         }
 
         holder.medicalReportButton.setOnClickListener {
-            val intent = Intent(context, record_reports::class.java).putExtra("uid",user.USER_ID.toString())
+            val intent = Intent(context, MedicalReport::class.java).putExtra("uid",user.USER_ID.toString())
             context.startActivity(intent)
         }
 

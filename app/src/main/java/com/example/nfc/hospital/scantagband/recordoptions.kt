@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.nfc.R
+import com.example.nfc.hospital.patientdata.medicalReport.MedicalReport
 
 class recordoptions : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +33,7 @@ class recordoptions : AppCompatActivity() {
             startActivity(Intent(this,record_medical::class.java).putExtra("uid",userid))
         }
         report.setOnClickListener {
-            startActivity(Intent(this,record_reports::class.java).putExtra("uid",userid))
+            startActivity(Intent(this,MedicalReport::class.java).putExtra("uid",userid))
         }
 
 
