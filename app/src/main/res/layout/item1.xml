@@ -16,14 +16,4 @@
         android:id="@+id/item"
         android:scaleType="centerInside"/>
 
-    <ImageButton
-        android:id="@+id/deleteBtn"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:background="@color/green"
-        android:backgroundTint="@color/green"
-        android:src="@drawable/icons8_delete" />
-
 </com.google.android.material.card.MaterialCardView>
