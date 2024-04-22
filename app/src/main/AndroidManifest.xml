@@ -27,6 +27,42 @@
         android:theme="@style/Theme.NFC.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".hospital.scantagband.record_reports"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.scantagband.record_medical"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.scantagband.record_perosnal"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.scantagband.recordoptions"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.scantagband.scantag"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.nfc.action.TAG_DISCOVERED" />
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
+            x
+        </activity>
+
+        <meta-data
+            android:name="android.nfc.action.TECH_DISCOVERED"
+            android:resource="@xml/nfc_tech_filter" />
+
+        <activity
             android:name=".patient.chatbot"
             android:exported="false" />
         <activity
@@ -46,11 +82,6 @@
             android:exported="false" />
         <activity
             android:name=".hospital.nfchospital.nfc_tag_hospital"
-
-
-
-
-
             android:exported="false" />
         <activity
             android:name=".hospital.nfchospital.form_fill"
@@ -61,23 +92,21 @@
         <activity
             android:name=".hospital.nfchospital.NFC_hospital"
             android:exported="false">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
 
-        <intent-filter>
-            <action android:name="android.nfc.action.NDEF_DISCOVERED" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <action android:name="android.nfc.action.TAG_DISCOVERED" />
-            <action android:name="android.nfc.action.TECH_DISCOVERED" />
-            <data android:mimeType="text/plain" />
-        </intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
 
-        <meta-data
-            android:name="android.nfc.action.TECH_DISCOVERED"
-            android:resource="@xml/nfc_tech_filter" />
+                <action android:name="android.nfc.action.TAG_DISCOVERED" />
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
 
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
         </activity>
-
-
-
         <activity
             android:name=".doctors.newdoctor"
             android:exported="false" />

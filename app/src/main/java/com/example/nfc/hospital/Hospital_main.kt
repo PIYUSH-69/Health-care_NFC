@@ -15,6 +15,7 @@ import com.example.nfc.doctors.Doctors
 import com.example.nfc.hospital.hospitalsidenav.HospitalAppointments
 import com.example.nfc.hospital.nfchospital.NFC_hospital
 import com.example.nfc.hospital.patientdata.PatientData
+import com.example.nfc.hospital.scantagband.scantag
 import com.google.android.material.navigation.NavigationView
 
 class Hospital_main : AppCompatActivity() {
@@ -60,6 +61,11 @@ class Hospital_main : AppCompatActivity() {
 
                 R.id.Patient_data -> {
                     val cIntent = Intent(this, PatientData::class.java)
+                    startActivity(cIntent)
+                }
+
+                R.id.Scantag -> {
+                    val cIntent = Intent(this, scantag::class.java)
                     startActivity(cIntent)
                 }
             }

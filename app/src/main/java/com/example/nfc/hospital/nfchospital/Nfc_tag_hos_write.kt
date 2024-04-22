@@ -81,7 +81,6 @@ class nfc_tag_hospital : AppCompatActivity() {
             myDialog.show()
 
         }
-
     }
 
     override fun onResume() {
