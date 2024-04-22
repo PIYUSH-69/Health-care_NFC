@@ -15,6 +15,9 @@ import com.example.nfc.patient.patientwrapper
 import kotlinx.coroutines.runBlocking
 import android.view.View
 import android.widget.Button
+import com.example.nfc.hospital.scantagband.record_medical
+import com.example.nfc.hospital.scantagband.record_perosnal
+import com.example.nfc.hospital.scantagband.record_reports
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -51,17 +54,17 @@ class PatientDataAdapter(private val registeredUsersList : ArrayList<patientwrap
         }
 
         holder.profileDetailsButton.setOnClickListener {
-            val intent = Intent(context, ProfileDetails::class.java)
+            val intent = Intent(context, record_perosnal::class.java).putExtra("uid",user.USER_ID.toString())
             context.startActivity(intent)
         }
 
         holder.healthRecordButton.setOnClickListener {
-            val intent = Intent(context, HealthRecord::class.java)
+            val intent = Intent(context, record_medical::class.java).putExtra("uid",user.USER_ID.toString())
             context.startActivity(intent)
         }
 
         holder.medicalReportButton.setOnClickListener {
-            val intent = Intent(context, MedicalReport::class.java)
+            val intent = Intent(context, record_reports::class.java).putExtra("uid",user.USER_ID.toString())
             context.startActivity(intent)
         }
 

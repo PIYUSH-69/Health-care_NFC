@@ -29,11 +29,6 @@ class record_perosnal : AppCompatActivity() {
 
         val userid=intent.extras!!.getString("uid").toString()
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         patients= runBlocking { patientcrud.getpatient(userid) }!!
         binding.textViewProfileName.text = patients.FIRST_NAME+" "+patients.MIDDLE_NAME+" "+patients.LAST_NAME
