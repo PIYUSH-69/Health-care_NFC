@@ -36,11 +36,5 @@ class recordoptions : AppCompatActivity() {
             startActivity(Intent(this,MedicalReport::class.java).putExtra("uid",userid))
         }
 
-
-
-
-
-
-
     }
 }

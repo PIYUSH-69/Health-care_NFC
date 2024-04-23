@@ -75,6 +75,14 @@ tools:context=".patient.Patient_main">
                 android:text="CALL TOLL FREE NUMBER NOW!!"
                 app:icon="@android:drawable/stat_sys_phone_call" />
 
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center|clip_vertical"
+                android:foregroundGravity="center_vertical"
+                app:srcCompat="@drawable/nhalogo" />
+
 
         </LinearLayout>
 

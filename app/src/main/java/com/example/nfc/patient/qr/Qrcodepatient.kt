@@ -41,6 +41,7 @@ class qrcodepatient : AppCompatActivity() {
         val userid=Firebase.auth.currentUser!!.uid
         val qr =findViewById<ImageView>(R.id.qr_code)
         val encodedtoken= runBlocking { Hashing.encode(userid)}
+        Log.d(TAG, "onCreate: "+encodedtoken)
         bmpQr1=qrcodegenerator(encodedtoken)
         qr.setImageBitmap(bmpQr1)
         qrcheck()

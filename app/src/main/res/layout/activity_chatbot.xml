@@ -57,7 +57,6 @@
             android:layout_width="match_parent"
             android:id="@+id/symptoms"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:hint="Symptoms" />
     </com.google.android.material.textfield.TextInputLayout>
 

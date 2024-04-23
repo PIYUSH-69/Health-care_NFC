@@ -21,7 +21,6 @@ class Register : AppCompatActivity() {
         val signinhos=findViewById<Button>(R.id.signinhospital)
 
         reg.setOnClickListener {
-
             val intent= Intent(this, patient_personal::class.java)
             startActivity(intent)
         }
