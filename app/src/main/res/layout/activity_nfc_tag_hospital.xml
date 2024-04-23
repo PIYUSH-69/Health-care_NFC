@@ -24,16 +24,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/lexend_semibold"
         android:text="Tap the nfc band"
-        app:layout_constraintTop_toBottomOf="@+id/gifImageView"
-        tools:layout_editor_absoluteX="153dp" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gifImageView" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
-        android:text="TextView"
-        app:layout_constraintTop_toBottomOf="@+id/textView24"
-        tools:layout_editor_absoluteX="176dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BACK TO HOME PAGE"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
 </androidx.constraintlayout.widget.ConstraintLayout>

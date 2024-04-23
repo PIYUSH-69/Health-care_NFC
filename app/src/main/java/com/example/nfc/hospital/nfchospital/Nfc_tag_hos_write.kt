@@ -13,6 +13,8 @@ import android.nfc.tech.NfcF
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -31,7 +33,9 @@ class nfc_tag_hospital : AppCompatActivity() {
 
     private lateinit var hashcode:String
     private lateinit var Text: TextView
+    private lateinit var button: Button
     private var intentFiltersArray: Array<IntentFilter>? = null
+
     private val techListsArray = arrayOf(arrayOf(NfcF::class.java.name))
     private val nfcAdapter: NfcAdapter? by lazy {
         NfcAdapter.getDefaultAdapter(this)
@@ -48,6 +52,7 @@ class nfc_tag_hospital : AppCompatActivity() {
         }
 
         Text=findViewById(R.id.textView25)
+        button=findViewById(R.id.button13)
 
         val uid=intent.extras!!.getString("userid").toString()
         hashcode= uid
@@ -137,7 +142,12 @@ class nfc_tag_hospital : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 )
                                     .show()
-                                startActivity(Intent(this@nfc_tag_hospital,Hospital_main::class.java))
+
+                                button.visibility=View.VISIBLE
+                                button.setOnClickListener {
+                                    startActivity(Intent(this@nfc_tag_hospital,Hospital_main::class.java))
+                                }
+
                             }else{
                                 Log.d(TAG, "NFC READ NOT WRITABLE")
 
