@@ -20,6 +20,10 @@ import com.example.nfc.hospital.scantagband.record_medical
 import com.example.nfc.hospital.scantagband.record_perosnal
 
 class PatientDataAdapter(private val registeredUsersList : ArrayList<patientwrapper>, private val context: Context): RecyclerView.Adapter<PatientDataAdapter.MyViewHolder>() {
+
+
+
+
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val patient_name : TextView = itemView.findViewById(R.id.patient_name)
         val patient_gender : TextView = itemView.findViewById(R.id.patient_gender)
@@ -31,7 +35,7 @@ class PatientDataAdapter(private val registeredUsersList : ArrayList<patientwrap
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.patient_card,parent,false);
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.patient_card,   parent,false);
         return MyViewHolder(itemView)
     }
 

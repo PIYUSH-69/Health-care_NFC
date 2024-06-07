@@ -16,7 +16,6 @@ class PatientData : AppCompatActivity() {
     private lateinit var usersArrayList: ArrayList<patientwrapper>
     private lateinit var myAdapter: PatientDataAdapter
     private lateinit var db: FirebaseFirestore
-    private lateinit var iAdapter: PatientDataAdapter
     private lateinit var filteredUsersList: ArrayList<patientwrapper>
     private lateinit var searchView: SearchView
     private lateinit var usersCollection: CollectionReference
