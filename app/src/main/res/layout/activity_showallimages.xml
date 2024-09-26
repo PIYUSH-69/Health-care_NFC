@@ -15,8 +15,8 @@
             android:layout_height="match_parent"
             android:background="?attr/colorPrimary"
             app:title="Images"
-            app:titleTextColor="@color/white"/>
-<!--            app:menu="@menu/delete"/>-->
+            app:titleTextColor="@color/white" />
+        <!--            app:menu="@menu/delete"/>-->
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -33,6 +33,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/progress"
         android:layout_gravity="center"
-        android:indeterminate="true"/>
+        android:indeterminate="true" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -5,7 +5,6 @@ import android.util.Log
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.storage
-import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 
 data class patientwrapper(
@@ -33,20 +32,21 @@ class patientcrud {
 
     companion object {
         private val patientCollectionRef = FirebaseFirestore.getInstance().collection("Patient")
-        private val patientstorage= Firebase.storage.reference
+        private val patientstorage = Firebase.storage.reference
         suspend fun getpatient(userId: String): patientwrapper? {
             val document = patientCollectionRef.document(userId).get().await()
             return document.toObject(patientwrapper::class.java)!!
         }
 
         suspend fun getphotourl(userId: String, callback: (String?) -> Unit) {
-            var url=""
-            patientstorage.child(userId).child("profilepic/").child("profile.jpg").downloadUrl.addOnSuccessListener{
+            var url = ""
+            patientstorage.child(userId).child("profilepic/")
+                .child("profile.jpg").downloadUrl.addOnSuccessListener {
                 callback(it.toString())
-            }.addOnFailureListener{
+            }.addOnFailureListener {
                 callback(null)
             }
-            Log.d(ContentValues.TAG, "getphotourl: "+url)
+            Log.d(ContentValues.TAG, "getphotourl: " + url)
 
         }
     }

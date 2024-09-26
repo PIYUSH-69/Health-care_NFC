@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
+<LinearLayout android:orientation="vertical"
     android:padding="20dp"
     android:gravity="center"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -144,6 +143,7 @@
         android:fontFamily="@font/alata"
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_allergies"
             android:drawablePadding="30dp"
@@ -162,6 +162,7 @@
         android:layout_margin="5sp"
         android:hint="Surgeries"
         app:boxStrokeWidth="0dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_surgeries"
             style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"

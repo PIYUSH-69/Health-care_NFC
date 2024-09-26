@@ -16,7 +16,6 @@ import com.google.firebase.storage.ListResult
 import com.google.firebase.storage.StorageReference
 
 
-
 class ShowReport : AppCompatActivity() {
 
     var recyclerView: RecyclerView? = null
@@ -45,8 +44,8 @@ class ShowReport : AppCompatActivity() {
                 file.getDownloadUrl()
                     .addOnSuccessListener { uri -> // adding the url in the arraylist
                         var bb = file.name
-                        imagelist.add(Photos(bb,uri.toString()))
-                        Log.d("Itemvalue", bb+uri.toString())
+                        imagelist.add(Photos(bb, uri.toString()))
+                        Log.d("Itemvalue", bb + uri.toString())
                     }.addOnSuccessListener {
                         recyclerView!!.setAdapter(adapter)
                         progressBar!!.setVisibility(View.GONE)

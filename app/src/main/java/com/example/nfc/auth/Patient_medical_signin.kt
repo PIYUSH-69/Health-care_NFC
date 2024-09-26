@@ -4,12 +4,12 @@ package com.example.nfc.auth
 import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityPatientMedicalBinding
@@ -27,7 +27,7 @@ class patient_medical_signin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding=ActivityPatientMedicalBinding.inflate(layoutInflater)
+        binding = ActivityPatientMedicalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
@@ -40,15 +40,15 @@ class patient_medical_signin : AppCompatActivity() {
         ayush()
         bldgrp()
 
-        val Auth=Firebase.auth
+        val Auth = Firebase.auth
 
-        val reg=findViewById<Button>(R.id.button)
-        val user=Auth.uid.toString()
+        val reg = findViewById<Button>(R.id.button)
+        val user = Auth.uid.toString()
 
         binding.butto.setOnClickListener {
 
             val url = "https://abdm.gov.in/"
-            val i =Intent(Intent.ACTION_VIEW)
+            val i = Intent(Intent.ACTION_VIEW)
             i.setData(Uri.parse(url))
             startActivity(i)
 
@@ -60,41 +60,46 @@ class patient_medical_signin : AppCompatActivity() {
         reg.setOnClickListener {
 
 
-            if (submitform()){
+            if (submitform()) {
 
-                val height=binding.height.text.toString()
-                val wieght=binding.weight.text.toString()
-                val bldgrp=binding.bldgrp.text.toString()
-                val bloodpressure=binding.checkBox3.isChecked.toString()
-                val diabetes=binding.checkBox4.isChecked.toString()
-                val asthama=binding.checkBox5.isChecked.toString()
-                val illness=binding.allergies.text.toString()
-                val Allergies=binding.allergies.text.toString()
-                val ayush=binding.ayush.text.toString()
+                val height = binding.height.text.toString()
+                val wieght = binding.weight.text.toString()
+                val bldgrp = binding.bldgrp.text.toString()
+                val bloodpressure = binding.checkBox3.isChecked.toString()
+                val diabetes = binding.checkBox4.isChecked.toString()
+                val asthama = binding.checkBox5.isChecked.toString()
+                val illness = binding.allergies.text.toString()
+                val Allergies = binding.allergies.text.toString()
+                val ayush = binding.ayush.text.toString()
 
-                val db=Firebase.firestore
-                var mdetails= HashMap<String,String>()
-                mdetails.put("HEIGHT",height)
-                mdetails.put("WEIGHT",wieght)
-                mdetails.put("BLOOD_GROUP",bldgrp)
-                mdetails.put("BLOOD_PRESSURE",bloodpressure)
-                mdetails.put("DIABETES",diabetes)
-                mdetails.put("ASTHAMA",asthama)
-                mdetails.put("SURGERIES",illness)
-                mdetails.put("Allergies",Allergies)
-                mdetails.put("AYUSHMAN_ID",ayush)
+                val db = Firebase.firestore
+                var mdetails = HashMap<String, String>()
+                mdetails.put("HEIGHT", height)
+                mdetails.put("WEIGHT", wieght)
+                mdetails.put("BLOOD_GROUP", bldgrp)
+                mdetails.put("BLOOD_PRESSURE", bloodpressure)
+                mdetails.put("DIABETES", diabetes)
+                mdetails.put("ASTHAMA", asthama)
+                mdetails.put("SURGERIES", illness)
+                mdetails.put("Allergies", Allergies)
+                mdetails.put("AYUSHMAN_ID", ayush)
 
                 db.collection("Patient")
                     .document(user)
                     .set(mdetails, SetOptions.merge())
                     .addOnSuccessListener { documentReference ->
                         Log.d(ContentValues.TAG, "DocumentSnapshot added ")
-                        MotionToast.darkColorToast(this,"Form submitted!",
+                        MotionToast.darkColorToast(
+                            this, "Form submitted!",
                             "Registeration successful",
                             MotionToastStyle.SUCCESS,
                             MotionToast.GRAVITY_BOTTOM,
                             MotionToast.SHORT_DURATION,
-                            ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
+                            ResourcesCompat.getFont(
+                                this,
+                                www.sanju.motiontoast.R.font.helvetica_regular
+                            )
+                        )
                         startActivity(Intent(this, Patient_main::class.java))
                         Toast.makeText(this, "ADDED VALUEs", Toast.LENGTH_SHORT).show()
 
@@ -102,29 +107,30 @@ class patient_medical_signin : AppCompatActivity() {
                         Log.w(ContentValues.TAG, "Error adding document", e)
                     }
 
-            }
-            else{
-                MotionToast.darkColorToast(this,"Validation Failed!",
+            } else {
+                MotionToast.darkColorToast(
+                    this, "Validation Failed!",
                     "Enter All Details!l",
                     MotionToastStyle.ERROR,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.SHORT_DURATION,
-                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
+                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular)
+                )
             }
         }
     }
 
     private fun submitform(): Boolean {
 
-        binding.ayushcon.helperText=validateayush()
-        binding.bldgrpcon.helperText=validatebldgrp()
-        binding.weightcon.helperText= validateweight()
-        binding.heightcon.helperText= validateheight()
+        binding.ayushcon.helperText = validateayush()
+        binding.bldgrpcon.helperText = validatebldgrp()
+        binding.weightcon.helperText = validateweight()
+        binding.heightcon.helperText = validateheight()
 
-       val a= binding.ayushcon.helperText==null
-       val b= binding.bldgrpcon.helperText==null
-       val c= binding.weightcon.helperText==null
-       val d= binding.heightcon.helperText==null
+        val a = binding.ayushcon.helperText == null
+        val b = binding.bldgrpcon.helperText == null
+        val c = binding.weightcon.helperText == null
+        val d = binding.heightcon.helperText == null
 
         return a && b && c && d
     }
@@ -140,10 +146,9 @@ class patient_medical_signin : AppCompatActivity() {
     private fun validateheight(): String? {
         if (binding.height.text.toString().isEmpty()) {
             return "THIS FIELD IS REQUIRED"
-        } else if (binding.height.text.toString().toInt()>272){
+        } else if (binding.height.text.toString().toInt() > 272) {
             return "INVALID HEIGHT"
-        }
-        else return null
+        } else return null
     }
 
     private fun weight() {
@@ -157,10 +162,9 @@ class patient_medical_signin : AppCompatActivity() {
     private fun validateweight(): String? {
         if (binding.weight.text.toString().isEmpty()) {
             return "THIS FIELD IS REQUIRED"
-        } else if (binding.weight.text.toString().toInt()>200){
+        } else if (binding.weight.text.toString().toInt() > 200) {
             return "INVALID WEIGHT"
-        }
-        else return null
+        } else return null
     }
 
 
@@ -191,9 +195,8 @@ class patient_medical_signin : AppCompatActivity() {
     private fun validateayush(): String? {
         if (binding.ayush.text.toString().isEmpty()) {
             return "THIS FIELD IS REQUIRED"
-        } else if(binding.ayush.text.toString().length<14){
+        } else if (binding.ayush.text.toString().length < 14) {
             return "TOO SHORT"
-        }
-        else return null
-        }
+        } else return null
+    }
 }

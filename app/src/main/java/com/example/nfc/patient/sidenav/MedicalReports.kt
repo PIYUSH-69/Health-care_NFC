@@ -15,10 +15,8 @@ import com.example.nfc.R
 import com.example.nfc.hospital.patientdata.medicalReport.ShowReport
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import kotlin.collections.HashMap
 
 
 class MedicalReports : AppCompatActivity() {
@@ -103,11 +101,11 @@ class MedicalReports : AppCompatActivity() {
                 uploadTask.storage.downloadUrl.addOnSuccessListener { uri ->
                     val imageUrl = uri.toString()
                     progressDialog.dismiss()
-                            Toast.makeText(
-                                applicationContext,
-                                "File Uploaded Successfully",
-                                Toast.LENGTH_LONG
-                            ).show()
+                    Toast.makeText(
+                        applicationContext,
+                        "File Uploaded Successfully",
+                        Toast.LENGTH_LONG
+                    ).show()
 
                     // Add image data to Firestore
 //                    val db = FirebaseFirestore.getInstance()

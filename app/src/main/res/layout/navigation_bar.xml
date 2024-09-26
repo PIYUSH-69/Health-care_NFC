@@ -17,6 +17,6 @@
         app:titleTextColor="@color/white"
         android:background="@color/green"
         app:navigationContentDescription="Drawer"
-        android:minHeight="?attr/actionBarSize"/>
+        android:minHeight="?attr/actionBarSize" />
 
 </RelativeLayout>

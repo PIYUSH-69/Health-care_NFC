@@ -1,20 +1,13 @@
 package com.example.nfc.hospital.hospitalsidenav
 
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityHospitalAppointmentsBinding
-import com.example.nfc.databinding.ActivityHospitalSigninBinding
-import com.example.nfc.doctors.doctorlist
-import com.example.nfc.doctors.doctorsadapter
 import com.example.nfc.patient.appointments.appointmentwrapper
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.EventListener
@@ -25,25 +18,26 @@ import com.google.firebase.firestore.QuerySnapshot
 class HospitalAppointments : AppCompatActivity() {
     private lateinit var binding: ActivityHospitalAppointmentsBinding
     private lateinit var recylerarralist: ArrayList<appointmentwrapper>
-    private lateinit var myadapter:hospitalAppointmentsadapter
+    private lateinit var myadapter: hospitalAppointmentsadapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
 
-        binding= ActivityHospitalAppointmentsBinding.inflate(layoutInflater)
+        binding = ActivityHospitalAppointmentsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setContentView(R.layout.activity_hospital_appointments)
 
-        val recylerview=findViewById<RecyclerView>(R.id.hosrecyler)
+        val recylerview = findViewById<RecyclerView>(R.id.hosrecyler)
 
-        recylerview.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        recylerview.layoutManager =
+            LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         recylerview.setHasFixedSize(true)
         recylerarralist = arrayListOf()
 
-        myadapter= hospitalAppointmentsadapter(recylerarralist)
-        recylerview.adapter=myadapter
+        myadapter = hospitalAppointmentsadapter(recylerarralist)
+        recylerview.adapter = myadapter
         eventchangelisterner()
     }
 
@@ -58,7 +52,7 @@ class HospitalAppointments : AppCompatActivity() {
                 for (dc: DocumentChange in value?.documentChanges!!) {
                     if (dc.type == DocumentChange.Type.ADDED) {
                         recylerarralist.add(dc.document.toObject(appointmentwrapper::class.java))
-                        Log.d(TAG, "FIRE:: "+recylerarralist.toString())
+                        Log.d(TAG, "FIRE:: " + recylerarralist.toString())
                     }
                 }
                 myadapter.notifyDataSetChanged()

@@ -21,19 +21,19 @@ class recordoptions : AppCompatActivity() {
             insets
         }
 
-        val userid=intent.extras!!.getString("uid").toString()
-        val personal=findViewById<Button>(R.id.button15)
-        val medical=findViewById<Button>(R.id.button16)
-        val report=findViewById<Button>(R.id.button17)
+        val userid = intent.extras!!.getString("uid").toString()
+        val personal = findViewById<Button>(R.id.button15)
+        val medical = findViewById<Button>(R.id.button16)
+        val report = findViewById<Button>(R.id.button17)
 
         personal.setOnClickListener {
-            startActivity(Intent(this,record_perosnal::class.java).putExtra("uid",userid))
+            startActivity(Intent(this, record_perosnal::class.java).putExtra("uid", userid))
         }
         medical.setOnClickListener {
-            startActivity(Intent(this,record_medical::class.java).putExtra("uid",userid))
+            startActivity(Intent(this, record_medical::class.java).putExtra("uid", userid))
         }
         report.setOnClickListener {
-            startActivity(Intent(this,MedicalReport::class.java).putExtra("uid",userid))
+            startActivity(Intent(this, MedicalReport::class.java).putExtra("uid", userid))
         }
 
     }

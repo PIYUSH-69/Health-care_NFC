@@ -2,15 +2,11 @@ package com.example.nfc.patient.appointments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nfc.R
 import com.example.nfc.doctors.doctorlist
-import com.example.nfc.doctors.doctorsadapter
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,20 +15,21 @@ import com.google.firebase.firestore.QuerySnapshot
 
 class Appointments : AppCompatActivity() {
     private lateinit var recylerarralist: ArrayList<doctorlist>
-    private lateinit var myadapter:appointmentsadapter
+    private lateinit var myadapter: appointmentsadapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_appointments)
 
-        val recyler=findViewById<RecyclerView>(R.id.appointmentsrecyler)
+        val recyler = findViewById<RecyclerView>(R.id.appointmentsrecyler)
 
-        recyler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        recyler.layoutManager =
+            LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         recyler.setHasFixedSize(true)
         recylerarralist = arrayListOf()
 
-        myadapter= appointmentsadapter(recylerarralist)
-        recyler.adapter=myadapter
+        myadapter = appointmentsadapter(recylerarralist)
+        recyler.adapter = myadapter
         eventchanfelisterner()
 
     }

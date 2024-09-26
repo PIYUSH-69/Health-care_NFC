@@ -25,9 +25,9 @@ class Hospital_main : AppCompatActivity() {
         setContentView(R.layout.activity_hospital_main)
         setSupportActionBar(findViewById(R.id.toolbars))
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        val navView : NavigationView = findViewById(R.id.nav_view)
-        val logout=findViewById<Button>(R.id.logout)
-        val tollfree=findViewById<Button>(R.id.call)
+        val navView: NavigationView = findViewById(R.id.nav_view)
+        val logout = findViewById<Button>(R.id.logout)
+        val tollfree = findViewById<Button>(R.id.call)
 
         navView.itemIconTintList = null
 
@@ -37,7 +37,7 @@ class Hospital_main : AppCompatActivity() {
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val scan=findViewById<ImageView>(R.id.button6)
+        val scan = findViewById<ImageView>(R.id.button6)
         scan.setOnClickListener {
             startActivity(Intent(this, NFC_hospital::class.java))
         }
@@ -49,11 +49,12 @@ class Hospital_main : AppCompatActivity() {
         }
 
         navView.setNavigationItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.Appointments -> {
                     val eIntent = Intent(this, HospitalAppointments::class.java)
                     startActivity(eIntent)
                 }
+
                 R.id.Doctors -> {
                     val favEventIntent = Intent(this, Doctors::class.java)
                     startActivity(favEventIntent)
@@ -79,7 +80,7 @@ class Hospital_main : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        if (toggle.onOptionsItemSelected(item)){
+        if (toggle.onOptionsItemSelected(item)) {
             return true
         }
 

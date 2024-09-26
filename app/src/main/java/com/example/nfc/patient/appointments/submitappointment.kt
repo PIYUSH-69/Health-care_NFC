@@ -43,12 +43,12 @@ class SubmitAppointment : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_submitappointment)
-        binding=ActivitySubmitappointmentBinding.inflate(layoutInflater)
+        binding = ActivitySubmitappointmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val docuid=intent.extras!!.getString("Doctorid").toString()
-        Log.d(TAG, "onCreate doctorid: "+docuid)
-       doctors= runBlocking { doctorwrapper.getdocotr(docuid) }!!
+        val docuid = intent.extras!!.getString("Doctorid").toString()
+        Log.d(TAG, "onCreate doctorid: " + docuid)
+        doctors = runBlocking { doctorwrapper.getdocotr(docuid) }!!
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -59,10 +59,11 @@ class SubmitAppointment : AppCompatActivity() {
         val array = arrayListOf(
             "Morning  :10 am-1 pm",
             "Afternoon:2 pm-5 pm ",
-            "Evening  :6 pm-10 pm")
+            "Evening  :6 pm-10 pm"
+        )
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, array)
-        val spinner=findViewById<AutoCompleteTextView>(R.id.slot)
+        val spinner = findViewById<AutoCompleteTextView>(R.id.slot)
         spinner.setAdapter(adapter)
 
         val today = Calendar.getInstance()
@@ -80,13 +81,13 @@ class SubmitAppointment : AppCompatActivity() {
                 // .setEnd(Calendar.getInstance().apply {set(YEAR, 2025)  }.timeInMillis)
                 //.setStart(today.timeInMillis)
                 .setOpenAt(today.timeInMillis)
-                .setEnd(Calendar.getInstance().timeInMillis+ 5)
+                .setEnd(Calendar.getInstance().timeInMillis + 5)
                 .build()
         )
 
 
         val datePicker = datePickerBuilder.build()
-        val dob=findViewById<TextInputEditText>(R.id.dateob)
+        val dob = findViewById<TextInputEditText>(R.id.dateob)
 
 
         dob.setOnClickListener {
@@ -101,12 +102,18 @@ class SubmitAppointment : AppCompatActivity() {
             dob.setText(formattedDate)
         }
 
-       binding.doctorrr.setText(doctors.name)
+        binding.doctorrr.setText(doctors.name)
         binding.button12.setOnClickListener {
 
-            if (ContextCompat.checkSelfPermission(this,android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CALL_PHONE),
-                    REQUEST_CODE)
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.CALL_PHONE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this, arrayOf(android.Manifest.permission.CALL_PHONE),
+                    REQUEST_CODE
+                )
             } else {
                 val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + doctors.contact))
                 startActivity(intent)
@@ -114,26 +121,28 @@ class SubmitAppointment : AppCompatActivity() {
         }
 
 
-        val user=Firebase.auth.currentUser!!.uid
-        val db=Firebase.firestore.collection("Appointments").document(user)
+        val user = Firebase.auth.currentUser!!.uid
+        val db = Firebase.firestore.collection("Appointments").document(user)
 
         binding.button11.setOnClickListener {
-            appointments=appointmentwrapper(
+            appointments = appointmentwrapper(
                 uid = user,
                 booktime = System.currentTimeMillis().toString(),
-                doctorid =  docuid,
-                timeslot = binding.slot.text.toString() ,
-                date =binding.dateob.text.toString()
+                doctorid = docuid,
+                timeslot = binding.slot.text.toString(),
+                date = binding.dateob.text.toString()
             )
 
             db.set(appointments).addOnSuccessListener {
-                startActivity(Intent(this,Patient_main::class.java))
-                MotionToast.darkColorToast(this,"GET WELL SOON",
+                startActivity(Intent(this, Patient_main::class.java))
+                MotionToast.darkColorToast(
+                    this, "GET WELL SOON",
                     "Appointment Booked Successfully",
                     MotionToastStyle.SUCCESS,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,
-                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
+                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular)
+                )
 
             }
         }

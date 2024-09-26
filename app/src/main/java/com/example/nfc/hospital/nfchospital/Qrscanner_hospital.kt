@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -58,27 +57,25 @@ class qrscanner_hospital : AppCompatActivity() {
         // Callbacks
         codeScanner.formats
         codeScanner.decodeCallback = DecodeCallback {
-            val userid=Hashing.deocode(it.text)
-            val mediaPlayer= MediaPlayer.create(this, R.raw.beep)
+            val userid = Hashing.deocode(it.text)
+            val mediaPlayer = MediaPlayer.create(this, R.raw.beep)
             mediaPlayer.start()
-            startActivity(Intent(this, form_fill::class.java).putExtra("uid",userid))
+            startActivity(Intent(this, form_fill::class.java).putExtra("uid", userid))
         }
 
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
             runOnUiThread {
-                MotionToast.darkColorToast(this,"",
+                MotionToast.darkColorToast(
+                    this, "",
                     "Wrong QR code!!",
                     MotionToastStyle.ERROR,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,
-                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
-                startActivity(Intent(this,NFC_hospital::class.java))
+                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular)
+                )
+                startActivity(Intent(this, NFC_hospital::class.java))
             }
         }
-
-
-
-
 
 
     }

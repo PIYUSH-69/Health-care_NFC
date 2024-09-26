@@ -1,6 +1,5 @@
 package com.example.nfc.patient.qr
 
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
@@ -19,7 +18,6 @@ import com.example.nfc.patient.Patient_main
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore
-import com.google.firebase.firestore.ktx.firestore
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
@@ -27,7 +25,7 @@ import kotlinx.coroutines.runBlocking
 
 class qrcodepatient : AppCompatActivity() {
 
-    private lateinit var bmpQr1 : Bitmap
+    private lateinit var bmpQr1: Bitmap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +36,11 @@ class qrcodepatient : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val userid=Firebase.auth.currentUser!!.uid
-        val qr =findViewById<ImageView>(R.id.qr_code)
-        val encodedtoken= runBlocking { Hashing.encode(userid)}
-        Log.d(TAG, "onCreate: "+encodedtoken)
-        bmpQr1=qrcodegenerator(encodedtoken)
+        val userid = Firebase.auth.currentUser!!.uid
+        val qr = findViewById<ImageView>(R.id.qr_code)
+        val encodedtoken = runBlocking { Hashing.encode(userid) }
+        Log.d(TAG, "onCreate: " + encodedtoken)
+        bmpQr1 = qrcodegenerator(encodedtoken)
         qr.setImageBitmap(bmpQr1)
         qrcheck()
 
@@ -50,7 +48,7 @@ class qrcodepatient : AppCompatActivity() {
 
     private fun qrcheck() {
 
-        val userid=Firebase.auth.currentUser!!.uid
+        val userid = Firebase.auth.currentUser!!.uid
         val db = Firebase.firestore
         val docRef = db.collection("Patient").document(userid)
         docRef.addSnapshotListener { snapshot, e ->
@@ -60,13 +58,13 @@ class qrcodepatient : AppCompatActivity() {
             }
 
             if (snapshot != null && snapshot.exists()) {
-                val a=snapshot.data!!.get("qr")
+                val a = snapshot.data!!.get("qr")
                 Log.d(TAG, "Current data: ${snapshot.data}")
                 Log.d(TAG, "Current : $a")
-                if (a=="true"){
-                    startActivity(Intent(this,Patient_main::class.java))
+                if (a == "true") {
+                    startActivity(Intent(this, Patient_main::class.java))
                     Toast.makeText(this, "FORM SUBMITTED SUCCESSFULLY", Toast.LENGTH_SHORT).show()
-                    Firebase.firestore.collection("Patient").document(userid).update("qr","false")
+                    Firebase.firestore.collection("Patient").document(userid).update("qr", "false")
 
                 }
             } else {
@@ -97,7 +95,7 @@ class qrcodepatient : AppCompatActivity() {
 
 
     private fun qrcodegenerator(string: String): Bitmap {
-        val writer= QRCodeWriter()
+        val writer = QRCodeWriter()
         val bitMatrix: BitMatrix = writer.encode(string, BarcodeFormat.QR_CODE, 1024, 1024)
         val width = bitMatrix.width
         val height = bitMatrix.height

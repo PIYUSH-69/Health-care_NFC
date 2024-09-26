@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <item
@@ -11,12 +10,12 @@
     <item
         android:id="@+id/activepatients"
         android:icon="@drawable/patientactive"
-        android:title="Active Patients"/>
+        android:title="Active Patients" />
 
     <item
         android:id="@+id/Doctors"
         android:icon="@drawable/doctornn"
-        android:title="Doctors"/>
+        android:title="Doctors" />
 
     <item
         android:id="@+id/Patient_data"
@@ -26,8 +25,7 @@
     <item
         android:id="@+id/Scantag"
         android:icon="@drawable/check"
-        android:title="Scan Tag"/>
-
+        android:title="Scan Tag" />
 
 
 </menu>

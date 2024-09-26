@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.telephony.PhoneNumberUtils
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
@@ -23,8 +22,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.nfc.R
 import com.example.nfc.auth.Register
-import com.example.nfc.patient.qr.nfc
 import com.example.nfc.patient.appointments.Appointments
+import com.example.nfc.patient.qr.nfc
 import com.example.nfc.patient.sidenav.AyuCard
 import com.example.nfc.patient.sidenav.MedicalReports
 import com.example.nfc.patient.sidenav.PatientProfile

@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbarLayout"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView12"
@@ -71,7 +71,7 @@
 
         <include
             android:id="@+id/toolbarLayout"
-            layout="@layout/navigation_bar"/>
+            layout="@layout/navigation_bar" />
 
     </RelativeLayout>
 

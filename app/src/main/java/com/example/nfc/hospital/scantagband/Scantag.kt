@@ -19,9 +19,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.nfc.R
 import com.example.nfc.hospital.Hospital_main
-import com.example.nfc.hospital.nfchospital.form_fill
-import com.example.nfc.hospital.nfchospital.qrscanner_hospital
-import java.lang.Exception
 
 class scantag : AppCompatActivity() {
 
@@ -46,7 +43,8 @@ class scantag : AppCompatActivity() {
         //nfc
         pendingIntent = PendingIntent.getActivity(
             this, 0, Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
-            PendingIntent.FLAG_MUTABLE)
+            PendingIntent.FLAG_MUTABLE
+        )
         val ndef = IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED)
         try {
             ndef.addDataType("text/plain")
@@ -59,10 +57,14 @@ class scantag : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Alert")
             builder.setMessage("This device doesn't support NFC.")
-            builder.setPositiveButton("OK"){_,_ ->startActivity(
-                Intent(this,
-                    Hospital_main::class.java)
-            )}
+            builder.setPositiveButton("OK") { _, _ ->
+                startActivity(
+                    Intent(
+                        this,
+                        Hospital_main::class.java
+                    )
+                )
+            }
             builder.show()
 
         } else if (!nfcAdapter!!.isEnabled) {
@@ -77,10 +79,15 @@ class scantag : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        nfcAdapter?.enableForegroundDispatch(this, pendingIntent, intentFiltersArray, techListsArray)
+        nfcAdapter?.enableForegroundDispatch(
+            this,
+            pendingIntent,
+            intentFiltersArray,
+            techListsArray
+        )
     }
 
-    var userid ="";
+    var userid = "";
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         Log.d(ContentValues.TAG, "NFC READ initalized STAGE 1")
@@ -99,16 +106,23 @@ class scantag : AppCompatActivity() {
                     var inMessage = String(ndefRecord_0.payload)
 
                     userid = inMessage.drop(3)
-                    startActivity(Intent(this@scantag, recordoptions::class.java).putExtra("uid",userid))
+                    startActivity(
+                        Intent(this@scantag, recordoptions::class.java).putExtra(
+                            "uid",
+                            userid
+                        )
+                    )
 
                 } catch (ex: Exception) {
-                    Log.d(ContentValues.TAG, "NFC READ initalized STAGE ERROR"+ex)
-                    Toast.makeText(applicationContext, "There are no Machine and Shop information found!, please click write data to write those!", Toast.LENGTH_SHORT
+                    Log.d(ContentValues.TAG, "NFC READ initalized STAGE ERROR" + ex)
+                    Toast.makeText(
+                        applicationContext,
+                        "There are no Machine and Shop information found!, please click write data to write those!",
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
             }
-        }else
-        {
+        } else {
             Log.d(ContentValues.TAG, "NFC READ initalized STAGE ERROR else")
         }
     }

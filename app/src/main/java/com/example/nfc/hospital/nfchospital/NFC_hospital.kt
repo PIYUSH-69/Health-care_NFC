@@ -1,6 +1,5 @@
 package com.example.nfc.hospital.nfchospital
 
-import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.ContentValues.TAG
 import android.content.Intent
@@ -20,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.nfc.R
-import java.lang.Exception
 
 class NFC_hospital : AppCompatActivity() {
 
@@ -42,18 +40,19 @@ class NFC_hospital : AppCompatActivity() {
             insets
         }
 
-        val but=findViewById<Button>(R.id.button7)
+        val but = findViewById<Button>(R.id.button7)
         but.setOnClickListener {
             startActivity(Intent(this, qrscanner_hospital::class.java))
         }
 
-       textView=findViewById(R.id.textView23)
+        textView = findViewById(R.id.textView23)
 
 
         //nfc
         pendingIntent = PendingIntent.getActivity(
             this, 0, Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
-            PendingIntent.FLAG_MUTABLE)
+            PendingIntent.FLAG_MUTABLE
+        )
         val ndef = IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED)
         try {
             ndef.addDataType("text/plain")
@@ -65,7 +64,14 @@ class NFC_hospital : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Alert")
             builder.setMessage("This device doesn't support NFC.")
-            builder.setPositiveButton("Use Qr code"){_,_ ->startActivity(Intent(this,qrscanner_hospital::class.java))}
+            builder.setPositiveButton("Use Qr code") { _, _ ->
+                startActivity(
+                    Intent(
+                        this,
+                        qrscanner_hospital::class.java
+                    )
+                )
+            }
             builder.show()
 
         } else if (!nfcAdapter!!.isEnabled) {
@@ -80,10 +86,15 @@ class NFC_hospital : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        nfcAdapter?.enableForegroundDispatch(this, pendingIntent, intentFiltersArray, techListsArray)
+        nfcAdapter?.enableForegroundDispatch(
+            this,
+            pendingIntent,
+            intentFiltersArray,
+            techListsArray
+        )
     }
 
-    var userid ="";
+    var userid = "";
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         Log.d(TAG, "NFC READ initalized STAGE 1")
@@ -103,16 +114,23 @@ class NFC_hospital : AppCompatActivity() {
 
                     userid = inMessage.drop(3)
                     textView.setText("User ID: " + userid)
-                    startActivity(Intent(this@NFC_hospital, form_fill::class.java).putExtra("uid",userid))
+                    startActivity(
+                        Intent(this@NFC_hospital, form_fill::class.java).putExtra(
+                            "uid",
+                            userid
+                        )
+                    )
 
                 } catch (ex: Exception) {
-                    Log.d(TAG, "NFC READ initalized STAGE ERROR"+ex)
-                    Toast.makeText(applicationContext, "There are no Machine and Shop information found!, please click write data to write those!", Toast.LENGTH_SHORT
+                    Log.d(TAG, "NFC READ initalized STAGE ERROR" + ex)
+                    Toast.makeText(
+                        applicationContext,
+                        "There are no Machine and Shop information found!, please click write data to write those!",
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
             }
-        }else
-        {
+        } else {
             Log.d(TAG, "NFC READ initalized STAGE ERROR else")
         }
     }

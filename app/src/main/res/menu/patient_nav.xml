@@ -10,7 +10,7 @@
     <item
         android:id="@+id/record"
         android:icon="@drawable/recorddd"
-        android:title="Personal Health Record"/>
+        android:title="Personal Health Record" />
 
     <item
         android:id="@+id/uploadodoc"

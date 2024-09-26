@@ -1,10 +1,7 @@
 package com.example.nfc.patient.sidenav
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.nfc.R
@@ -26,12 +23,13 @@ class Records : AppCompatActivity() {
         binding = ActivityRecordsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val uid= Firebase.auth.currentUser?.uid.toString()
+        val uid = Firebase.auth.currentUser?.uid.toString()
 
-        patients= runBlocking { patientcrud.getpatient(uid) }!!
-        binding.textViewProfileName.text = patients.FIRST_NAME+" "+patients.MIDDLE_NAME+" "+patients.LAST_NAME
-        binding.editTextHeight.setText(patients.HEIGHT+" m")
-        binding.editTextWeight.setText(patients.WEIGHT+" kg")
+        patients = runBlocking { patientcrud.getpatient(uid) }!!
+        binding.textViewProfileName.text =
+            patients.FIRST_NAME + " " + patients.MIDDLE_NAME + " " + patients.LAST_NAME
+        binding.editTextHeight.setText(patients.HEIGHT + " m")
+        binding.editTextWeight.setText(patients.WEIGHT + " kg")
         binding.editTextBloodGroup.setText(patients.BLOOD_GROUP)
         binding.editTextBloodPressure.setText(patients.BLOOD_PRESSURE)
         binding.editTextDiabetes.setText(patients.DIABETES)
@@ -40,7 +38,7 @@ class Records : AppCompatActivity() {
         binding.editTextSurgeries.setText(patients.SURGERIES)
 
         runBlocking {
-            patientcrud.getphotourl(uid){
+            patientcrud.getphotourl(uid) {
                 Glide.with(applicationContext)
                     .setDefaultRequestOptions(RequestOptions())
                     .load(it)

@@ -1,7 +1,6 @@
 package com.example.nfc.auth
 
 import android.annotation.SuppressLint
-import android.app.Dialog
 import android.content.ContentValues
 import android.content.Intent
 import android.icu.text.SimpleDateFormat
@@ -9,15 +8,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.example.nfc.R
 import com.example.nfc.databinding.ActivityPatientPersonalBinding
-import com.example.nfc.patient.patientcrud
 import com.example.nfc.patient.patientwrapper
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.auth.FirebaseAuth
@@ -25,8 +21,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import kotlinx.coroutines.runBlocking
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 import java.util.Date
@@ -95,79 +89,91 @@ class patient_personal : AppCompatActivity() {
         auth = Firebase.auth
 
         binding.button3.setOnClickListener {
-            if (submitform() ) {
-               if(imagesubmit()) {
-                val fname = binding.fname.text.toString()
-                val mname = binding.mname.text.toString()
-                val lname = binding.lname.text.toString()
-                val anum = binding.anum.text.toString()
-                val pnum = binding.pnum.text.toString()
-                val dob = binding.dob.text.toString()
-                val gender = binding.gender.text.toString()
-                val emailid = binding.email.text.toString()
-                val pass = binding.pass.text.toString()
+            if (submitform()) {
+                if (imagesubmit()) {
+                    val fname = binding.fname.text.toString()
+                    val mname = binding.mname.text.toString()
+                    val lname = binding.lname.text.toString()
+                    val anum = binding.anum.text.toString()
+                    val pnum = binding.pnum.text.toString()
+                    val dob = binding.dob.text.toString()
+                    val gender = binding.gender.text.toString()
+                    val emailid = binding.email.text.toString()
+                    val pass = binding.pass.text.toString()
 
 
-                auth.createUserWithEmailAndPassword(emailid, pass)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(ContentValues.TAG, "createUserWithEmail:success")
-                            val user = auth.uid.toString()
-                            val db = Firebase.firestore
-                            var details = HashMap<String, String>()
-                            details.put("USER_ID", user)
-                            details.put("FIRST_NAME", fname)
-                            details.put("MIDDLE_NAME", mname)
-                            details.put("LAST_NAME", lname)
-                            details.put("GENDER", gender)
-                            details.put("DOB", dob)
-                            details.put("PHONE_NUMBER", pnum)
-                            details.put("ADHARCARD_NUMBER", anum)
-                            details.put("EMAIL", emailid)
-                            details.put("PASSWORD", pass)
+                    auth.createUserWithEmailAndPassword(emailid, pass)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(ContentValues.TAG, "createUserWithEmail:success")
+                                val user = auth.uid.toString()
+                                val db = Firebase.firestore
+                                var details = HashMap<String, String>()
+                                details.put("USER_ID", user)
+                                details.put("FIRST_NAME", fname)
+                                details.put("MIDDLE_NAME", mname)
+                                details.put("LAST_NAME", lname)
+                                details.put("GENDER", gender)
+                                details.put("DOB", dob)
+                                details.put("PHONE_NUMBER", pnum)
+                                details.put("ADHARCARD_NUMBER", anum)
+                                details.put("EMAIL", emailid)
+                                details.put("PASSWORD", pass)
 
-                            val storageRef = FirebaseStorage.getInstance().reference.child(user)
-                            val imageRef = storageRef.child("profilepic/").child("profile.jpg")
-                            // Upload the selected image to that folder
-                            imageRef.putFile(imageUri!!)
-                                .addOnSuccessListener { taskSnapshot ->
-                                    Log.d("Storage", "Image uploaded successfully: ${taskSnapshot.metadata?.path}")
-                                    // Handle successful upload
-                                }
-                                .addOnFailureListener { exception ->
-                                    Log.e("Storage", "Image upload failed: ${exception.message}")
-                                    // Handle failed upload
-                                }
-
-
-                            db.collection("Patient")
-                                .document(user)
-                                .set(details)
-                                .addOnSuccessListener { documentReference ->
-                                    Log.d(ContentValues.TAG, "DocumentSnapshot added ")
-                                    MotionToast.darkColorToast(
-                                        this, "Congratulations!!!",
-                                        "Registeration Successfully !",
-                                        MotionToastStyle.SUCCESS,
-                                        MotionToast.GRAVITY_BOTTOM,
-                                        MotionToast.SHORT_DURATION,
-                                        ResourcesCompat.getFont(
-                                            this,
-                                            www.sanju.motiontoast.R.font.helvetica_regular
+                                val storageRef = FirebaseStorage.getInstance().reference.child(user)
+                                val imageRef = storageRef.child("profilepic/").child("profile.jpg")
+                                // Upload the selected image to that folder
+                                imageRef.putFile(imageUri!!)
+                                    .addOnSuccessListener { taskSnapshot ->
+                                        Log.d(
+                                            "Storage",
+                                            "Image uploaded successfully: ${taskSnapshot.metadata?.path}"
                                         )
-                                    )
+                                        // Handle successful upload
+                                    }
+                                    .addOnFailureListener { exception ->
+                                        Log.e(
+                                            "Storage",
+                                            "Image upload failed: ${exception.message}"
+                                        )
+                                        // Handle failed upload
+                                    }
 
-                                    startActivity(Intent(this, patient_medical_signin::class.java))
 
-                                }.addOnFailureListener { e ->
-                                    Log.w(ContentValues.TAG, "Error adding document", e)
-                                }
+                                db.collection("Patient")
+                                    .document(user)
+                                    .set(details)
+                                    .addOnSuccessListener { documentReference ->
+                                        Log.d(ContentValues.TAG, "DocumentSnapshot added ")
+                                        MotionToast.darkColorToast(
+                                            this, "Congratulations!!!",
+                                            "Registeration Successfully !",
+                                            MotionToastStyle.SUCCESS,
+                                            MotionToast.GRAVITY_BOTTOM,
+                                            MotionToast.SHORT_DURATION,
+                                            ResourcesCompat.getFont(
+                                                this,
+                                                www.sanju.motiontoast.R.font.helvetica_regular
+                                            )
+                                        )
+
+                                        startActivity(
+                                            Intent(
+                                                this,
+                                                patient_medical_signin::class.java
+                                            )
+                                        )
+
+                                    }.addOnFailureListener { e ->
+                                        Log.w(ContentValues.TAG, "Error adding document", e)
+                                    }
 
 
+                            }
                         }
-                    } } }
-            else {
+                }
+            } else {
                 MotionToast.darkColorToast(
                     this, "Validation Failed",
                     "Enter All Details!",
@@ -181,7 +187,7 @@ class patient_personal : AppCompatActivity() {
     }
 
     private fun imagesubmit(): Boolean {
-        if (imageUri==null){
+        if (imageUri == null) {
             MotionToast.darkColorToast(
                 this, "Validation Failed",
                 "UPLOAD PHOTO!",
@@ -191,10 +197,10 @@ class patient_personal : AppCompatActivity() {
                 ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular)
             )
             return false
-        }else{
+        } else {
 
 
-           return true
+            return true
         }
 
     }
@@ -423,8 +429,7 @@ class patient_personal : AppCompatActivity() {
         if (requestCode == REQUEST_CODE_IMAGE_UPSERT && resultCode == RESULT_OK && data != null && data.data != null) {
             imageUri = data.data
             ivStudentAvatar.setImageURI(imageUri)
-        }
-        else{
+        } else {
 
 
         }

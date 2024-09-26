@@ -14,19 +14,22 @@ import com.example.nfc.doctors.doctorlist
 
 private lateinit var mContext: Context
 
-class appointmentsadapter(private val doctorlist: ArrayList<doctorlist>) : RecyclerView.Adapter<appointmentsadapter.Myviewholder>() {
-    class Myviewholder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var name=itemView.findViewById<TextView>(R.id.appdoctor)
-        val domain=itemView.findViewById<TextView>(R.id.appdesignation)
-        val specialization=itemView.findViewById<TextView>(R.id.appspec)
-        val contact=itemView.findViewById<TextView>(R.id.appcontact)
-        val button=itemView.findViewById<Button>(R.id.profileButton)
+class appointmentsadapter(private val doctorlist: ArrayList<doctorlist>) :
+    RecyclerView.Adapter<appointmentsadapter.Myviewholder>() {
+    class Myviewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var name = itemView.findViewById<TextView>(R.id.appdoctor)
+        val domain = itemView.findViewById<TextView>(R.id.appdesignation)
+        val specialization = itemView.findViewById<TextView>(R.id.appspec)
+        val contact = itemView.findViewById<TextView>(R.id.appcontact)
+        val button = itemView.findViewById<Button>(R.id.profileButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Myviewholder {
         mContext = parent.context
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.appointmentcard,parent,false);
-        return appointmentsadapter.Myviewholder(itemView)    }
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.appointmentcard, parent, false);
+        return appointmentsadapter.Myviewholder(itemView)
+    }
 
     override fun getItemCount(): Int {
         return doctorlist.size
@@ -34,16 +37,16 @@ class appointmentsadapter(private val doctorlist: ArrayList<doctorlist>) : Recyc
 
     override fun onBindViewHolder(holder: Myviewholder, position: Int) {
 
-        val doctors: doctorlist =doctorlist[position]
-        holder.name.text="Name: "+doctors.name
-        holder.domain.text="Domain: "+doctors.domain
-        holder.specialization.text="Specialization: "+doctors.specialization
-        holder.contact.text="Contact: "+doctors.contact
+        val doctors: doctorlist = doctorlist[position]
+        holder.name.text = "Name: " + doctors.name
+        holder.domain.text = "Domain: " + doctors.domain
+        holder.specialization.text = "Specialization: " + doctors.specialization
+        holder.contact.text = "Contact: " + doctors.contact
 
         holder.button.setOnClickListener {
             val intent = Intent(holder.button.context, SubmitAppointment::class.java)
             intent.putExtra("Doctorid", doctors.docuid)
-            (mContext as Activity).startActivityForResult(intent,100)
+            (mContext as Activity).startActivityForResult(intent, 100)
         }
     }
 }

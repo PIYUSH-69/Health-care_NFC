@@ -18,7 +18,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
 class chatbot : AppCompatActivity() {
-    private val apikey= BuildConfig.apiKey
+    private val apikey = BuildConfig.apiKey
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,15 +31,15 @@ class chatbot : AppCompatActivity() {
         }
 
 
-        val symptoms=findViewById<TextInputEditText>(R.id.symptoms)
-        val text=findViewById<TextView>(R.id.textView22)
-        val button=findViewById<Button>(R.id.button14)
-        val card=findViewById<CardView>(R.id.symptomcard)
+        val symptoms = findViewById<TextInputEditText>(R.id.symptoms)
+        val text = findViewById<TextView>(R.id.textView22)
+        val button = findViewById<Button>(R.id.button14)
+        val card = findViewById<CardView>(R.id.symptomcard)
 
         button.setOnClickListener {
-            card.visibility= View.VISIBLE
-            val symp=symptoms.text.toString()
-            text.text="WAIT FOR 5 to 10 Seconds"
+            card.visibility = View.VISIBLE
+            val symp = symptoms.text.toString()
+            text.text = "WAIT FOR 5 to 10 Seconds"
             val generativeModel = GenerativeModel(
                 // For text-only input, use the gemini-pro model
                 modelName = "gemini-pro",
@@ -63,5 +63,5 @@ class chatbot : AppCompatActivity() {
             }
         }
     }
-   
+
 }

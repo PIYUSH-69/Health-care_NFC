@@ -21,7 +21,7 @@ import com.google.firebase.firestore.QuerySnapshot
 class Doctors : AppCompatActivity() {
 
     private lateinit var recylerarralist: ArrayList<doctorlist>
-    private lateinit var myadapter:doctorsadapter
+    private lateinit var myadapter: doctorsadapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,18 +32,19 @@ class Doctors : AppCompatActivity() {
             insets
         }
 
-        val recyler=findViewById<RecyclerView>(R.id.doctors)
-        val add=findViewById<ImageView>(R.id.add_doctor)
+        val recyler = findViewById<RecyclerView>(R.id.doctors)
+        val add = findViewById<ImageView>(R.id.add_doctor)
         add.setOnClickListener {
             startActivity(Intent(this, newdoctor::class.java))
         }
 
-        recyler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        recyler.layoutManager =
+            LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         recyler.setHasFixedSize(true)
         recylerarralist = arrayListOf()
 
-        myadapter= doctorsadapter(recylerarralist)
-        recyler.adapter=myadapter
+        myadapter = doctorsadapter(recylerarralist)
+        recyler.adapter = myadapter
         eventchanfelisterner()
     }
 

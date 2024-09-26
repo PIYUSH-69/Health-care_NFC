@@ -23,15 +23,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.nfc.R
-import com.example.nfc.auth.Hashing
 import com.example.nfc.hospital.Hospital_main
-import kotlinx.coroutines.runBlocking
-import java.lang.Exception
 
 class nfc_tag_hospital : AppCompatActivity() {
 
 
-    private lateinit var hashcode:String
+    private lateinit var hashcode: String
     private lateinit var Text: TextView
     private lateinit var button: Button
     private var intentFiltersArray: Array<IntentFilter>? = null
@@ -51,11 +48,11 @@ class nfc_tag_hospital : AppCompatActivity() {
             insets
         }
 
-        Text=findViewById(R.id.textView25)
-        button=findViewById(R.id.button13)
+        Text = findViewById(R.id.textView25)
+        button = findViewById(R.id.button13)
 
-        val uid=intent.extras!!.getString("userid").toString()
-        hashcode= uid
+        val uid = intent.extras!!.getString("userid").toString()
+        hashcode = uid
 
         pendingIntent = PendingIntent.getActivity(
             this, 0, Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
@@ -91,9 +88,13 @@ class nfc_tag_hospital : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        nfcAdapter?.enableForegroundDispatch(this, pendingIntent, intentFiltersArray, techListsArray)
+        nfcAdapter?.enableForegroundDispatch(
+            this,
+            pendingIntent,
+            intentFiltersArray,
+            techListsArray
+        )
     }
-
 
 
     override fun onNewIntent(intent: Intent) {
@@ -108,54 +109,58 @@ class nfc_tag_hospital : AppCompatActivity() {
                 try {
 
                     //write operation
-                        if (NfcAdapter.ACTION_TECH_DISCOVERED == intent.action
-                            || NfcAdapter.ACTION_NDEF_DISCOVERED == intent.action
-                        ) {
+                    if (NfcAdapter.ACTION_TECH_DISCOVERED == intent.action
+                        || NfcAdapter.ACTION_NDEF_DISCOVERED == intent.action
+                    ) {
 
-                            val tag =
-                                intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG) ?: return
-                            val ndef = Ndef.get(tag) ?: return
+                        val tag =
+                            intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG) ?: return
+                        val ndef = Ndef.get(tag) ?: return
 
-                            if (ndef.isWritable) {
+                        if (ndef.isWritable) {
 
-                                var message = NdefMessage(
-                                    arrayOf(
-                                        NdefRecord.createTextRecord("en", hashcode)
-                                    )
+                            var message = NdefMessage(
+                                arrayOf(
+                                    NdefRecord.createTextRecord("en", hashcode)
                                 )
-                                try {
-                                    ndef.connect()
-                                    ndef.writeNdefMessage(message)
-                                    ndef.close()
-                                }catch(ex: Exception){
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "WRITE UNSUCCESFUUL",
-                                        Toast.LENGTH_SHORT
-                                    )
-                                }
-
-                                Text.setText("USER ID: "+ hashcode.toString());
+                            )
+                            try {
+                                ndef.connect()
+                                ndef.writeNdefMessage(message)
+                                ndef.close()
+                            } catch (ex: Exception) {
                                 Toast.makeText(
                                     applicationContext,
-                                    "Successfully Wrote!",
+                                    "WRITE UNSUCCESFUUL",
                                     Toast.LENGTH_SHORT
                                 )
-                                    .show()
-
-                                button.visibility=View.VISIBLE
-                                button.setOnClickListener {
-                                    startActivity(Intent(this@nfc_tag_hospital,Hospital_main::class.java))
-                                }
-
-                            }else{
-                                Log.d(TAG, "NFC READ NOT WRITABLE")
-
                             }
+
+                            Text.setText("USER ID: " + hashcode.toString());
+                            Toast.makeText(
+                                applicationContext,
+                                "Successfully Wrote!",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+
+                            button.visibility = View.VISIBLE
+                            button.setOnClickListener {
+                                startActivity(
+                                    Intent(
+                                        this@nfc_tag_hospital,
+                                        Hospital_main::class.java
+                                    )
+                                )
+                            }
+
+                        } else {
+                            Log.d(TAG, "NFC READ NOT WRITABLE")
+
                         }
-                        else{
-                            Log.d(TAG, "NFC READ ERROORRRRR")
-                        }
+                    } else {
+                        Log.d(TAG, "NFC READ ERROORRRRR")
+                    }
 //
                 } catch (ex: Exception) {
                     Toast.makeText(
@@ -173,7 +178,7 @@ class nfc_tag_hospital : AppCompatActivity() {
             nfcAdapter?.disableForegroundDispatch(this)
         }
         super.onPause()
-}
+    }
 
 
 }

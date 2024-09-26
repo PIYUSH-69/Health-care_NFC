@@ -20,16 +20,12 @@ class nfc : AppCompatActivity() {
             insets
         }
 
-        val scanner=findViewById<Button>(R.id.button5)
+        val scanner = findViewById<Button>(R.id.button5)
         scanner.setOnClickListener {
             startActivity(
                 Intent(this, qrcodepatient::class.java)
             )
         }
-
-
-
-
 
 
     }

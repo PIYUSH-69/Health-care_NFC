@@ -76,7 +76,8 @@ class PatientData : AppCompatActivity() {
                 user.MIDDLE_NAME?.contains(query, true) == true ||
                 user.LAST_NAME?.contains(query, true) == true ||
                 user.PHONE_NUMBER?.contains(query, true) == true ||
-                user.ADHARCARD_NUMBER?.contains(query, true) == true) {
+                user.ADHARCARD_NUMBER?.contains(query, true) == true
+            ) {
                 filteredUsersList.add(user)
             }
         }
