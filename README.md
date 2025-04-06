@@ -28,7 +28,7 @@
 
 ## 📽 Demo Video
 
-[Click here to watch the demo]([https://your-link.com/health-connect-demo.mp4](https://drive.google.com/file/d/1dfKH7G_SuDlRBCsDTC8dOObvneYnimuW/view?usp=sharing))
+[Click here to watch the demo](https://drive.google.com/file/d/1dfKH7G_SuDlRBCsDTC8dOObvneYnimuW/view?usp=sharing)
 
 
 
