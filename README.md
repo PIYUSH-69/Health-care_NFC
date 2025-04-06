@@ -54,7 +54,7 @@ Solves a critical issue in the healthcare system where hospitals often delay pat
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/HealthConnect.git
+   git clone https://github.com/PIYUSH-69/Health-care_NFC.git
 2. Open the project in Android Studio
 
 3. Connect to your Firebase project
